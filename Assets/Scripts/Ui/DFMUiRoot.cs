@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DFMUiRoot : MonoBehaviour {
-
+    
     private GameObject DynamicWidgetPanel = null;
     private GameObject ScreenTipPanel = null;
     private GameObject loading = null;
@@ -65,8 +65,8 @@ public class DFMUiRoot : MonoBehaviour {
 
             if (loading != null) return;
 
-            UiConfig uiData = UiConfigProvider.Instance.GetDataByName("Loading2");
-            GameObject go = ResourceSystem.GetSharedResource(uiData.m_WindowPath) as GameObject;
+            //加载进度页面
+            GameObject go = ResourceSystem.GetSharedResource("Loading/Loading2") as GameObject;
             if (go != null)
             {
                 loading = NGUITools.AddChild(gameObject, go);

@@ -51,6 +51,9 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -66,29 +69,32 @@
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Purchasing">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="MyWebSocket">
-      <HintPath>Assets\Plugins\3rd_party\MyWebSocket.dll</HintPath>
-    </Reference>
-    <Reference Include="ProtobufSerializer">
-      <HintPath>Assets\Plugins\3rd_party\ProtobufSerializer.dll</HintPath>
-    </Reference>
-    <Reference Include="protobuf-net">
-      <HintPath>Assets\Plugins\3rd_party\protobuf-net.dll</HintPath>
+    <Reference Include="ClientProtoBuf">
+      <HintPath>Assets\Plugins\3rd_party\ClientProtoBuf.dll</HintPath>
     </Reference>
     <Reference Include="Lidgren.Network">
       <HintPath>Assets\Plugins\3rd_party\Lidgren.Network.dll</HintPath>
     </Reference>
-    <Reference Include="ClientProtoBuf">
-      <HintPath>Assets\Plugins\3rd_party\ClientProtoBuf.dll</HintPath>
-    </Reference>
     <Reference Include="LitJson">
       <HintPath>Assets\Plugins\3rd_party\LitJson.dll</HintPath>
+    </Reference>
+    <Reference Include="MyWebSocket">
+      <HintPath>Assets\Plugins\3rd_party\MyWebSocket.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net">
+      <HintPath>Assets\Plugins\3rd_party\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="ProtobufSerializer">
+      <HintPath>Assets\Plugins\3rd_party\ProtobufSerializer.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
