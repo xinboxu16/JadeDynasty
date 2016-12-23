@@ -1,0 +1,12 @@
+﻿Number	IntervalTime	SpeakerName	ImageLeftAtlas	ImageLeft	ImageRightAtlas	ImageRight	Words
+0	3	柯菲斯克			UI_AtlasDynamic/Dialog/npc2	xilie_moren	如今先锋军全面反攻，[\n]托赖辟玛节节败退。
+1	3	柯菲斯克			UI_AtlasDynamic/Dialog/npc2	xilie_moren	托赖辟玛王为挽颓势，御驾亲征。[\n]主力部队圣卫军即将抵达这片地区。
+2	3	柯菲斯克			UI_AtlasDynamic/Dialog/npc2	xilie_hechi	听闻其军团长不过是个十五六岁的少女。[\n]若能将其刺杀，必能大破圣卫军。
+3	2	player	UI_AtlasDynamic/Dialog/player	player_moren			恐怕没那么容易吧？
+4	3	柯菲斯克			UI_AtlasDynamic/Dialog/npc2	xilie_chensi	是，[\n]失败便不会有第二次机会。
+5	3	player	UI_AtlasDynamic/Dialog/player	player_moren			我想……[\n]你一定需要几个帮手。 
+6	3	柯菲斯克			UI_AtlasDynamic/Dialog/npc2	xilie_moren	原芙萨冲锋队的[fcfb00]忽伦[-]，我早有耳闻。[\n]应该能助我一臂之力。
+7	2	柯菲斯克			UI_AtlasDynamic/Dialog/npc2	xilie_chensi	但是你……
+8	3	player	UI_AtlasDynamic/Dialog/player	player_moren			你信不过我？[\n]不妨咱们切磋一下。
+9	2	player	UI_AtlasDynamic/Dialog/player	player_moren			（敢瞧不起我，看我不打爆你。）
+10	2	柯菲斯克			UI_AtlasDynamic/Dialog/npc2	xilie_moren	如此，[\n]得罪了。

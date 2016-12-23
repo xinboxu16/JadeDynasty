@@ -1,0 +1,2 @@
+﻿Number	SpeakerName	ImageLeft	ImageRight	Words
+0	引导者	hero3		大批的敌人出现了，请使用技能攻击这些敌人。

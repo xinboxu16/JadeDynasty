@@ -1,0 +1,84 @@
+﻿ID	WindowName	WindowPath	OffsetLeft	OffsetRight	OffsetTop	OffsetBottom	IsExclusion	ShowType	SceneType
+#副本场景UI（SceneType = -1，Offset***单位为像素，ShowType（1=加载并显示；0=加载隐藏；-1=不加载）									
+1	HeroPanel	UI/HeroPanel	5	-1	5	-1	FALSE	1	-1
+2	SkillBar	UI/SkillBar	-1	10	-1	10	FALSE	1	-1
+3	BossHealthBar	UI/BossHealthBar	-1	-1	0	80	FALSE	-1	-1
+4	MasterMonsterHealthBar	UI/MasterMonsterHealthBar	-1	-1	0	80	FALSE	-1	-1
+5	SmallMonsterHealthBar	UI/SmallMonsterHealthBar	-1	-1	75	-1	FALSE	0	-1
+6	ChainBeat	UI/ChainBeat	-1	185	155	-1	FALSE	0	-1
+8	Hit	UI/Hit	-1	-1		-1	FALSE	-1	-1
+9	Score	UI/Score	-1	-1		-1	FALSE	-1	-1
+10	ChainKill	UI/ChainKill	-1	-1		-1	FALSE	-1	-1
+11	EndShield	UI/EndShield	-1	-1		-1	FALSE	-1	-1
+12	HeroChange	UI/HeroChange	-1	-1		-1	FALSE	-1	-1
+13	SkillIcon	UI/SkillIcon	-1	-1		-1	FALSE	-1	-1
+15	GunChange	UI/GunChange	-1	-1		-1	FALSE	-1	-1
+16	StoryDlgBig	UI/StoryDlgBig	-1	-1	-1	300	FALSE	0	-1
+17	StoryDlgSmall	UI/StoryDlgSmall	-1	-1	-1	300	FALSE	0	-1
+18	CombatFalse	UI/CombatFalse/CombatFalse	-1	-1	-1	-1	FALSE	1	-1
+19	VictoryPanel	UI/VictoryPanel/VictoryPanel	-1	250	-1	-1	TRUE	0	-1
+20	CombatWin	UI/CombatWin/CombatWin	-1	-1	-1	-1	TRUE	1	-1
+21	Dialog	UI/YesOrNot/Dialog	-1	-1	-1	-1	FALSE	0	-1
+22	CriticalDamage	UI/CriticalDamage	-1	-1	-1	-1	FALSE	-1	-1
+23	DamageForAddHero	UI/DamageForAddHero	-1	-1	-1	-1	FALSE	-1	-1
+24	DamageForCutHero	UI/DamageForCutHero	-1	-1	-1	-1	FALSE	-1	-1
+25	AttackEffect	UI/AttackEffect	-1	-1	-1	-1	FALSE	-1	-1
+26	MarsVictory	UI/Mars/MarsVictory	-1	-1	-1	-1	FALSE	1	-1
+27	PVPTime	UI/PVPTime	-1	-1	-1	-1	FALSE	-1	-1
+28	NickName	UI/NickName	-1	-1	-1	-1	FALSE	-1	-1
+29	GainMoney	UI/GainMoney	-1	-1	-1	-1	FALSE	-1	-1
+30	Tuichu	UI/YesOrNot/tuichu	-1	-1	-1	-1	FALSE	1	-1
+31	PVPmyEnemy	UI/Pvp/PVPmyEnemy	-1	0	0	-1	FALSE	-1	-1
+32	PVPmyHero	UI/Pvp/PVPmyHero	-1	-1	-1	-1	FALSE	-1	-1
+33	TreasureEnding	UI/cangbaotu/TreasureEnding	-1	-1	-1	-1	TRUE	0	-1
+34	Sheild	UI/Dun	-1	-1	-1	-1	FALSE	-1	-1
+35	Connect	UI/YesOrNot/Connect	-1	-1	-1	-1	FALSE	0	-1
+36	EnergyAdd	UI/EnergyAdd	-1	-1	-1	-1	FALSE	-1	-1
+37	EnergyCut	UI/EnergyCut	-1	-1	-1	-1	FALSE	-1	-1
+38	SellAward	UI/SellAward	-1	-1	-1	-1	FALSE	-1	-1
+#主城UI（SceneType = 1)									
+516	SkillPanel	UI/SkillPanel/SkillPanel	-1	-1	-1	-1	TRUE	0	1
+517	PlayerInfo	UI/MainCity/PlayerInfo	50	-1	60	-1	FALSE	1	1
+518	ShopEntrance	UI/MainCity/ShopEntrance	450	-1	40	-1	FALSE	-1	1
+519	Signature	UI/MainCity/Signature	-1	450	40	-1	FALSE	-1	1
+520	Copy	UI/MainCity/Copy	-1	50	40	-1	FALSE	1	1
+521	EntrancePanel	UI/MainCity/EntrancePanel	-1	10	-1	10	FALSE	1	1
+#522	SceneSelect	UI/MainCity/SceneSelect	-1	50	170	-1	FALSE	-1	1
+523	GamePokey	UI/GamePokey/GamePokey	-1	-1	-1	-1	TRUE	1	1
+524	StoryDlgBig	UI/StoryDlgBig	-1	-1	-1	200	FALSE	0	1
+525	StoryDlgSmall	UI/StoryDlgSmall	-1	-1	-1	200	FALSE	0	1
+526	ItemProperty	UI/GamePokey/ItemProperty	-1	-1	-1	-1	FALSE	1	1
+528	SceneSelect	UI/SceneSelect/SceneSelect	-1	-1	-1	-1	TRUE	1	1
+529	SceneIntroduce	UI/SceneSelect/SceneIntroduce	-1	-1	-1	-1	FALSE	1	1
+530	GameTask	UI/GameTask/GameTask	-1	-1	-1	-1	FALSE	1	1
+531	TaskAward	UI/GameTask/TaskAward	-1	-1	-1	-1	FALSE	0	1
+532	Dialog	UI/YesOrNot/Dialog	-1	-1	-1	-1	FALSE	0	1
+533	Mail	UI/Mail/Mail	-1	-1	-1	-1	TRUE	1	1
+534	ArtifactPanel	UI/ArtifactPanel/ArtifactPanel	-1	-1	-1	-1	TRUE	0	1
+535	cangbaotu	UI/cangbaotu/cangbaotu	-1	-1	-1	-1	TRUE	0	1
+536	Mars	UI/Mars/Mars	-1	-1	-1	-1	TRUE	1	1
+537	TiliBuy	UI/GoldBuy/TiliBuy	-1	-1	-1	-1	FALSE	1	1
+538	GoldBuy	UI/GoldBuy/GoldBuy	-1	-1	-1	-1	FALSE	1	1
+539	Connect	UI/YesOrNot/Connect	-1	-1	-1	-1	FALSE	0	1
+540	DynamicEquipment	UI/GamePokey/DynamicEquipment	-1	-1	-1	-1	FALSE	1	1
+541	Option	UI/YesOrNot/option	-1	-1	-1	-1	FALSE	1	1
+#登录UI（SceneType = 0)									
+1024	LoginPrefab	UI/LoginPrefab	-1	-1	-1	-1	FALSE	1	0
+1025	ServerSelect	UI/ServerSelect/ServerSelect	-1	-1	-1	-1	FALSE	0	0
+1026	Verification	UI/ServerSelect/Verification	-1	-1	-1	-1	FALSE	0	0
+#1027	LoadingHint	UI/ServerSelect/LoadingHint	-1	-1	-1	-1	FALSE	0	0
+1028	Connect	UI/YesOrNot/Connect	-1	-1	-1	-1	FALSE	0	0
+#新手引导									
+1500	GuideStartGame	UI/BeginnerGuide/GuideStartGame	-1	-1	-1	-1	FALSE	-1	-1
+1501	GuideHand	UI/BeginnerGuide/GuideHand	-1	-1	-1	-1	FALSE	-1	-1
+1502	ReturnToMaincity	UI/BeginnerGuide/ReturnToMaincity	-1	-1	-1	-1	FALSE	-1	-1
+									
+#通用UI									
+2001	YesOrNot	UI/YesOrNot/YesOrNot	-1	-1	-1	-1	FALSE	-1	2
+2002	Loading2	Loading/Loading2	-1	-1	-1	-1	FALSE	-1	2
+2003	ScreenTip	UI/ScreenTip	-1	-1	-1	-1	FALSE	-1	2
+2004	PveFightInfo	UI/PveFightInfo	-1	-1	-1	-1	FALSE	-1	2
+2005	Pointing	UI/Common/Pointing	-1	-1	-1	-1	FALSE	-1	2
+2006	GuideDlg	UI/BeginnerGuide/GuideDlg	-1	-1	-1	-1	FALSE	-1	2
+2007	GuideDlgRight	UI/BeginnerGuide/GuideDlgRight	-1	-1	-1	-1	FALSE	-1	2
+2008	GoldBuyDlg	UI/GoldBuy/GoldBuyDlg	-1	-1	-1	-1	FALSE	-1	2

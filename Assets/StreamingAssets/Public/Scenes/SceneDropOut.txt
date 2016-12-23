@@ -1,0 +1,246 @@
+﻿Id	GoldSum	GoldMin	GoldMax	Exp	Diamond	HpCount	HpPercent	MpCount	MpPercent	GoldModel	GoldParticle	HpModel	HpParticle	MpModel	MpParticle	ItemCount	Item0	Count0	Weight0	Item1	Count1	Weight1	Item2	Count2	Weight2	Item3	Count3	Weight3
+1	10	1	1	10		1	15	3	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+1010	12	1	2	8		1	15	3	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	916011	10	5	916011	10	5	916011	10	5	916011	10	5
+1011	12	1	2	10		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	101001	1	0	14105	1	5	101001	1	0	101001	2	0
+1012	0	0	0	0		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	14105	1	5	14102	1	0	101001	1	0	101001	2	0
+1013	48	1	6	4		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	101001	1	5	23105	1	0	23106	1	0	23102	1	0
+1014	72	1	9	6		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	101001	1	5	23101	1	0	23104	1	0	101001	2	25
+1015	96	1	12	8		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	23106	1	5	23104	1	5	101001	1	25	101001	2	25
+1016	120	1	15	10		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	24104	1	5	24103	1	5	101001	1	25	101001	2	25
+1017	144	1	18	12		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	24105	1	5	24102	1	5	101001	1	25	101001	2	25
+1018	168	1	21	14		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	24106	1	5	24101	1	5	101001	1	25	101001	2	25
+1019	400	1	400	16		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	34106	1	5	34103	1	5	101001	1	25	101001	2	25
+1020	216	1	27	18		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4												
+1021	240	1	30	18		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	34101	1	5	34105	1	5	101001	1	25	101001	2	25
+1022	264	1	33	20		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	34104	1	5	34105	1	5	101001	1	25	101001	2	25
+1023	288	1	36	20		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	34103	1	5	34102	1	5	101001	1	25	101001	2	25
+1024	312	1	39	22		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	34106	1	5	34103	1	5	101001	1	25	101001	2	25
+1025	336	1	42	24		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	34102	1	5	34104	1	5	101001	1	25	101001	2	25
+1026	360	1	45	26		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	35104	1	2	35105	1	2	101001	1	25	101001	2	25
+1027	384	1	48	28		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	35102	1	2	35101	1	2	101001	1	25	101001	2	25
+1028	408	1	51	30		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	35103	1	2	35106	1	2	101001	1	25	101001	2	25
+1029	432	1	54	32		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	35101	1	2	35107	1	2	101001	1	25	101001	2	25
+1030	456	1	57	34		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4												
+1031	480	1	60	34		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	36105	1	5	101002	2	10	101002	1	25	101002	2	25
+1032	504	1	63	36		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	36106	1	5	101002	2	10	101002	1	25	101002	2	25
+1033	528	1	66	38		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	101002	2	10	101002	2	10	101002	1	25	101002	2	25
+1034	552	1	69	40		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	36101	1	5	101002	2	10	101002	1	25	101002	2	25
+1035	576	1	72	42		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	36103	1	5	101002	2	10	101002	1	25	101002	2	25
+1036	600	1	75	44		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	36102	1	5	101002	2	10	101002	1	25	101002	2	25
+1037	624	1	78	46		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	44101	1	2	101002	2	10	101002	1	25	101002	2	25
+1038	648	1	81	48		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	36104	1	5	101002	2	10	101002	1	25	101002	2	25
+1039	672	1	84	50		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	44103	1	2	101002	2	10	101002	1	25	101002	2	25
+1040	696	1	87	52		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	101004	1	5	101004	2	5	101004	1	25	101004	1	25
+1041	720	1	90	52		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	101004	1	5	101004	2	5	101004	1	25	101004	2	25
+1042	744	1	93	54		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	101004	1	5	101004	2	5	101004	1	25	101004	2	25
+1043	768	1	96	56		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	101004	1	5	101004	2	5	101004	1	25	101004	2	25
+1044	792	1	99	58		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	101004	1	5	101004	2	5	101004	1	25	101004	2	25
+1045	816	1	102	60		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	101004	1	5	101004	2	5	101004	1	25	101004	2	25
+1046	840	1	105	62		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	101004	1	5	101004	2	5	101004	1	25	101004	2	25
+1047	864	1	108	64		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	101004	1	5	101004	2	5	101004	1	25	101004	2	25
+1048	888	1	111	66		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	101004	1	5	101004	2	5	101004	1	25	101004	2	25
+1049	912	1	114	68		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	101004	1	5	101004	2	5	101004	1	25	101004	2	25
+1050	936	1	117	70		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	101005	1	5	101005	2	5	101005	1	25	101005	2	25
+1051	960	1	120	70		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	101005	1	5	101005	2	5	101005	1	25	101005	2	25
+1052	984	1	123	72		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	101005	1	5	101005	2	5	101005	1	25	101005	2	25
+1053	1008	1	126	74		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	101005	1	5	101005	2	5	101005	1	25	101005	2	25
+1054	1032	1	129	76		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	101005	1	5	101005	2	5	101005	1	25	101005	2	25
+1055	1056	1	132	78		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	101005	1	5	101005	2	5	101005	1	25	101005	2	25
+1056	1080	1	135	80		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	101005	1	5	101005	2	5	101005	1	25	101005	2	25
+1057	1104	1	138	82		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+1058	1128	1	141	84		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+1059	1152	1	144	86		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+1060	1176	1	147	88		1	15	6	30	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+2011	324	1	41	30		2	20	3	40	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	35104	1	20	35105	1	20	101001	3	50	101001	2	150
+2012	360	1	45	30		2	20	4	40	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	35102	1	20	35103	1	20	101001	3	50	101001	2	150
+2013	396	1	50	33		2	20	4	40	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	44102	1	10	44103	1	10	101001	3	50	101001	2	150
+2014	432	1	54	36		2	20	4	40	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	35103	1	20	35106	1	20	101001	3	50	101001	2	150
+2015	468	1	59	39		2	20	4	40	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	35101	1	20	35102	1	20	101001	3	50	101001	2	150
+2016	504	1	63	42		2	20	4	40	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	44105	1	10	44104	1	10	101001	3	50	101001	2	150
+2017	540	1	68	45		2	20	4	40	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	35105	1	20	35104	1	20	101001	3	50	101001	2	150
+2018	576	1	72	48		2	20	4	40	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	35106	1	20	35101	1	20	101001	3	50	101001	2	150
+2019	612	1	77	51		2	20	4	40	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	44101	1	15	44106	1	15	44107	1	15	101001	2	150
+2021	648	1	81	54		2	20	4	40	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	44105	1	20	101002	2	20	101002	3	50	101002	2	150
+2022	684	1	86	57		2	20	4	40	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	44106	1	20	101002	2	20	101002	3	50	101002	2	150
+2023	720	1	90	60		2	20	4	40	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	45106	1	7	45104	1	7	101002	3	50	101002	2	150
+2024	756	1	95	63		2	20	4	40	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	44103	1	20	101002	2	20	101002	3	50	101002	2	150
+2025	792	1	99	66		2	20	4	40	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	44104	1	20	101002	2	20	101002	3	50	101002	2	150
+2026	828	1	104	69		2	20	4	40	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	45105	1	7	45102	1	7	101002	3	50	101002	2	150
+2027	864	1	108	72		2	20	4	40	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	44102	1	20	101002	2	20	101002	3	50	101002	2	150
+2028	900	1	113	75		2	20	4	40	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	44101	1	20	101002	2	20	101002	3	50	101002	2	150
+2029	936	1	117	78		2	20	4	40	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	45101	1	7	45103	1	7	101002	3	50	101002	2	150
+2031	972	1	122	81		2	20	4	40	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	101003	3	20	101003	2	50	101003	3	50	101003	2	150
+2032	1008	1	126	84		2	20	4	40	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	45206	1	10	45106	1	10	101003	3	50	101003	2	150
+2033	1044	1	131	87		2	20	4	40	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	101003	3	20	101003	2	50	101003	3	50	101003	2	150
+2034	1080	1	135	90		2	20	4	40	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	45205	1	10	45105	1	10	101003	3	50	101003	2	150
+2035	1116	1	140	93		2	20	4	40	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	45204	1	10	45104	1	10	101003	3	50	101003	2	150
+2036	1152	1	144	96		2	20	4	40	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	45205	1	10	45105	1	10	101003	3	50	101003	2	150
+2037	1188	1	149	99		2	20	4	40	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	45202	1	10	45102	1	10	101003	3	50	101003	2	150
+2038	1224	1	153	102		2	20	4	40	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	45201	1	10	45101	1	10	101003	3	50	101003	2	150
+2039	1260	1	158	105		2	20	4	40	Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02	4	55106	1	5	55206	1	5	101003	3	50	101003	2	150
+#任务奖励																												
+10001	100			8						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10002	110			62						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10003	120			92						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10004	130			122						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10005	140			152						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10006	150			374						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10007	20000									Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10008	160			436						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10009	6290			498						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10010	200			282	10					Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10011	210			290						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10012	220			312						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10013	230			314						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10014	5000			334						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10015	240			356						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10016	250			746						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10017	260			808						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10018	270			870						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10019	9260			932						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10020	280			1506	20					Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10021	300			900						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10022	320			994						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10023	340			1088						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10024	360			1182						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10025	380			1276						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10026	400			1370						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10027	420			1464						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10028	12060			1558						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10029	440			1652	30					Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10030	1950			1568						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10031	2000			1663						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10032	2050			1758						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10033	2100			1853						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10034	2150			1948						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10035	2200			2043						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10036	2250			2138						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10037	2300			2233						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10038	2350			2328						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10039	2400			2423						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+10040	2500			2518						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+20001	5100									Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+20002	5200									Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+20003	5300									Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+21001	23400																											
+21002	112000																											
+#每日经验、钻石任务奖励																												
+40001				99999						Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+50001					50					Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+60001	10000									Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+70001					10					Monster_FX/Public/Gold	Monster_FX/Public/6_Public_Gold_02	Monster_FX/Public/Health	Monster_FX/Public/6_Public_Hp_02	Monster_FX/Public/Mana	Monster_FX/Public/6_Public_Mp_02													
+#各种第一次通关奖励第一章，1011测试用，会删																												
+10111			500													1	101001	10										
+10121			600													1	101001	10										
+10131			800													1	23103	1										
+10141			1100													1	23101	1										
+10151																1	23102	1										
+10161																1	23105	1										
+10171																1	34101	1										
+10181																1	101001	12										
+10191																1	35105	1										
+#第二章																												
+10211			10000													1	101001	20										
+10221			12000													1	101001	24										
+10231																1	34102	1										
+10241																1	101001	26										
+10251																1	101001	28										
+10261																1	54106	1										
+10271																1	101001	30										
+10281																1	34104	1										
+10291																1	34103	1										
+#第三章																												
+10311																1	101002	20										
+10321																1	101002	22										
+10331																1	101002	24										
+10341																1	101002	26										
+10351																1	101002	28										
+10361																1	101002	30										
+10371																1	45105	1										
+10381																1	101002	32										
+10391																1	101002	34										
+#精英关卡																												
+#第一章																												
+20111																1	35101	1										
+20121																1	35104	1										
+20131																1	101001	20										
+20141																1	35102	1										
+20151																1	101001	21										
+20161																1	101001	22										
+20171																1	35106	1										
+20181																1	101001	23										
+20191																1	35105	1										
+20112			15000													1	101001	24										
+20122			16500													1	101001	25										
+20132			18000													1	101001	26										
+20142			19500													1	101001	27										
+20152			21000													1	101001	28										
+20162			22500													1	101001	29										
+20172			24000													1	101001	30										
+20182			25500													1	101001	31										
+20192			27000													1	101001	32										
+20113					100											1	101001	33										
+20123					100											1	101001	34										
+20133					100											1	101001	35										
+20143					100											1	101001	36										
+20153					100											1	101001	37										
+20163					100											1	101001	38										
+20173					100											1	101001	39										
+20183					100											1	101001	40										
+20193					100											1	101001	41										
+#第二章																												
+20211																1	101002	20										
+20221																1	101002	22										
+20231																1	45102	1										
+20241																1	101002	24										
+20251																1	101002	26										
+20261																1	45103	1										
+20271																1	101002	28										
+20281																1	101002	30										
+20291																1	45104	1										
+20212			20000													1	101002	30										
+20222			22000													1	101002	32										
+20232			24000													1	101002	34										
+20242			26000													1	101002	36										
+20252			28000													1	101002	38										
+20262			30000													1	101002	40										
+20272			32000													1	101002	42										
+20282			34000													1	101002	44										
+20292																1	101002	46										
+20213					100											1	101002	48										
+20223					100											1	101002	50										
+20233					100											1	101002	52										
+20243					100											1	101002	54										
+20253					100											1	101002	56										
+20263					100											1	101002	58										
+20273					100											1	101002	60										
+20283					100											1	101002	62										
+20293					100											1	101002	64										
+#第三章																												
+20311																1	101003	20										
+20321																1	101003	22										
+20331																1	101003	24										
+20341																1	101003	26										
+20351																1	45202	1										
+20361																1	45203	1										
+20371																1	54101	1										
+20381																1	45204	1										
+20391																1	54102	1										
+20312			30000													1	101003	28										
+20322			33000													1	101003	30										
+20332			36000													1	101003	32										
+20342			39000													1	101003	34										
+20352			42000													1	101003	36										
+20362			45000													1	101003	38										
+20372			48000													1	101003	40										
+20382			51000													1	101003	42										
+20392			54000													1	101003	44										
+20313					100											1	101003	46										
+20323					100											1	101003	48										
+20333					100											1	101003	50										
+20343					100											1	101003	52										
+20353					100											1	101003	54										
+20363					100											1	101003	56										
+20373					100											1	101003	58										
+20383					100											1	101003	60										
+20393					100											1	101003	62										

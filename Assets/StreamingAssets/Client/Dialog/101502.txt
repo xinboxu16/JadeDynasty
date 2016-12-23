@@ -1,0 +1,2 @@
+﻿Number	IntervalTime	SpeakerName	ImageLeftAtlas	ImageLeft	ImageRightAtlas	ImageRight	Words
+0	3	托赖辟玛哨兵					什么人！

@@ -1,0 +1,10 @@
+﻿story(1)
+{
+  onmessage("expeditioncompleted")
+  {
+    lockframe(0.1);
+    wait(3000);
+    lockframe(1.0);
+    terminate();
+  };
+};

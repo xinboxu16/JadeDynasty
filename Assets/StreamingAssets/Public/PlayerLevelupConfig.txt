@@ -1,0 +1,5 @@
+﻿Id	Description	AddHpMax	AddEpMax	AddAd	AddADp	AddMDp	AddCri	AddPow	AddBackHitPow	AddCrackPow	AddHpRecover	AddEpRecover	AddSpd	AddFireDam	AddFireErd	AddIceDam	AddIceErd	AddPoisonDam	AddPoisonErd	AddWeight	AddRps	AddAttackRange
+1		2000		400	250	250																
+2		2000		400	250	250																
+3		2000		400	250	250																
+4		2000		400	250	250																

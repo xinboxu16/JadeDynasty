@@ -1,0 +1,38 @@
+﻿Id	ParentPath	MyPath	Rotate	Visible	Type	PreviousGuideId	LocalPosition	ChildNumber	ChildName	Scale
+101	EntrancePanel(Clone)/Table/05Mission	UI/BeginnerGuide/GuideHand	0|0|0	TRUE	1		15|-10|0			0.8|0.8|0.8
+102	GameTask(Clone)/Container/Scroll View/Grid	UI/BeginnerGuide/GuideHand	30|0|20	FALSE	4		100|-30|0	0		
+103	SceneSelect(Clone)/Scroll View/Grid/Chapter(Clone)	UI/BeginnerGuide/GuideHand	30|0|20	FALSE	4		100|-30|0	0		
+104	SceneIntroduce(Clone)/Button/challenge	UI/BeginnerGuide/GuideHand	30|0|20	FALSE	1		100|-30|0			
+105	EntrancePanel(Clone)/EntranceButton				2	101				
+106	GameTask(Clone)/Container/X				2	101				
+107	SceneSelect(Clone)/Title/return_button				2	101				
+108	SceneIntroduce(Clone)/Close				2	103				
+201	EntrancePanel(Clone)/Table/02SkillPanel	UI/BeginnerGuide/GuideHand	0|0|0	TRUE	1		15|-10|0			0.8|0.8|0.8
+202	SkillPanel(Clone)/SkillStorage/ScrollView/Grid	UI/BeginnerGuide/GuideHand	0.1|0.2|0.3	FALSE	4		50|-40|0	0		
+203	SkillPanel(Clone)/ActionLevelup	UI/BeginnerGuide/GuideHand	0.1|0.2|0.3	FALSE	1		50|-40|0			
+204	SkillPanel(Clone)/ActionLiftSkill	UI/BeginnerGuide/GuideHand	0.1|0.2|0.3	FALSE	1		50|-40|0			
+207	SkillPanel(Clone)/ActionEquip	UI/BeginnerGuide/GuideHand	0.1|0.2|0.3	FALSE	1		50|-40|0			
+208	SkillPanel(Clone)/SkillSetting/SlotC	UI/BeginnerGuide/GuideHand	0.1|0.2|0.3	FALSE	1		50|-40|0			
+209	EntrancePanel(Clone)/EntranceButton				2	201				
+210	SkillPanel(Clone)/Title/HideButton				2	201				
+301	EntrancePanel(Clone)/Table/05Mission	UI/BeginnerGuide/GuideHand	0|0|0	TRUE	1		15|-10|0			0.8|0.8|0.8
+302	GameTask(Clone)/Container/Scroll View/Grid	UI/BeginnerGuide/GuideHand	30|0|20	FALSE	4		100|-30|0	0		
+303	SceneSelect(Clone)/Scroll View/Grid/Chapter(Clone)	UI/BeginnerGuide/GuideHand	30|0|20	FALSE	4		100|-30|0	1		
+304	SceneIntroduce(Clone)/Button/challenge	UI/BeginnerGuide/GuideHand	30|0|20	FALSE	1		100|-30|0			
+305	EntrancePanel(Clone)/EntranceButton				2	301				
+306	GameTask(Clone)/Container/X				2	301				
+307	SceneSelect(Clone)/Title/return_button				2	302				
+308	SceneIntroduce(Clone)/Close				2	303				
+401	EntrancePanel(Clone)/Table/01Equipment	UI/BeginnerGuide/GuideHand	30|0|20	TRUE	1		15|-10|0			0.8|0.8|0.8
+402	GamePokey(Clone)/Container/Left Scroll View/Grid	UI/BeginnerGuide/GuideHand	30|0|20	FALSE	4		100|-30|0	0		
+403	ItemProperty(Clone)/SpriteInlay	UI/BeginnerGuide/GuideHand	30|0|20	FALSE	1		100|-30|0			
+404	EntrancePanel(Clone)/EntranceButton	UI/BeginnerGuide/GuideHand	30|0|20	FALSE	2	401				
+405	GamePokey(Clone)/ReturnButton	UI/BeginnerGuide/GuideHand	30|0|20	FALSE	2	402				
+501	EntrancePanel(Clone)/Table/05Mission	UI/BeginnerGuide/GuideHand	0|0|0	TRUE	1		15|-10|0			0.8|0.8|0.8
+502	GameTask(Clone)/Container/Scroll View/Grid	UI/BeginnerGuide/GuideHand	30|0|20	FALSE	4		100|-30|0	0		
+503	SceneSelect(Clone)/Scroll View/Grid/Chapter(Clone)	UI/BeginnerGuide/GuideHand	30|0|20	FALSE	4		100|-30|0	2		
+504	SceneIntroduce(Clone)/Button/challenge	UI/BeginnerGuide/GuideHand	30|0|20	FALSE	1		100|-30|0			
+505	EntrancePanel(Clone)/EntranceButton				2	501				
+506	GameTask(Clone)/Container/X				2	501				
+507	SceneSelect(Clone)/Title/return_button				2	502				
+508	SceneIntroduce(Clone)/Close				2	503				

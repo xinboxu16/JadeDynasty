@@ -1,0 +1,2 @@
+﻿ServerId	ServerName	NodeIp	NodePort	LogicServerId	LogicServerName
+0	先锋体验服务器	219.232.224.43	9001	1	DF

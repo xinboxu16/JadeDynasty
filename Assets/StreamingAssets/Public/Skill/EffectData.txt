@@ -1,0 +1,104 @@
+﻿Id	Description	Prefab	Delay	PlayTime	MountPoint	RelativePos	RotateWithTarget	RelativeRotation	DelWithImpact
+#		特效路径	播放延迟	播放时间	特效挂点，为空的话在受击者所在位置播放	相对位置	是否随角色偏转	相对偏转	是否随Impact结束而删除
+10001	测试特效	Hero_FX/1_JianShi/1_hero_jianshi_jianchong_02	1	2000		0 0.5 0.2	FALSE	0 0 0	
+10002	测试特效	Hero_FX/1_JianShi/1_hero_jianshi_jianchong_02	1	1000		0 0.5 0.2	FALSE	0 0 0	
+10003	测试减速用特效	Monster_FX/Campaign_wild/Public/6_Monster_EliteSign_Pur	0	4000	Bone_Root	0 1.2 0	TRUE	0 0 0	
+10004	怪物通用受击特效小	Monster_FX/Campaign_wild/Public/6_Mon_Baodian_02	1	2000		0 1.4 0.2	FALSE	0 0 0	
+10005	怪物通用受击特效大	Monster_FX/Campaign_wild/Public/6_Mon_Baodian_01	1	2000		0 1.4 0.2	FALSE	0 0 0	
+10006	怪物通用受击特效土类	Monster_FX/Campaign_wild/05_Mouse/5_Mon_BurrowMouse_FanGun_ShouJi_01	1	2000		0 1.4 0.2	FALSE	0 0 0	
+10007	格挡头顶特效	Monster_FX/Campaign_Desert/01_TLPMArmy/6_Mon_GeDang_01	0	4000	ef_sign	0 0 0	FALSE	0 0 0	TRUE
+10008	巫师瘟疫弹受击特效	Monster_FX/Campaign_Dungeon/04_Necro/5_Mon_Necro_Toxic_03	0	2000		0 1.4 0.2	FALSE	0 0 0	
+150001	斩狂受击特效-普通	Hero_FX/1_JianShi/1_Hero_jianshi_Shouji_01	0	1000		0 1 0.2	FALSE	0 0 0	
+150301	斩狂疯狂连斩BUF特效	Hero_FX/5_zhankuang/5_hero_zhankuang_fengkuanglianzhan_02_01	0	6000	Bone010	0 1 0	FALSE	0 0 0	
+150302	斩狂疯狂连斩BUF特效(刀）	Hero_FX/5_zhankuang/5_hero_zhankuang_fengkuanglianzhan_02_02	0	6000	ef_rightweapon01	0 0 0.6	FALSE	0 0 0	
+#    刺客特效									
+12000101	普攻受击特效	Hero_FX/3_Cike/3_Hero_CiKe_ZhanJiShouJi_02_01	0	3000		0 1 0.2	FALSE	0 0 0	
+12000102	普攻受击特效	Hero_FX/3_Cike/3_Hero_CiKe_ZhanJiShouJi_02_02	0	3000		0 1 0.2	FALSE	0 0 0	
+12000103	普攻受击特效	Hero_FX/3_Cike/3_Hero_CiKe_ZhanJiShouJi_02_03	0	3000		0 1 0.2	FALSE	0 0 0	
+12000104	普攻受击特效	Hero_FX/3_Cike/3_Hero_CiKe_ZhanJiShouJi_02_04	0	3000		0 1 0.2	FALSE	0 0 0	
+12000105	普攻受击特效	Hero_FX/3_Cike/3_Hero_CiKe_ZhanJiShouJi_02_05	0	3000		0 1 0.2	FALSE	0 0 0	
+12000106	普攻受击特效	Hero_FX/3_Cike/3_Hero_CiKe_ZhanJiShouJi_02_06	0	3000		0 1 0.2	FALSE	0 0 0	
+12000201	受击特效	Hero_FX/3_Cike/3_Hero_CiKe_ZhanJiShouJi_03_01	0	3000		0 1 0.2	FALSE	0 0 0	
+12000202	受击特效	Hero_FX/3_Cike/3_Hero_CiKe_ZhanJiShouJi_03_02	0	3000		0 1 0.2	FALSE	0 0 0	
+12000203	受击特效	Hero_FX/3_Cike/3_Hero_CiKe_ZhanJiShouJi_03_03	0	3000		0 1 0.2	FALSE	0 0 0	
+12000204	受击特效	Hero_FX/3_Cike/3_Hero_CiKe_ZhanJiShouJi_03_04	0	3000		0 1 0.2	FALSE	0 0 0	
+12000205	受击特效	Hero_FX/3_Cike/3_Hero_CiKe_ZhanJiShouJi_03_05	0	3000		0 1 0.2	FALSE	0 0 0	
+12000206	受击特效	Hero_FX/3_Cike/3_Hero_CiKe_ZhanJiShouJi_03_06	0	3000		0 1 0.2	FALSE	0 0 0	
+12000301	血液受击右	Hero_FX/3_Cike/3_Hero_CiKe_XueYeShouJi_01	0	3000		0 1 0.2	FALSE	0 0 0	
+12000302	血液受击左	Hero_FX/3_Cike/3_Hero_CiKe_XueYeShouJi_02	0	3000		0 1 0.2	FALSE	0 0 0	
+12000402	黑烟受击	Hero_FX/3_Cike/3_Hero_CiKe_HeiYanShouJi_01	0	3000		0 1 0.2	FALSE	0 0 0	
+12000501	XXX受击	Hero_FX/3_Cike/3_Hero_CiKe_XXXShouJi_01	0	3000		0 1 0.2	FALSE	0 0 0	
+12000601	EX技能受击特效	Hero_FX/3_Cike/3_Hero_CiKe_EX_ShouJi_01_01	0	3000		0 1 0.2	FALSE	0 0 0	
+12000602	EX技能受击特效	Hero_FX/3_Cike/3_Hero_CiKe_EX_ShouJi_01_02	0	3000		0 1 0.2	FALSE	0 0 0	
+12000603	EX技能受击特效	Hero_FX/3_Cike/3_Hero_CiKe_EX_ShouJi_01_03	0	3000		0 1 0.2	FALSE	0 0 0	
+12000604	EX技能受击特效	Hero_FX/3_Cike/3_Hero_CiKe_EX_ShouJi_01_04	0	3000		0 1 0.2	FALSE	0 0 0	
+12000605	EX技能受击特效	Hero_FX/3_Cike/3_Hero_CiKe_EX_ShouJi_01_05	0	3000		0 1 0.2	FALSE	0 0 0	
+12000606	EX技能受击特效	Hero_FX/3_Cike/3_Hero_CiKe_EX_ShouJi_01_06	0	3000		0 1 0.2	FALSE	0 0 0	
+12000701	EX技能血液受击	Hero_FX/3_Cike/3_Hero_CiKe_EX_XueYeShouJi_01	0	3000		0 1 0.2	FALSE	0 0 0	
+12000801	EXXXX受击	Hero_FX/3_Cike/3_Hero_CiKe_EX_XXXShouJi_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15000101	斩狂普攻受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 0 0	TRUE	0 215 25	
+15000102	斩狂普攻受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 0 0	TRUE	0 215 25	
+15000201	斩狂普攻受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 0 0	TRUE	0 -35 25	
+15000202	斩狂普攻受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 0 0	TRUE	0 -35 25	
+15000301	斩狂普攻受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 0 0	TRUE	0 215 -25	
+15000302	斩狂普攻受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 0 0	TRUE	0 215 -25	
+15000311	斩狂普攻受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 0 0	TRUE	0 -35 -25	
+15000312	斩狂普攻受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 0 0	TRUE	0 -35 -25	
+15000401	斩狂普攻受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 0 0	TRUE	0 -35 0	
+15000402	斩狂普攻受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 0 0	TRUE	0 -35 0	
+15010101	斩狂旋风斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 215 25	
+15010102	斩狂旋风斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 215 25	
+15010111	斩狂旋风斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 -35 25	
+15010112	斩狂旋风斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 -35 25	
+15010121	斩狂旋风斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 215 -25	
+15010122	斩狂旋风斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 215 -25	
+15010201	斩狂旋风斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 -35 -25	
+15010202	斩狂旋风斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 -35 -25	
+15010211	斩狂旋风斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 -35 0	
+15010212	斩狂旋风斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 -35 0	
+15010221	斩狂旋风斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15010222	斩狂旋风斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15010231	斩狂旋风斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15010232	斩狂旋风斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15010301	斩狂旋风斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15010302	斩狂旋风斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15010311	斩狂旋风斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15010312	斩狂旋风斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15020101	斩狂风轮斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15020111	斩狂风轮斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15020201	斩狂风轮斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15020211	斩狂风轮斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15020301	斩狂风轮斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15020311	斩狂风轮斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15030101	斩狂疯狂连斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15030201	斩狂疯狂连斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15030202	斩狂疯狂连斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15030301	斩狂疯狂连斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15030302	斩狂疯狂连斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15030401	斩狂疯狂连斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15030402	斩狂疯狂连斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15030501	斩狂疯狂连斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15030502	斩狂疯狂连斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15030601	斩狂疯狂连斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15030602	斩狂疯狂连斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15030701	斩狂疯狂连斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15030702	斩狂疯狂连斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15040101	斩狂巨力挑空受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	3000		0 1 0.2	FALSE	0 0 0	
+15040201	斩狂巨力挑空受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_fengkuanglianzhan_02_01	0	3000		0 1 0.2	FALSE	0 0 0	
+16000001	斩狂霸体	Hero_FX/5_zhankuang/5_hero_zhankuang_fengkuanglianzhan_02_01	0	500	Bone010	0 1 0	FALSE	0 0 0	
+16000002	斩狂霸体	Hero_FX/5_zhankuang/5_hero_zhankuang_fengkuanglianzhan_02_01	0	2000	Bone010	0 1 0	FALSE	0 0 0	
+16000003	斩狂霸体	Hero_FX/5_zhankuang/5_hero_zhankuang_fengkuanglianzhan_02_01	0	3000	Bone010	0 1 0	FALSE	0 0 0	
+16000004	斩狂霸体	Hero_FX/5_zhankuang/5_hero_zhankuang_fengkuanglianzhan_02_01	0	5500	Bone010	0 1 0	FALSE	0 0 0	
+16000005	斩狂疯狂连斩BUF特效(刀）	Hero_FX/5_zhankuang/5_hero_zhankuang_fengkuanglianzhan_02_02	0	5500	ef_rightweapon01	0 0 0.6	FALSE	0 0 0	
+16000006	斩狂技能受击1	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_02	0	1000		0 1 0.2	FALSE	0 0 0	
+16000007	斩狂技能受击2	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_03	0	1000		0 1 0.2	FALSE	0 0 0	
+16010101	斩狂旋风斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	1500		0 1 0.2	FALSE	0 215 25	
+16010102	斩狂旋风斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	1500		0 1 0.2	FALSE	0 215 25	
+16010111	斩狂旋风斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	1500		0 1 0.2	FALSE	0 -35 25	
+16010112	斩狂旋风斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	1500		0 1 0.2	FALSE	0 -35 25	
+16010121	斩狂旋风斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	1500		0 1 0.2	FALSE	0 215 -25	
+16010122	斩狂旋风斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	1500		0 1 0.2	FALSE	0 215 -25	
+16010201	斩狂旋风斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	1500		0 1 0.2	FALSE	0 -35 -25	
+16010202	斩狂旋风斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	1500		0 1 0.2	FALSE	0 -35 -25	
+16010211	斩狂旋风斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	1500		0 1 0.2	FALSE	0 -35 0	
+16010212	斩狂旋风斩受击特效	Hero_FX/5_zhankuang/5_hero_zhankuang_shouji_01	0	1500		0 1 0.2	FALSE	0 -35 0	

@@ -1,0 +1,4 @@
+﻿Number	SpeakerName	ImageLeft	ImageRight	Words
+0	诺兰德	hero3		好的，咱们来学习最后一个内容吧！
+1	诺兰德		introduction4_1	
+2	诺兰德		introduction4_2	

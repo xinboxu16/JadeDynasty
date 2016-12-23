@@ -1,0 +1,5 @@
+﻿Number	IntervalTime	SpeakerName	ImageLeftAtlas	ImageLeft	ImageRightAtlas	ImageRight	Words
+0	2	白隼队员					报告！
+1	3	白隼队员					法盎冲锋队长[fcfb00]柯菲斯克[-]来访。[\n]已在平台上等候您多时了。
+2	3	player	UI_AtlasDynamic/Dialog/player	player_moren			好的，知道了。[\n]回岗吧。
+3	1	白隼队员					是！

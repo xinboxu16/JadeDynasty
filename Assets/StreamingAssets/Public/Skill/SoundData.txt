@@ -1,0 +1,24 @@
+﻿Id	Description	Sound0	Sound1	Sound2	Sound3	Sound4	Sound5	ParamNum	ParamDesc0	Param0	ParamDesc1	Param1	ParamDesc2	Param2	ParamDesc3	Param3	ParamDesc4	Param4	ParamDesc5	Param5																
+																																				
+																																				
+																																				
+																																				
+																																				
+																																				
+																																				
+																																				
+																																				
+																																				
+																																				
+																																				
+																																				
+																																				
+																																				
+																																				
+																																				
+																																				
+																																				
+																																				
+																																				
+																																				
+																																		1	硬直时动画播放速度	0

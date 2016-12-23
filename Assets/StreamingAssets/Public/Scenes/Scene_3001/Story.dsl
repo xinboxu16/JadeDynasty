@@ -1,0 +1,35 @@
+﻿story(1)
+{
+  onmessage("start")
+  {
+    wait(2000);
+    restarttimeout(1);
+    startcountdown(180);
+    updatecoefficient();
+  };
+  onmessage("userenterscene")
+  {
+    startcountdown(180);
+    updatecoefficient($0);
+  };
+  onmessage("userkilled")
+  {
+    lockframe(0.1);
+    wait(3000);
+    lockframe(1.0);
+    objanimation(winuserid(),72);
+    objanimation(lostuserid(),73);
+    wait(3000);
+    missioncompleted(1010);
+  };
+  onmessage("timeout",1)
+  {
+    lockframe(0.1);
+    wait(3000);
+    lockframe(1.0);
+    objanimation(winuserid(),72);
+    objanimation(lostuserid(),73);
+    wait(2000);
+    missioncompleted(1010);
+  };
+};

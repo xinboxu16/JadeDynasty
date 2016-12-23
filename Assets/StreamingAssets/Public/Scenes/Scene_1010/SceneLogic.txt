@@ -1,0 +1,2 @@
+﻿Id	Description	LogicId	IsClient	IsServer	ParamNum	ParamName0	Param0	ParamName1	Param1	ParamName2	Param2	ParamName3	Param3	ParamName4	Param4	ParamName5	Param5	ParamName6	Param6	ParamName7	Param7	ParamName8	Param8	ParamName9	Param9	ParamName10	Param10	ParamName11	Param11	ParamName12	Param12	ParamName13	Param13	ParamName14	Param14	ParamName15	Param15
+1	复活点	10002	FALSE	TRUE	2	区域中心	50 0 50	触发半径	10																												

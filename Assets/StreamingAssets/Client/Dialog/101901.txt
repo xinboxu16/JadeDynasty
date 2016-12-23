@@ -1,0 +1,4 @@
+﻿Number	IntervalTime	SpeakerName	ImageLeftAtlas	ImageLeft	ImageRightAtlas	ImageRight	Words
+0	3	player	UI_AtlasDynamic/Dialog/player	player_moren			想不到这么快就扫清了防区内的托赖辟玛残党。
+1	3	忽伦			UI_AtlasDynamic/Dialog/npc1	hulun_weixiao	在先锋军的全面反攻下，[\n]想必托赖辟玛人已是溃不成军了吧。
+2	3	player	UI_AtlasDynamic/Dialog/player	player_moren			是啊。[\n]看来战争就快结束了……

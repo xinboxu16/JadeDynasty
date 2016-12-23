@@ -1,0 +1,6 @@
+﻿Number	IntervalTime	SpeakerName	ImageLeftAtlas	ImageLeft	ImageRightAtlas	ImageRight	Words
+0	3	忽伦			UI_AtlasDynamic/Dialog/npc1	hulun_chenmo	法盎冲锋队长，[fcfb00]柯菲斯克[-]……
+1	3	player	UI_AtlasDynamic/Dialog/player	player_moren			看前面那些手持高级枪械武器的卫兵，[\n]就不难猜出是谁来啦。
+2	3	忽伦			UI_AtlasDynamic/Dialog/npc1	hulun_moren	他这个时候来找你，[\n]恐怕和托赖辟玛军有关吧。
+3	2	player	UI_AtlasDynamic/Dialog/player	player_moren			也许吧。[\n]你要一起来么？
+4	3	忽伦			UI_AtlasDynamic/Dialog/npc1	hulun_weixiao	算了吧，未必是好事，[\n]我还是在下面等你吧。

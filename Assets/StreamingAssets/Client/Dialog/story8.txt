@@ -1,0 +1,2 @@
+﻿Number	SpeakerName	ImageLeft	ImageRight	Words
+0	诺兰德	hero3		很好，你已经完成了教学任务，准备好迎接真正的挑战了吗？开始吧！

@@ -1,0 +1,3 @@
+﻿Number	IntervalTime	SpeakerName	ImageLeftAtlas	ImageLeft	ImageRightAtlas	ImageRight	Words
+0	2	player	UI_AtlasDynamic/Dialog/player	player_moren			前面就是博德遗迹了。[\n]注意小心行事，避开托赖辟玛的哨……
+1	2	忽伦			UI_AtlasDynamic/Dialog/npc1	hulun_heling	嘘……小心！

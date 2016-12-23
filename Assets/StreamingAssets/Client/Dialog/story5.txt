@@ -1,0 +1,4 @@
+﻿Number	SpeakerName	ImageLeft	ImageRight	Words
+0	诺兰德	hero3		下面让我们来教你一些高端技巧
+1	诺兰德		introduction2_1	
+2	诺兰德		introduction2_2	

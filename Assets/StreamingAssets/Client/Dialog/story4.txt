@@ -1,0 +1,2 @@
+﻿Number	SpeakerName	ImageLeft	ImageRight	Words
+0	引导者	hero3		非常好，我们完成了副本的战斗，现在让我们回到主城吧。

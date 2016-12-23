@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="767" height="512" tilewidth="32" tileheight="32">
+ <imagelayer name="Scene0" width="767" height="512">
+  <image source="Scene.jpg"/>
+ </imagelayer>
+ <objectgroup name="walkarea" width="767" height="512">
+  <object x="1283" y="403">
+   <polygon points="0,0 51,44 -15,143 -20,143 -22,212 -49,245 -172,326 -208,361 -339,322 -426,413 -420,417 -386,556 -411,655 -545,763 -639,705 -677,763 -612,846 -764,997 -873,1011 -989,906 -982,770 -781,687 -761,697 -710,614 -765,578 -795,498 -646,423 -521,351 -483,384 -383,277 -412,251 -376,113 -309,16 -180,-12 -115,83 -77,81"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="obstacle" width="767" height="512"/>
+ <objectgroup name="shotproof" width="767" height="512"/>
+ <objectgroup name="roadblock" width="767" height="512"/>
+</map>

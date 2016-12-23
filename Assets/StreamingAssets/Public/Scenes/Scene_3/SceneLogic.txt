@@ -1,0 +1,19 @@
+﻿Id	Description	LogicId	IsClient	IsServer	ParamNum	ParamName0	Param0	ParamName1	Param1	ParamName2	Param2	ParamName3	Param3	ParamName4	Param4	ParamName5	Param5	ParamName6	Param6	ParamName7	Param7	ParamName8	Param8	ParamName9	Param9	ParamName10	Param10	ParamName11	Param11	ParamName12	Param12	ParamName13	Param13	ParamName14	Param14	ParamName15	Param15
+1	复活点	10002	FALSE	TRUE	2	区域中心	50 0 50	触发半径	10																												
+2	复活点	10002	FALSE	TRUE	2	区域中心	51 0 40	触发半径	10																												
+3	复活点	10002	FALSE	TRUE	2	区域中心	52 0 30	触发半径	10																												
+4	复活点	10002	FALSE	TRUE	2	区域中心	53 0 20	触发半径	10																												
+5	复活点	10002	FALSE	TRUE	2	区域中心	54 0 10	触发半径	10																												
+6	复活点	10002	FALSE	TRUE	2	区域中心	55 0 50	触发半径	10																												
+7	复活点	10002	FALSE	TRUE	2	区域中心	56 0 40	触发半径	10																												
+8	复活点	10002	FALSE	TRUE	2	区域中心	57 0 30	触发半径	10																												
+9	复活点	10002	FALSE	TRUE	2	区域中心	58 0 20	触发半径	10																												
+10	复活点	10002	FALSE	TRUE	2	区域中心	59 0 10	触发半径	10																												
+11	复活点	10002	FALSE	TRUE	2	区域中心	60 0 50	触发半径	10																												
+12	复活点	10002	FALSE	TRUE	2	区域中心	61 0 40	触发半径	10																												
+13	复活点	10002	FALSE	TRUE	2	区域中心	62 0 30	触发半径	10																												
+14	复活点	10002	FALSE	TRUE	2	区域中心	63 0 20	触发半径	10																												
+15	复活点	10002	FALSE	TRUE	2	区域中心	64 0 10	触发半径	10																												
+16	第一区	10001	FALSE	TRUE	2	区域	64.25 34.31 58.31 28.13 59.25 23.19 63.31 22.00 62.31 17.13 65.19 13.69 73.25 16.69 74.38 12.13 78.25 4.81 84.88 4.44 90.94 9.19 85.38 19.00 81.38 21.56 80.56 26.00 78.50 30.69 74.63 35.25 68.81 38.25	触发方式（0--any 1--all）	0																												
+17	第二区	10001	FALSE	TRUE	2	区域	54.06 29.88 60.88 37.50 58.56 43.38 53.63 48.81 50.31 51.44 43.06 47.31 39.50 42.13 39.88 36.00 44.06 28.63 49.69 27.50	触发方式（0--any 1--all）	0																												
+18	第三区	10001	FALSE	TRUE	2	区域	30.81 49.00 38.25 51.06 46.00 54.50 48.94 59.44 47.19 63.69 44.81 69.56 42.88 74.88 39.19 74.00 33.25 74.38 29.13 76.81 27.06 74.00 25.13 68.63 25.00 63.63 28.00 58.50 28.81 51.63	触发方式（0--any 1--all）	0																												

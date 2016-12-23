@@ -1,0 +1,6 @@
+﻿Number	IntervalTime	SpeakerName	ImageLeftAtlas	ImageLeft	ImageRightAtlas	ImageRight	Words
+0	3	忽伦			UI_AtlasDynamic/Dialog/npc1	hulun_moren	看来已经惊动了城内的驻军。[\n]只能杀出去了。
+1	3	player	UI_AtlasDynamic/Dialog/player	player_moren			正好活动一下筋骨。
+2	3	忽伦			UI_AtlasDynamic/Dialog/npc1	hulun_weixiao	你果然没变，[\n]还是那么临危不惧。
+3	3	player	UI_AtlasDynamic/Dialog/player	player_moren			哈哈，[\n]大不了再和你一起被抓回监牢嘛。
+4	3	忽伦			UI_AtlasDynamic/Dialog/npc1	hulun_chenmo	……

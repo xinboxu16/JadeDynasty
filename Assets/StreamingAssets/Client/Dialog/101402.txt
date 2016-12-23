@@ -1,0 +1,4 @@
+﻿Number	IntervalTime	SpeakerName	ImageLeftAtlas	ImageLeft	ImageRightAtlas	ImageRight	Words
+0	3	先锋军哨兵					报告！[\n]有一群不明生物正在攻击波托马克桥。
+1	3	涅德泛	UI_AtlasDynamic/Dialog/npc1	niedefan_moren			加强警戒，[\n]不要轻易出击。
+2	2	先锋军哨兵					是！

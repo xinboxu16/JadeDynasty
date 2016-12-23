@@ -1,0 +1,6 @@
+﻿Id	Description	AddHpMax	AddEpMax	AddAd	AddADp	AddMDp	AddCri	AddPow	AddBackHitPow	AddCrackPow	AddHpRecover	AddEpRecover	AddSpd	AddWalkSpd	AddFireDam	AddFireErd	AddIceDam	AddIceErd	AddPoisonDam	AddPoisonErd	AddWeight	AddRps	AddAttackRange
+#刺客buff																							
+12030101	风刃杀加速												100000										
+#怪物buff																							
+38010401	狂战士怒吼减速												-1000005000										
+38030501	忽仑怒吼减速												-1000008000										

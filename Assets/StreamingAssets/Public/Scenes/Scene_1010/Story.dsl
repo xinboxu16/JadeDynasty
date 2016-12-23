@@ -1,0 +1,30 @@
+﻿story(1)
+{  
+	onmessage("start")
+	{
+	  sendgfxmessage("Main Camera","StopSound",1);
+	  wait(10);
+	  sendgfxmessage("Main Camera","PlaySound",0);
+	  wait(10);
+	  lockframe(1.0);
+	  wait(10);
+	  camerayaw(0,10);
+	  camerafollow();
+	  showwall("BtoC",false);
+	  showwall("AtoB",false);
+	  showwall("BDoor",true);
+	  wait(100);
+	  loop(4)
+	  {
+	    createnpc(1001+$$);
+	  };
+	   wait(1000);
+	  setblockedshader(0x0000ff90,0.5,0,0xff000090,0.5,0);
+	};
+};
+story(2)
+{  
+};
+story(3)
+{  
+};

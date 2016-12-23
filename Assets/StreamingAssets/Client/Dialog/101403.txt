@@ -1,0 +1,7 @@
+﻿Number	IntervalTime	SpeakerName	ImageLeftAtlas	ImageLeft	ImageRightAtlas	ImageRight	Words
+0	2	涅德泛	UI_AtlasDynamic/Dialog/npc1	niedefan_moren			……不明生物？
+1	3	忽伦			UI_AtlasDynamic/Dialog/npc1	hulun_moren	可能是栖息在附近的布鲁夫族群。[\n]它们时常会捉弄过往的人类。
+2	3	player	UI_AtlasDynamic/Dialog/player	player_moren			一群野兽而已，[\n]不足为惧。
+3	3	涅德泛			UI_AtlasDynamic/Dialog/npc1	niedefan_moren	……未必。[\n]你们此去博德遗迹还是谨慎为好。
+4	2	player	UI_AtlasDynamic/Dialog/player	player_chenmo			好吧，[\n]（果然官越大胆子越小。）
+5	3	player	UI_AtlasDynamic/Dialog/player	player_moren			等会路过的时候收拾了他们便是。

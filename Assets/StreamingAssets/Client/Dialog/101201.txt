@@ -1,0 +1,2 @@
+﻿Number	IntervalTime	SpeakerName	ImageLeftAtlas	ImageLeft	ImageRightAtlas	ImageRight	Words
+0	5	player	UI_AtlasDynamic/Dialog/player	player_moren			跟我来，[fcfb00]忽伦[-]。[\n]复仇的时刻到了。

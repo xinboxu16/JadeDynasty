@@ -1,0 +1,11 @@
+﻿Number	IntervalTime	SpeakerName	ImageLeftAtlas	ImageLeft	ImageRightAtlas	ImageRight	Words
+0	3	忽伦			UI_AtlasDynamic/Dialog/npc1	hulun_moren	原来劫狱只是佯攻，[\n]真正的目的是打开城门，[\n]里应外合拿下布列斯特城。
+1	1	player	UI_AtlasDynamic/Dialog/player	player_moren			是啊。
+2	3	player	UI_AtlasDynamic/Dialog/player	player_moren			布列斯特城建在波托马克瀑布上，[\n]地势险峻，易守难攻。
+3	3	player	UI_AtlasDynamic/Dialog/player	player_chenmo			若不是[fcfb00]涅德泛[-]长官神机妙算，[\n]只怕攻城战又要死不少弟兄了……
+4	2	涅德泛			UI_AtlasDynamic/Dialog/npc2	niedefan_weixiao	雕虫小技而已。
+5	3	涅德泛			UI_AtlasDynamic/Dialog/npc2	niedefan_weixiao	我先锋军奉命收复失地，[\n]如今夺回布列斯特，其他防区已成囊中之物。
+6	3	涅德泛			UI_AtlasDynamic/Dialog/npc1	niedefan_moren	[fcfb00]player[-]，[\n]你率领白隼冲锋队前去收复博德遗迹。[\n]并在那里建立防区，以保我军侧翼。
+7	2	player	UI_AtlasDynamic/Dialog/player	player_moren			小菜一碟，放心好了！
+8	3	忽伦			UI_AtlasDynamic/Dialog/npc1	hulun_moren	我对这片地区比较熟悉，[\n]不如让我同去。
+9	1	涅德泛			UI_AtlasDynamic/Dialog/npc1	niedefan_moren	可以。

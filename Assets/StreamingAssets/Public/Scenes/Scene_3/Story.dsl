@@ -1,0 +1,109 @@
+﻿story(1)
+{ 
+	onmessage("start")
+	{
+	  showui(false);
+	  wait(100);
+	  showdlg(1);
+	};
+	onmessage("dialogover",1)
+	{
+	  log("dialogover:1");
+	  showui(true); 
+	  loop(8)
+	  {
+	    createnpc(1001+$$);
+	  };	  
+	};
+	onmessage("allnpckilled")
+	{
+	  log("story 1 allnpckilled");
+		wait(1000);
+		showwall("AtoB",false);
+	};
+	onmessage("anyuserenterarea",17)
+	{
+		showwall("BDoor",true);
+		startstory(2);
+		terminate();	  
+	};
+  onmessage("timeout",19)
+  {
+    showdlg(3);
+  };
+  onmessage("missionfailed")
+  {
+    missionfailed(1000);
+    terminate();
+  };
+};
+story(2)
+{
+	onmessage("start")
+	{
+	  loop(8)
+	  {
+	    createnpc(2001+$$);
+	  };
+	};
+	onmessage("allnpckilled")
+	{
+	  log("story 2 allnpckilled");
+		wait(1000);
+		showwall("BtoC",false);
+	};
+	onmessage("anyuserenterarea",18)
+	{
+		showwall("CDoor",true);
+		startstory(3);
+		terminate();
+	};
+  onmessage("timeout",19)
+  {
+    showdlg(3);
+  };
+  onmessage("missionfailed")
+  {
+    missionfailed(1000);
+    terminate();
+  };
+};
+story(3)
+{
+	onmessage("start")
+	{	
+	  loop(11)
+	  {
+  	  createnpc(3001+$$);
+  	};
+	};
+	onmessage("allnpckilled")
+	{
+	  log("story 3 allnpckilled");
+	  showui(false);
+	  showdlg(2);
+	};
+	onmessage("dialogover:2")
+	{
+		wait(1000);
+		cameralookat(31.13975,151.8844,71.87161);
+		wait(1000);
+		cameralookat(45.65651,151.8844,48.80234);
+		wait(500);
+		cameralookat(60.6234,151.8844,31.58479);
+		wait(500);
+		cameralookat(81.442,151.8844,12.45404);
+		wait(6000);
+		missioncompleted(1000);
+    terminate();
+  };
+  onmessage("timeout",19)
+  {
+    showdlg(3);
+  };
+  onmessage("missionfailed")
+  {
+    missionfailed(1000);
+    terminate();
+  };
+};

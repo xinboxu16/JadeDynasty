@@ -1,0 +1,1 @@
+﻿Id	Description	ObjNum	Obj0	Obj1	Obj2	Obj3	Obj4	Obj5	Obj6	Obj7	Obj8	Obj9	Ground	BeginArea	EndArea	TriggerDir	PushObjDeltaTime	PushGroundDeltaTime	OffsetAngle	ObjOffsetDis	GroundOffsetDis	ObjLifeTime	GroundLifeTime	Speed	MaxSpeed	Acceleration	ParamNum	ParamDesc0	Param0	ParamDesc1	Param1	ParamDesc2	Param2	ParamDesc3	Param3	ParamDesc4	Param4	ParamDesc5	Param5

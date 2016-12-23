@@ -1,0 +1,3 @@
+﻿MainNum	SubNum	StepNum	DateNum	GreekSymbols
+#主版本号	#子版本号	#阶段版本号	#日期版本号	#希腊字母版本号：base、alpha、beta、RC、release
+1	0	0	0	beta

@@ -1,0 +1,2 @@
+﻿Number	SpeakerName	ImageLeft	ImageRight	Words
+0	引导者	hero3		很好！现在，请使用普通攻击消灭眼前的敌人。

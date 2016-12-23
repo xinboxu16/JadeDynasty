@@ -1,0 +1,3 @@
+﻿Id	LinkId	CampId	Pos	Pos2	RotAngle	IsEnable	IdleAnimSet	AiLogic	AiParamDesc0	AiParam0	AiParamDesc1	AiParam1	AiParamDesc2	AiParam2	AiParamDesc3	AiParam3	AiParamDesc4	AiParam4	AiParamDesc5	AiParam5	AiParamDesc6	AiParam6	AiParamDesc7	AiParam7
+20001	1	3	18.98617 151.0305 27.50934		0	FALSE		0																
+20002	2	3	48.29288 151.0305 27.50934		0	FALSE		0																

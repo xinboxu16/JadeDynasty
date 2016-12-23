@@ -1,0 +1,5 @@
+﻿Id	Description	LogicId	IsClient	IsServer	ParamNum	ParamName0	Param0	ParamName1	Param1	ParamName2	Param2	ParamName3	Param3	ParamName4	Param4	ParamName5	Param5	ParamName6	Param6	ParamName7	Param7	ParamName8	Param8	ParamName9	Param9	ParamName10	Param10	ParamName11	Param11	ParamName12	Param12	ParamName13	Param13	ParamName14	Param14	ParamName15	Param15
+1	第一区	10001	FALSE	TRUE	2	区域	32.44 26.56 20.38 28.25 14.88 23.06 10.50 13.88 13.88 6.13 28.38 11.44 38.38 12.13 41.31 21.00 32.94 29.38	触发方式（0--any 1--all）	0																												
+2	第二区	10001	FALSE	TRUE	2	区域	41.88 22.75 41.19 23.56 48.81 29.44 49.81 28.81 59.06 35.31 54.69 54.19 36.75 49.94 37.56 46.81 37.06 46.13 39.31 45.13 35.56 36.38 37.56 35.25 35.63 31.31 33.75 32.50 32.75 28.31 40.88 20.06	触发方式（0--any 1--all）	0																												
+3	第三区	10001	FALSE	TRUE	2	区域	37.06 48.69 55.00 53.13 51.88 69.19 47.06 69.00 47.06 72.94 48.13 75.69 44.88 79.56 29.88 75.25 31.75 62.38 32.38 60.25 35.19 60.63 36.50 58.81 34.63 54.50	触发方式（0--any 1--all）	0																												
+4	超时检测	10003	FALSE	TRUE	1	超时时间	60000																														

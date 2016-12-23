@@ -1,0 +1,3 @@
+﻿ID	Type	Desc	StartHour	StartMinute	StartSecond	EndHour	EndMinute	EndSecond
+1	1	发奖时间	4	0	0	4	30	0
+2	2	比赛时间	20	0	0	22	0	0
