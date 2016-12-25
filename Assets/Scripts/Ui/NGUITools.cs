@@ -27,6 +27,31 @@ public class NGUITools
         //return childGameObject;
     }
 
+    public static GameObject AddWidget(GameObject parent, Object prefab, bool isClearWidget)
+    {
+        if (isClearWidget)
+        {
+            Transform widgets = parent.transform.Find("Widgets");
+            for (int i = 0; i < widgets.childCount; i++)
+            {
+                GameObject gameObject = widgets.GetChild(i).gameObject;
+                GameObject.DestroyImmediate(gameObject);
+            }
+            parent.transform.Find("Widgets").DetachChildren();
+        }
+        GameObject go = prefab as GameObject;
+        if (go != null && parent != null)
+        {
+            Transform t = MonoBehaviour.Instantiate(go).transform;
+            t.SetParent(parent.transform.Find("Widgets"), false);
+            t.localPosition = Vector3.zero;
+            t.localRotation = Quaternion.identity;
+            t.localScale = Vector3.one;
+            go.layer = parent.layer;
+        }
+        return go;
+    }
+
     public static void SetActive(GameObject obj, bool isActive)
     {
         obj.SetActive(isActive);

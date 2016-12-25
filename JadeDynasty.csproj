@@ -1,0 +1,506 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{48332E01-01DD-09F2-A82A-04D6B2E67719}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
+    <CompilerResponseFile></CompilerResponseFile>
+    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
+    <UnityVersion>5.5.0f3</UnityVersion>
+    <RootNamespace></RootNamespace>
+    <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Debug\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_5_0;UNITY_5_5;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VIDEO;ENABLE_VR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU;UNITY_PRO_LICENSE</DefineConstants>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Release\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_5_0;UNITY_5_5;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VIDEO;ENABLE_VR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU;UNITY_PRO_LICENSE</DefineConstants>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Core" />
+    <Reference Include="Boo.Lang" />
+    <Reference Include="UnityScript.Lang" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEngine">
+      <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PlaymodeTestsRunner">
+      <HintPath>Library\UnityAssemblies\UnityEngine.PlaymodeTestsRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HoloLens">
+      <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VR">
+      <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="ClientProtoBuf">
+      <HintPath>Assets\Plugins\3rd_party\ClientProtoBuf.dll</HintPath>
+    </Reference>
+    <Reference Include="Lidgren.Network">
+      <HintPath>Assets\Plugins\3rd_party\Lidgren.Network.dll</HintPath>
+    </Reference>
+    <Reference Include="LitJson">
+      <HintPath>Assets\Plugins\3rd_party\LitJson.dll</HintPath>
+    </Reference>
+    <Reference Include="MyWebSocket">
+      <HintPath>Assets\Plugins\3rd_party\MyWebSocket.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net">
+      <HintPath>Assets\Plugins\3rd_party\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="ProtobufSerializer">
+      <HintPath>Assets\Plugins\3rd_party\ProtobufSerializer.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="JadeDynasty.Plugins.csproj">
+      <Project>{C03522F0-622C-7DFA-CA91-4463231C099A}</Project>
+      <Name>JadeDynasty.Plugins</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Scripts\Analytics\Analytics.cs" />
+    <Compile Include="Assets\Scripts\Analytics\AnalyticsManager.cs" />
+    <Compile Include="Assets\Scripts\Analytics\GA.cs" />
+    <Compile Include="Assets\Scripts\Analytics\UmengManager.cs" />
+    <Compile Include="Assets\Scripts\CYMGWrapperIOS.cs" />
+    <Compile Include="Assets\Scripts\Client\Client\Entity\EntityManager.cs" />
+    <Compile Include="Assets\Scripts\Client\Client\Input\PlayerControl.cs" />
+    <Compile Include="Assets\Scripts\Client\Client\InvokeArgs.cs" />
+    <Compile Include="Assets\Scripts\Client\Client\Kernel\GameControler.cs" />
+    <Compile Include="Assets\Scripts\Client\Client\Kernel\GameLogicThread.cs" />
+    <Compile Include="Assets\Scripts\Client\Client\LobbyClient\LobbyClient.cs" />
+    <Compile Include="Assets\Scripts\Client\Client\LobbyClient\RoleInfo.cs" />
+    <Compile Include="Assets\Scripts\Client\Client\NetWork\LobbyNetworkSystem.cs" />
+    <Compile Include="Assets\Scripts\Client\Client\NetWork\NetWorkSystem.cs" />
+    <Compile Include="Assets\Scripts\Client\Client\NetWork\ProtoNetSerialize.cs" />
+    <Compile Include="Assets\Scripts\Client\Client\SceneLogic\SceneLogicViewManager.cs" />
+    <Compile Include="Assets\Scripts\Client\Client\Story\ClientStorySystem.cs" />
+    <Compile Include="Assets\Scripts\Client\Client\Version.cs" />
+    <Compile Include="Assets\Scripts\Client\Client\World\SceneResource.cs" />
+    <Compile Include="Assets\Scripts\Client\Client\World\WorldSystem.cs" />
+    <Compile Include="Assets\Scripts\Common\AssetEx.cs" />
+    <Compile Include="Assets\Scripts\Common\AssetExManager.cs" />
+    <Compile Include="Assets\Scripts\Common\ClientResVersionProvider.cs" />
+    <Compile Include="Assets\Scripts\Common\ConfigFile.cs" />
+    <Compile Include="Assets\Scripts\Common\CoroutineInsManager.cs" />
+    <Compile Include="Assets\Scripts\Common\HardWareQuality.cs" />
+    <Compile Include="Assets\Scripts\Common\ResCacheProvider.cs" />
+    <Compile Include="Assets\Scripts\Common\ResVersionProvider.cs" />
+    <Compile Include="Assets\Scripts\Common\VersionInfo.cs" />
+    <Compile Include="Assets\Scripts\Components\PolygonImage.cs" />
+    <Compile Include="Assets\Scripts\GYMGConnector.cs" />
+    <Compile Include="Assets\Scripts\GameLogic.cs" />
+    <Compile Include="Assets\Scripts\MainCamera.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\AttrDataConfig.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\DataTypeDefines.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\FilePathDefine.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\GlobalVariables.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\ActionConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\AiActionConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\AppendAttributeConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\AttributeScoreConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\BuffConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\BuyMoneyConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\BuyStaminaConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\CriticalConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\DynamicSceneConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\EquipmentConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\ExpeditionMonsterAttrConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\ExpeditionMonsterConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\ExpeditionTollgateConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\GowConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\ItemConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\ItemLevelupConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\LegacyLevelupConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\MapDataProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\MissionConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\NewbieGuideProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\NpcConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\PlayerConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\SceneConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\ServerConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\SkillConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\SkillLevelupConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\SoundConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\StrDictionaryProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\SystemGuideConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\VersionConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\VipConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\Provider\WordFilter.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Data\UiConfigProvider.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\DataPool\DBC.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\DataPool\DBCUtil.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\DataPool\DataDictionaryMgr.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\DataPool\DataListMgr.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\DataPool\FileReaderProxy.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\DataPool\IData.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Geometry\Geometry.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Log\LogSystem.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Message\MessageDefine.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Message\ProtoMessage.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Util\AsyncActionProcessor.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Util\Converter.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Util\DelayActionProcessor.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Util\Helper.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Util\HomePath.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Util\IActionQueue.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Util\LinkedListDictionary.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Util\MyActionAndFunc.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Util\MyDictionary.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Util\MyThread.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Util\ObjectPool.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Util\PoolAllocatedAction.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Util\TimeUtility.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Util\TypedDataCollection.cs" />
+    <Compile Include="Assets\Scripts\Public\GfxLogicBridge\GfxSystem.cs" />
+    <Compile Include="Assets\Scripts\Public\GfxLogicBridge\Internal\GfxSystemImpl.cs" />
+    <Compile Include="Assets\Scripts\Public\GfxLogicBridge\Internal\GfxSystemImpl_Input.cs" />
+    <Compile Include="Assets\Scripts\Public\GfxLogicBridge\Internal\GfxSystemImpl_Touch.cs" />
+    <Compile Include="Assets\Scripts\Public\GfxLogicBridge\Internal\ResUpdateHandler.cs" />
+    <Compile Include="Assets\Scripts\Public\GfxLogicBridge\Internal\ResourceManager.cs" />
+    <Compile Include="Assets\Scripts\Public\GfxLogicBridge\LogicSystem.cs" />
+    <Compile Include="Assets\Scripts\Public\GfxLogicBridge\PublishSubscribe\PublishSubscribeSystem.cs" />
+    <Compile Include="Assets\Scripts\Public\GfxLogicBridge\ResourceSystem.cs" />
+    <Compile Include="Assets\Scripts\Public\GfxLogicBridge\SharedData\SharedGameObjectInfo.cs" />
+    <Compile Include="Assets\Scripts\Public\StorySystem\Internal\IStoryCommand.cs" />
+    <Compile Include="Assets\Scripts\Public\StorySystem\Internal\IStoryCommandFactory.cs" />
+    <Compile Include="Assets\Scripts\Public\StorySystem\StoryCommandManager.cs" />
+    <Compile Include="Assets\Scripts\ScreenBloom.cs" />
+    <Compile Include="Assets\Scripts\Tween\Bezier.cs" />
+    <Compile Include="Assets\Scripts\Tween\IPointHandler.cs" />
+    <Compile Include="Assets\Scripts\Tween\SliderColors.cs" />
+    <Compile Include="Assets\Scripts\Tween\Tools\ButtonCD.cs" />
+    <Compile Include="Assets\Scripts\Tween\Tools\ButtonScale.cs" />
+    <Compile Include="Assets\Scripts\Tween\Tools\DragObject.cs" />
+    <Compile Include="Assets\Scripts\Tween\Tools\EaseManager.cs" />
+    <Compile Include="Assets\Scripts\Tween\Tools\GradientEx.cs" />
+    <Compile Include="Assets\Scripts\Tween\Tools\ImageAnimation.cs" />
+    <Compile Include="Assets\Scripts\Tween\Tools\Joystick.cs" />
+    <Compile Include="Assets\Scripts\Tween\Tools\PlayTween.cs" />
+    <Compile Include="Assets\Scripts\Tween\Tools\PressGapEvent.cs" />
+    <Compile Include="Assets\Scripts\Tween\Tools\RichText.cs" />
+    <Compile Include="Assets\Scripts\Tween\Tools\SpinWithMouse.cs" />
+    <Compile Include="Assets\Scripts\Tween\Tools\UIActiveObjects.cs" />
+    <Compile Include="Assets\Scripts\Tween\Tools\UIEventTrigger.cs" />
+    <Compile Include="Assets\Scripts\Tween\Tools\UILoop.cs" />
+    <Compile Include="Assets\Scripts\Tween\Tools\UIScrollRect.cs" />
+    <Compile Include="Assets\Scripts\Tween\Tools\UIToggleColor.cs" />
+    <Compile Include="Assets\Scripts\Tween\Tools\UIToggleObjects.cs" />
+    <Compile Include="Assets\Scripts\Tween\Tween.cs" />
+    <Compile Include="Assets\Scripts\Tween\TweenAlpha.cs" />
+    <Compile Include="Assets\Scripts\Tween\TweenColor.cs" />
+    <Compile Include="Assets\Scripts\Tween\TweenImage.cs" />
+    <Compile Include="Assets\Scripts\Tween\TweenLayoutElement.cs" />
+    <Compile Include="Assets\Scripts\Tween\TweenPath.cs" />
+    <Compile Include="Assets\Scripts\Tween\TweenPosition.cs" />
+    <Compile Include="Assets\Scripts\Tween\TweenRect.cs" />
+    <Compile Include="Assets\Scripts\Tween\TweenRotation.cs" />
+    <Compile Include="Assets\Scripts\Tween\TweenScale.cs" />
+    <Compile Include="Assets\Scripts\Tween\TweenShake.cs" />
+    <Compile Include="Assets\Scripts\Tween\TweenSlider.cs" />
+    <Compile Include="Assets\Scripts\Tween\TweenText.cs" />
+    <Compile Include="Assets\Scripts\Tween\Tweener.cs" />
+    <Compile Include="Assets\Scripts\Tween\uEnum.cs" />
+    <Compile Include="Assets\Scripts\UI\DFMUiRoot.cs" />
+    <Compile Include="Assets\Scripts\UI\NGUITools.cs" />
+    <Compile Include="Assets\Scripts\UI\PrefabScript\ScreenScrollTip.cs" />
+    <Compile Include="Assets\Scripts\UI\UIManager.cs" />
+    <Compile Include="Assets\Scripts\Update\ResLoadAsyncHandler.cs" />
+    <Compile Include="Assets\Scripts\Update\ResLoadHelper.cs" />
+    <Compile Include="Assets\Scripts\Update\ResLoader.cs" />
+    <Compile Include="Assets\Scripts\Update\ResUpdateControler.cs" />
+    <Compile Include="Assets\Scripts\Update\ResUpdateTool.cs" />
+    <Compile Include="Assets\Scripts\Update\ResUpgrader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Plugins\EasyTouch\How to migrate from EasyTouch 4.X.txt" />
+    <None Include="Assets\Plugins\EasyTouch\RealseNotes.txt" />
+    <None Include="Assets\Plugins\FingerGestures\Readme.txt" />
+    <None Include="Assets\Shaders\BloomSimple.shader" />
+    <None Include="Assets\StreamingAssets\Client\Dialog\101201.txt" />
+    <None Include="Assets\StreamingAssets\Client\Dialog\101301.txt" />
+    <None Include="Assets\StreamingAssets\Client\Dialog\101401.txt" />
+    <None Include="Assets\StreamingAssets\Client\Dialog\101402.txt" />
+    <None Include="Assets\StreamingAssets\Client\Dialog\101403.txt" />
+    <None Include="Assets\StreamingAssets\Client\Dialog\101501.txt" />
+    <None Include="Assets\StreamingAssets\Client\Dialog\101502.txt" />
+    <None Include="Assets\StreamingAssets\Client\Dialog\101503.txt" />
+    <None Include="Assets\StreamingAssets\Client\Dialog\101901.txt" />
+    <None Include="Assets\StreamingAssets\Client\Dialog\101902.txt" />
+    <None Include="Assets\StreamingAssets\Client\Dialog\101903.txt" />
+    <None Include="Assets\StreamingAssets\Client\Dialog\101904.txt" />
+    <None Include="Assets\StreamingAssets\Client\Dialog\101905.txt" />
+    <None Include="Assets\StreamingAssets\Client\Dialog\StoryDlgConfig.txt" />
+    <None Include="Assets\StreamingAssets\Client\Dialog\story1.txt" />
+    <None Include="Assets\StreamingAssets\Client\Dialog\story10.txt" />
+    <None Include="Assets\StreamingAssets\Client\Dialog\story11.txt" />
+    <None Include="Assets\StreamingAssets\Client\Dialog\story2.txt" />
+    <None Include="Assets\StreamingAssets\Client\Dialog\story3.txt" />
+    <None Include="Assets\StreamingAssets\Client\Dialog\story4.txt" />
+    <None Include="Assets\StreamingAssets\Client\Dialog\story5.txt" />
+    <None Include="Assets\StreamingAssets\Client\Dialog\story6.txt" />
+    <None Include="Assets\StreamingAssets\Client\Dialog\story7.txt" />
+    <None Include="Assets\StreamingAssets\Client\Dialog\story8.txt" />
+    <None Include="Assets\StreamingAssets\Client\Dialog\story9.txt" />
+    <None Include="Assets\StreamingAssets\Client\NewbieGuide.txt" />
+    <None Include="Assets\StreamingAssets\Client\ResPoolConfig.txt" />
+    <None Include="Assets\StreamingAssets\Client\SensitiveDictionary.txt" />
+    <None Include="Assets\StreamingAssets\Client\ServerConfig.txt" />
+    <None Include="Assets\StreamingAssets\Client\ServerConfig_tech.txt" />
+    <None Include="Assets\StreamingAssets\Client\SoundConfig.txt" />
+    <None Include="Assets\StreamingAssets\Client\StrDictionary.txt" />
+    <None Include="Assets\StreamingAssets\Client\SystemGuideConfig.txt" />
+    <None Include="Assets\StreamingAssets\Client\UiConfig.txt" />
+    <None Include="Assets\StreamingAssets\Public\ActionConfig.txt" />
+    <None Include="Assets\StreamingAssets\Public\AiActionConfig.txt" />
+    <None Include="Assets\StreamingAssets\Public\AppendAttributeConfig.txt" />
+    <None Include="Assets\StreamingAssets\Public\AttributeScoreConfig.txt" />
+    <None Include="Assets\StreamingAssets\Public\BuyMoneyConfig.txt" />
+    <None Include="Assets\StreamingAssets\Public\BuyStaminaConfig.txt" />
+    <None Include="Assets\StreamingAssets\Public\ChineseFirstName.txt" />
+    <None Include="Assets\StreamingAssets\Public\ChineseLastName.txt" />
+    <None Include="Assets\StreamingAssets\Public\ChinestFirstName.txt" />
+    <None Include="Assets\StreamingAssets\Public\CriticalConfig.txt" />
+    <None Include="Assets\StreamingAssets\Public\CuteFirstName.txt" />
+    <None Include="Assets\StreamingAssets\Public\CuteLastName.txt" />
+    <None Include="Assets\StreamingAssets\Public\DynamicSceneConfig.txt" />
+    <None Include="Assets\StreamingAssets\Public\EquipmentConfig.txt" />
+    <None Include="Assets\StreamingAssets\Public\ExchangeShop.txt" />
+    <None Include="Assets\StreamingAssets\Public\ExpeditionMonsterAttrConfig.txt" />
+    <None Include="Assets\StreamingAssets\Public\ExpeditionMonsterConfig.txt" />
+    <None Include="Assets\StreamingAssets\Public\ExpeditionTollgateConfig.txt" />
+    <None Include="Assets\StreamingAssets\Public\FirstName.txt" />
+    <None Include="Assets\StreamingAssets\Public\ForeignFirstName.txt" />
+    <None Include="Assets\StreamingAssets\Public\ForeignLastName.txt" />
+    <None Include="Assets\StreamingAssets\Public\Gow\GowPrize.txt" />
+    <None Include="Assets\StreamingAssets\Public\Gow\GowTime.txt" />
+    <None Include="Assets\StreamingAssets\Public\ItemConfig.txt" />
+    <None Include="Assets\StreamingAssets\Public\ItemLevelupConfig.txt" />
+    <None Include="Assets\StreamingAssets\Public\LastName.txt" />
+    <None Include="Assets\StreamingAssets\Public\LegacyLevelupConfig.txt" />
+    <None Include="Assets\StreamingAssets\Public\LobbyPlayerConfig.txt" />
+    <None Include="Assets\StreamingAssets\Public\LogicServerConfig.txt" />
+    <None Include="Assets\StreamingAssets\Public\MissionConfig.txt" />
+    <None Include="Assets\StreamingAssets\Public\NpcConfig.txt" />
+    <None Include="Assets\StreamingAssets\Public\NpcLevelupConfig.txt" />
+    <None Include="Assets\StreamingAssets\Public\PlayerConfig.txt" />
+    <None Include="Assets\StreamingAssets\Public\PlayerLevelupConfig.txt" />
+    <None Include="Assets\StreamingAssets\Public\PlayerLevelupExpConfig.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1010\Region.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1011\Region.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1012\Region.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1013\Region.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1014\Region.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1015\Region.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1016\Region.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1017\Region.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1018\Region.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1019\Region.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1020\Region.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1021\Region.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1022\Region.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1023\Region.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1110\Region.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1111\Region.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1112\Region.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1113\Region.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1114\Region.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1115\Region.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1116\Region.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1117\Region.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1118\Region.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1119\Region.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\MapData_2000\Region.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\MapData_3000\Region.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\SceneConfig.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\SceneDropOut.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1010\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1010\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1011\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1011\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1012\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1012\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1013\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1013\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1014\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1014\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1015\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1015\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1016\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1016\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1017\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1017\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1018\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1018\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1019\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1019\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1021\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1021\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1022\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1022\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1023\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1023\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1024\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1024\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1025\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1025\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1026\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1026\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1027\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1027\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1028\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1028\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1029\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1029\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1031\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1031\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1032\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1032\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1033\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1033\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1034\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1034\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1035\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1035\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1036\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1036\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1037\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1037\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1038\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1038\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1039\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_1039\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2011\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2011\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2012\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2012\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2013\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2013\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2014\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2014\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2015\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2015\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2016\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2016\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2017\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2017\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2018\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2018\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2019\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2019\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2021\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2021\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2022\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2022\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2023\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2023\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2024\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2024\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2025\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2025\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2026\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2026\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2027\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2027\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2028\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2028\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2029\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2029\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2031\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2031\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2032\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2032\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2033\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2033\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2034\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2034\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2035\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2035\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2036\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2036\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2037\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2037\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2038\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2038\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2039\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_2039\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_3\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_3\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_3001\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_3001\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_4001\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_4001\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_9000\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_9000\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_9001\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_9001\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_9002\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_9002\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_9003\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_9003\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_9004\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_9004\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_9005\SceneLogic.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\Scene_9005\Unit.txt" />
+    <None Include="Assets\StreamingAssets\Public\Skill\BuffData.txt" />
+    <None Include="Assets\StreamingAssets\Public\Skill\EffectData.txt" />
+    <None Include="Assets\StreamingAssets\Public\Skill\ImpactData.txt" />
+    <None Include="Assets\StreamingAssets\Public\Skill\SkillData.txt" />
+    <None Include="Assets\StreamingAssets\Public\Skill\SkillLevelupConfig.txt" />
+    <None Include="Assets\StreamingAssets\Public\Skill\SoundData.txt" />
+    <None Include="Assets\StreamingAssets\Public\VersionConfig.txt" />
+    <None Include="Assets\StreamingAssets\Public\VipConfig.txt" />
+    <None Include="Assets\StreamingAssets\list.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="GenerateTargetFrameworkMonikerAttribute" />
+</Project>

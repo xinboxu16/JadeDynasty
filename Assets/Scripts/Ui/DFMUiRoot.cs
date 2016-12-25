@@ -69,7 +69,7 @@ public class DFMUiRoot : MonoBehaviour {
             GameObject go = ResourceSystem.GetSharedResource("Loading/Loading2") as GameObject;
             if (go != null)
             {
-                loading = NGUITools.AddChild(gameObject, go);
+                loading = NGUITools.AddWidget(gameObject, go, true);
                 if (loading != null)
                 {
                     loading.transform.localPosition = new Vector3(0, 0, 0);
