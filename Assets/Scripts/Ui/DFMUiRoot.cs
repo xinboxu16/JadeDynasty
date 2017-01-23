@@ -90,7 +90,7 @@ public class DFMUiRoot : MonoBehaviour {
         {
             if(loading != null)
             {
-                //SendMessage("EndLoading")这个是ProgressBar中的方法
+                //SendMessage("EndLoading") EndLoading这个是ProgressBar中的方法
                 loading.transform.Find("ProgressBar").SendMessage("EndLoading");
                 loading = null;
             }
