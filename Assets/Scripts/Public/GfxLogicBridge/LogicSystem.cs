@@ -61,6 +61,16 @@ namespace DashFire
             GfxSystem.Instance.UpdateVersionInfo(info);
         }
 
+        public static float GetLoadingProgress()
+        {
+            return GfxSystem.Instance.GetLoadingProgress();
+        }
+
+        public static string GetLoadingTip()
+        {
+            return GfxSystem.Instance.GetLoadingTip();
+        }
+
         public static PublishSubscribeSystem EventChannelForGfx
         {
             get

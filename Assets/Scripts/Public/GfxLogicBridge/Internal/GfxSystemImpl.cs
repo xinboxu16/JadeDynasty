@@ -193,6 +193,16 @@ namespace DashFire
             m_LoadingProgress = progress;
         }
 
+        internal float GetLoadingProgress()
+        {
+            return m_LoadingProgress;
+        }
+
+        internal string GetLoadingTip()
+        {
+            return m_LoadingTip;
+        }
+
         internal void UpdateVersionInfo(string info)
         {
             m_VersionInfo = info;
