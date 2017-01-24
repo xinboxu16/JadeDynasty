@@ -1628,16 +1628,6 @@
         <para>See MonoBehaviour.OnRectTransformParentChanged.</para>
       </summary>
     </member>
-    <member name="M:UnityEngine.EventSystems.UIBehaviour.OnValidate">
-      <summary>
-        <para>See MonoBehaviour.OnValidate.</para>
-      </summary>
-    </member>
-    <member name="M:UnityEngine.EventSystems.UIBehaviour.Reset">
-      <summary>
-        <para>See MonoBehaviour.Reset.</para>
-      </summary>
-    </member>
     <member name="M:UnityEngine.EventSystems.UIBehaviour.Start">
       <summary>
         <para>See MonoBehaviour.Start.</para>
@@ -2749,11 +2739,6 @@ If you have modified the list of options, you should call this method afterwards
       <param name="m">Mesh to populate with UI data.</param>
       <param name="vh">VertexHelper utility.</param>
     </member>
-    <member name="M:UnityEngine.UI.Graphic.OnRebuildRequested">
-      <summary>
-        <para>Editor-only callback that is issued by Unity if a rebuild of the Graphic is required.</para>
-      </summary>
-    </member>
     <member name="M:UnityEngine.UI.Graphic.PixelAdjustPoint(UnityEngine.Vector2)">
       <summary>
         <para>Adjusts the given pixel to be pixel perfect.</para>
@@ -2901,23 +2886,6 @@ If you have modified the list of options, you should call this method afterwards
       </summary>
       <param name="eventData"></param>
       <param name="resultAppendList"></param>
-    </member>
-    <member name="T:UnityEngine.UI.GraphicRebuildTracker">
-      <summary>
-        <para>EditorOnly class for tracking all Graphics.</para>
-      </summary>
-    </member>
-    <member name="M:UnityEngine.UI.GraphicRebuildTracker.TrackGraphic(UnityEngine.UI.Graphic)">
-      <summary>
-        <para>Track a Graphic.</para>
-      </summary>
-      <param name="g"></param>
-    </member>
-    <member name="M:UnityEngine.UI.GraphicRebuildTracker.UnTrackGraphic(UnityEngine.UI.Graphic)">
-      <summary>
-        <para>Untrack a Graphic.</para>
-      </summary>
-      <param name="g"></param>
     </member>
     <member name="T:UnityEngine.UI.GraphicRegistry">
       <summary>
@@ -3677,11 +3645,6 @@ Used if the native representation has been destroyed.</para>
     <member name="P:UnityEngine.UI.InputField.caretPosition">
       <summary>
         <para>Current InputField caret position (also selection tail).</para>
-      </summary>
-    </member>
-    <member name="P:UnityEngine.UI.InputField.caretSelectPosition">
-      <summary>
-        <para>Current InputField selection head.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.UI.InputField.caretWidth">
