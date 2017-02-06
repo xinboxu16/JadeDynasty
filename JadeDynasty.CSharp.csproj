@@ -51,6 +51,9 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -65,6 +68,9 @@
     </Reference>
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
@@ -241,18 +247,26 @@
     <Compile Include="Assets\Scripts\Tween\TweenText.cs" />
     <Compile Include="Assets\Scripts\Tween\Tweener.cs" />
     <Compile Include="Assets\Scripts\Tween\uEnum.cs" />
-    <Compile Include="Assets\Scripts\Ui\DFMUiRoot.cs" />
-    <Compile Include="Assets\Scripts\Ui\Loading\LoadingProgressBar.cs" />
-    <Compile Include="Assets\Scripts\Ui\NGUITools.cs" />
-    <Compile Include="Assets\Scripts\Ui\PrefabScript\ScreenScrollTip.cs" />
-    <Compile Include="Assets\Scripts\Ui\RealTime.cs" />
-    <Compile Include="Assets\Scripts\Ui\UIManager.cs" />
+    <Compile Include="Assets\Scripts\UI\DFMUiRoot.cs" />
+    <Compile Include="Assets\Scripts\UI\Loading\LoadingProgressBar.cs" />
+    <Compile Include="Assets\Scripts\UI\Login\Frames.cs" />
+    <Compile Include="Assets\Scripts\UI\NGUITools.cs" />
+    <Compile Include="Assets\Scripts\UI\PrefabScript\ScreenScrollTip.cs" />
+    <Compile Include="Assets\Scripts\UI\RealTime.cs" />
+    <Compile Include="Assets\Scripts\UI\UIManager.cs" />
     <Compile Include="Assets\Scripts\Update\ResLoadAsyncHandler.cs" />
     <Compile Include="Assets\Scripts\Update\ResLoadHelper.cs" />
     <Compile Include="Assets\Scripts\Update\ResLoader.cs" />
     <Compile Include="Assets\Scripts\Update\ResUpdateControler.cs" />
     <Compile Include="Assets\Scripts\Update\ResUpdateTool.cs" />
     <Compile Include="Assets\Scripts\Update\ResUpgrader.cs" />
+    <Compile Include="Assets\ThirdPart\T4M\Scripts\T4MBillBObjSC.cs" />
+    <Compile Include="Assets\ThirdPart\T4M\Scripts\T4MLodObjSC.cs" />
+    <Compile Include="Assets\ThirdPart\T4M\Scripts\T4MObjSC.cs" />
+    <Compile Include="Assets\ThirdPart\T4M\Scripts\T4MPartSC.cs" />
+    <Compile Include="Assets\ThirdPart\T4M\Scripts\T4MPlantObjSC.cs" />
+    <Compile Include="Assets\ThirdPart\T4M\Tutorial\Scripts\FlyCam.cs" />
+    <Compile Include="Assets\ThirdPart\T4M\Tutorial\Scripts\WaypointCam.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\EasyTouch\How to migrate from EasyTouch 4.X.txt" />
@@ -495,6 +509,57 @@
     <None Include="Assets\StreamingAssets\Public\VersionConfig.txt" />
     <None Include="Assets\StreamingAssets\Public\VipConfig.txt" />
     <None Include="Assets\StreamingAssets\list.txt" />
+    <None Include="Assets\ThirdPart\T4M\READMEFIRST.txt" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel1\T4M 2 Textures Auto BeastLM 2DrawCall.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel1\T4M 2 Textures ManualAdd BeastLM_1DC.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel1\T4M 2 Textures ManualAdd CustoLM 1DC.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\Bump\T4M 2 TexturesBumped Mobile.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\Bump\T4M 2 TexturesBumped.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\Bump\T4M 3 TexturesBumped Mobile.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\Bump\T4M 3 TexturesBumped.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\Bump\T4M 4 TexturesBumped.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\BumpSpec\T4M 2 TexturesBumpSpec Mobile.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\BumpSpec\T4M 2 TexturesBumpSpec.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\BumpSpec\T4M 3 TexturesBumpSpec.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\Diffuse\T4M 2 Textures.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\Diffuse\T4M 3 Textures.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\Diffuse\T4M 4 Textures.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\Diffuse\T4M 5 Textures.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\Diffuse\T4M 6 Textures.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\Diffuse\T4M World Projection Shader.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\DirectionLM\T4M 2 TexturesBumped DLM mobile.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\DirectionLM\T4M 2 TexturesBumped DLM.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\DirectionLM\T4M 3 TexturesBumped DLM.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\Specular\T4M 2 Textures Spec.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\Specular\T4M 3 Textures Spec.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\Specular\T4M 4 Textures Spec.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\Toon\T4M 2 Textures Toon.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\Toon\T4M 3 Textures Toon.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\Toon\T4M 4 Textures Toon.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\Unified\T4M 2 TexturesUnified.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\Unified\T4M 3 TexturesUnified.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\Unified\T4M 4 TexturesUnified.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\Unlit\2TexturesUnlit.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\Unlit\3TexturesUnlit.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\Unlit\4TexturesUnlit.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\Unlit\5TexturesUnlit.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\Unlit\6TexturesUnlit.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\Unlit\6TexturesUnlitNoLM.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel2\Unlit\T4M World Projection Shader Unlit+LM.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel3\Bump\T4M 2 TexturesBump.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel3\Bump\T4M 3 TexturesBump.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel3\Bump\T4M 4 TexturesBump.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel3\BumpSpec\T4M 2 TexturesBumpSpec.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel3\BumpSpec\T4M 3 TexturesBumpSpec.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel3\BumpSpec\T4M 4 TexturesBumpSpec.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel3\Diffuse\T4M 2 Textures.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel3\Diffuse\T4M 3 Textures.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel3\Diffuse\T4M 4 Textures.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel3\Diffuse\T4M 5 Textures.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel3\Diffuse\T4M 6 Textures.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel3\Specular\T4M 2 TexturesSpec.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel3\Specular\T4M 3 TexturesSpec.shader" />
+    <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel3\Specular\T4M 4 TexturesSpec.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>
