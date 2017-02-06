@@ -57,9 +57,36 @@ public class NGUITools
         obj.SetActive(isActive);
     }
 
-    public static void DestroyImmediate(Object nbm)
+    static public void Destroy(UnityEngine.Object obj)
     {
-        Object.DestroyImmediate(nbm);
-        nbm = null;
+        if (obj != null)
+        {
+            if (Application.isPlaying)
+            {
+                if (obj is GameObject)
+                {
+                    GameObject go = obj as GameObject;
+                    go.transform.parent = null;
+                }
+
+                UnityEngine.Object.Destroy(obj);
+            }
+            else UnityEngine.Object.DestroyImmediate(obj);
+        }
+    }
+
+    public static void DestroyImmediate(Object obj)
+    {
+        if(obj != null)
+        {
+            if (Application.isEditor)
+            {
+                Object.DestroyImmediate(obj);
+            }
+            else
+            {
+                Object.Destroy(obj);
+            }
+        }
     }
 }

@@ -10,9 +10,11 @@ public class LoadingProgressBar : MonoBehaviour {
     private bool sign3 = true;
     private float time = 0f;
 
+    private Slider slider = null;
     // Use this for initialization
     void Start () {
-		
+        slider = transform.GetComponent<Slider>();
+        slider.onValueChanged.AddListener(delegate(float dt) { (slider.transform.Find("Label").GetComponent<Text>()).text = (dt * 100).ToString() + "%"; });
 	}
 
     private void LateUpdate()
@@ -21,7 +23,6 @@ public class LoadingProgressBar : MonoBehaviour {
         //{
         //    JoyStickInputProvider.JoyStickEnable = false;
         //}
-        Slider slider = transform.GetComponent<Slider>();
         float progressValue = DashFire.LogicSystem.GetLoadingProgress();
         if (slider != null)
         {
@@ -67,14 +68,51 @@ public class LoadingProgressBar : MonoBehaviour {
         {
             if (!sign2)
             {
-
+                time += RealTime.deltaTime;//每帧的变化
+                if (time > 2.0f)
+                {
+                    DestoryLoading();
+                }
+                else
+                {
+                    //if (GameObject.FindGameObjectsWithTag("Player").Length > 0)
+                    //{
+                    //    //DestoryLoading();
+                    //    sign3 = false;
+                    //    time = 0f;
+                    //}
+                }
+            }
+            else
+            {
+                time += RealTime.deltaTime;
+                if (time >= 2.0f)
+                {
+                    DestoryLoading();
+                }
             }
         }
     }
 
     void EndLoading()
     {
+        Debug.Log("EndLoading");
         sign2 = false;
         time = 0.0f;
+    }
+
+    void DestoryLoading()
+    {
+        //if (InputType.Joystick == DFMUiRoot.InputMode)
+        //{
+        //    JoyStickInputProvider.JoyStickEnable = UIManager.Instance.IsUIVisible;
+        //}
+
+        sign1 = true;
+        sign2 = true;
+        sign3 = true;
+        time = 0f;
+        slider.onValueChanged.RemoveAllListeners();
+        NGUITools.DestroyImmediate(transform.parent.gameObject);
     }
 }
