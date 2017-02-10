@@ -54,9 +54,6 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>Library\UnityAssemblies\UnityEditor.Advertisements.dll</HintPath>
     </Reference>
@@ -98,9 +95,6 @@
     </Reference>
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.VR">
       <HintPath>Library\UnityAssemblies\UnityEditor.VR.dll</HintPath>
@@ -197,6 +191,7 @@
     <None Include="Assets\Plugins\EasyTouch\How to migrate from EasyTouch 4.X.txt" />
     <None Include="Assets\Plugins\EasyTouch\RealseNotes.txt" />
     <None Include="Assets\Plugins\FingerGestures\Readme.txt" />
+    <None Include="Assets\Resources\Shaders\MobileBloom.shader" />
     <None Include="Assets\Shaders\BloomSimple.shader" />
     <None Include="Assets\StreamingAssets\Client\Dialog\101201.txt" />
     <None Include="Assets\StreamingAssets\Client\Dialog\101301.txt" />
