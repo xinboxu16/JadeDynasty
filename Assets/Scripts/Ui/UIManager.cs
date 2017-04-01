@@ -11,6 +11,15 @@ public enum UIType : int
     Active = 1
 }
 
+public enum UISceneType
+{
+    MainCopy = -1,
+    MainCyty = 1,
+    Login = 0,
+    Common = 2,
+    //Other = "Other" 枚举不允许定义string
+}
+
 public class UIManager
 {
     public delegate void VoidDelegate();

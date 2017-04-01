@@ -6,11 +6,17 @@ public class NGUITools
 {
     public static GameObject AddChild(GameObject parent, Object prefab)
     {
-        GameObject go = prefab as GameObject;
+        GameObject go = GameObject.Instantiate(prefab) as GameObject;
+
+//#if UNITY_EDITOR && !UNITY_3_5 && !UNITY_4_0 && !UNITY_4_1 && !UNITY_4_2
+//        //编辑器模式 撤销对他们的创建
+//        UnityEditor.Undo.RegisterCreatedObjectUndo(go, "Create Object");
+//#endif
+
         if (go != null && parent != null)
         {
             Transform t = go.transform;
-            t.parent = parent.transform;
+            t.SetParent(parent.transform, false);//一定要加false 要不界面就乱了
             t.localPosition = Vector3.zero;
             t.localRotation = Quaternion.identity;
             t.localScale = Vector3.one;
@@ -29,21 +35,21 @@ public class NGUITools
 
     public static GameObject AddWidget(GameObject parent, Object prefab, bool isClearWidget)
     {
+        Transform widgets = parent.transform.Find("Widgets");
         if (isClearWidget)
         {
-            Transform widgets = parent.transform.Find("Widgets");
             for (int i = 0; i < widgets.childCount; i++)
             {
                 GameObject gameObject = widgets.GetChild(i).gameObject;
                 GameObject.DestroyImmediate(gameObject);
             }
-            parent.transform.Find("Widgets").DetachChildren();
+            widgets.DetachChildren();
         }
         GameObject go = prefab as GameObject;
         if (go != null && parent != null)
         {
-            Transform t = MonoBehaviour.Instantiate(go).transform;
-            t.SetParent(parent.transform.Find("Widgets"), false);
+            Transform t = GameObject.Instantiate(go).transform;
+            t.SetParent(widgets, false);
             t.localPosition = Vector3.zero;
             t.localRotation = Quaternion.identity;
             t.localScale = Vector3.one;

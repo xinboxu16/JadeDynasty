@@ -248,6 +248,7 @@
     <Compile Include="Assets\Scripts\UI\NGUITools.cs" />
     <Compile Include="Assets\Scripts\UI\PrefabScript\ScreenScrollTip.cs" />
     <Compile Include="Assets\Scripts\UI\RealTime.cs" />
+    <Compile Include="Assets\Scripts\UI\UIDepth.cs" />
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
     <Compile Include="Assets\Scripts\Update\ResLoadAsyncHandler.cs" />
     <Compile Include="Assets\Scripts\Update\ResLoadHelper.cs" />

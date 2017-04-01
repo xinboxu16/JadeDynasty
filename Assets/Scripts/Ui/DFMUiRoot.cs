@@ -27,7 +27,7 @@ public class DFMUiRoot : MonoBehaviour {
         //Input.multiTouchEnabled = false;
 
         DontDestroyOnLoad(this.gameObject.transform);
-        UIManager.Instance.Init(this.gameObject);
+        UIManager.Instance.Init(this.transform.Find("Widgets").gameObject);
         UIManager.Instance.OnAllUiLoadedDelegate += AfterAllUiLoaded;
 
         AddSubscribeForGfx();
@@ -72,6 +72,7 @@ public class DFMUiRoot : MonoBehaviour {
                 loading = NGUITools.AddWidget(gameObject, go, true);
                 if (loading != null)
                 {
+                    //Debug.Log("loading"+loading.transform.GetSiblingIndex().ToString());
                     loading.transform.localPosition = new Vector3(0, 0, 0);
                     NGUITools.SetActive(loading, true);
                 }
@@ -105,7 +106,7 @@ public class DFMUiRoot : MonoBehaviour {
     {
         try
         {
-            UIManager.Instance.LoadAllWindows(0, transform.root.GetComponent<Canvas>().worldCamera);
+            UIManager.Instance.LoadAllWindows((int)UISceneType.Login, transform.root.GetComponent<Canvas>().worldCamera);
         }
         catch (Exception ex)
         {
