@@ -245,6 +245,10 @@
     <Compile Include="Assets\Scripts\UI\DFMUiRoot.cs" />
     <Compile Include="Assets\Scripts\UI\Loading\LoadingProgressBar.cs" />
     <Compile Include="Assets\Scripts\UI\Login\Frames.cs" />
+    <Compile Include="Assets\Scripts\UI\Login\Login.cs" />
+    <Compile Include="Assets\Scripts\UI\Login\UIServerItem.cs" />
+    <Compile Include="Assets\Scripts\UI\Login\UIServerItemContainer.cs" />
+    <Compile Include="Assets\Scripts\UI\Login\UIServerSelect.cs" />
     <Compile Include="Assets\Scripts\UI\NGUITools.cs" />
     <Compile Include="Assets\Scripts\UI\PrefabScript\ScreenScrollTip.cs" />
     <Compile Include="Assets\Scripts\UI\RealTime.cs" />

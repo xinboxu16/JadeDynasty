@@ -31,6 +31,11 @@ namespace DashFire
             m_StrDictionaryMgr.CollectDataFromDBC(file, root);
         }
 
+        public StrDictionary GetDataById(int id)
+        {
+            return m_StrDictionaryMgr.GetDataById(id);
+        }
+
         public static StrDictionaryProvider Instance
         {
             get { return s_Instance; }

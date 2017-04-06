@@ -38,6 +38,16 @@ namespace DashFire
             m_ServerConfigMgr.CollectDataFromDBC(file, root);
         }
 
+        public MyDictionary<int, object> GetData()
+        {
+            return m_ServerConfigMgr.GetData();
+        }
+
+        public ServerConfig GetDataById(int id)
+        {
+            return m_ServerConfigMgr.GetDataById(id);
+        }
+
         public static ServerConfigProvider Instance
         {
             get { return s_Instance; }
