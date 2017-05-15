@@ -110,7 +110,7 @@ public class UIServerSelect : MonoBehaviour {
 
         if (goTweenContainer != null)
         {
-            TweenPosition tweenPos = TweenPosition.Begin(this.goTweenContainer, new Vector3(0, 0, 0.0f), new Vector3(0, tweenOffset / 2, 0.0f), durationForDown);
+            TweenPosition tweenPos = TweenPosition.Begin(this.goTweenContainer, new Vector3(0, tweenOffset, 0.0f), new Vector3(0, 0, 0.0f), durationForDown);
             if(tweenPos != null)
             {
                 tweenPos.animationCurve = curveForDown;
