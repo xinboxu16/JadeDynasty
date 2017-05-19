@@ -24,6 +24,8 @@ namespace DashFire
 
         private bool m_IsObserver = false;
         private SceneResource m_CurScene;
+        private List<int> m_DebugObstacleActors = new List<int>();
+        private bool m_IsDebugObstacleCreated = false;
 
         //初始化
         public void Init()
@@ -35,10 +37,109 @@ namespace DashFire
             //GfxSystem.EventChannelForLogic.Subscribe("ge_change_hero", "game", ChangeHeroFromGfx);
             //GfxSystem.EventChannelForLogic.Subscribe<int>("ge_change_player_movemode", "game", ChangePlayerMoveMode);
             //GfxSystem.EventChannelForLogic.Subscribe<int, int>("ge_change_npc_movemode", "game", ChangeNpcMoveMode);
-            //GfxSystem.EventChannelForLogic.Subscribe<int>("ge_change_scene", "game", ChangeSceneFromGfx);
+            GfxSystem.EventChannelForLogic.Subscribe<int>("ge_change_scene", "game", ChangeSceneFromGfx);//切换场景
             //GfxSystem.EventChannelForLogic.Subscribe("ge_resetdsl", "game", ResetDsl);
             //GfxSystem.EventChannelForLogic.Subscribe<string>("ge_execscript", "game", ExecScript);
             //GfxSystem.EventChannelForLogic.Subscribe<string>("ge_execcommand", "game", ExecCommand);
+        }
+
+        private void ChangeSceneFromGfx(int sceneId)
+        {
+            try
+            {
+                if(null == m_CurScene || m_CurScene.IsSuccessEnter)
+                {
+                    if(0 == sceneId)
+                    {
+                        if (IsPvpScene() || IsMultiPveScene())
+                        {
+                            NetworkSystem.Instance.QuitBattle();
+                        }
+                        LobbyNetworkSystem.Instance.QuitClient();    
+                    }
+
+                    ChangeScene(sceneId);
+                }
+            }
+            catch (Exception ex)
+            {
+                LogSystem.Error("ExecCommand exception:{0}\n{1}", ex.Message, ex.StackTrace);
+            }
+        }
+
+        private bool ChangeScene(int sceneId)
+        {
+            try
+            {
+                if (null != m_CurScene)
+                {
+                    if (m_CurScene.ResId == sceneId)
+                    {
+                        return true;
+                    }
+                    else if (!m_CurScene.IsSuccessEnter && !this.IsServerSelectScene())
+                    {
+                        return false;
+                    }
+
+                    Reset();
+                    m_CurScene.Release();
+                    m_CurScene = null;
+                }
+                else
+                {
+                    Reset();
+                }
+            }
+        }
+
+        //Obstacle 障碍物
+        private void DestroyObstacleObjects()
+        {
+            foreach (int actor in m_DebugObstacleActors)
+            {
+                GfxSystem.DestroyGameObject(actor);
+            }
+            m_IsDebugObstacleCreated = false;
+        }
+
+        public void Reset()
+        {
+            LogSystem.Debug("WorldSystem.Reset Destory Objects...");
+            DestroyObstacleObjects();
+
+            for (LinkedListNode<UserInfo> linkNode = m_UserMgr.Users.FirstValue; null != linkNode; linkNode = linkNode.Next)
+            {
+                UserInfo info = linkNode.Value;
+                if (null != info)
+                {
+                    EntityManager.Instance.DestroyUserView(info.GetId());
+                }
+            }
+            for (LinkedListNode<NpcInfo> linkNode = m_NpcMgr.Npcs.FirstValue; null != linkNode; linkNode = linkNode.Next)
+            {
+                NpcInfo info = linkNode.Value;
+                if (null != info)
+                {
+                    EntityManager.Instance.DestroyNpcView(info.GetId());
+                }
+            }
+            LogSystem.Debug("WorldSystem.Reset Destory Objects Finish.");
+
+            m_UserMgr.Reset();
+            m_NpcMgr.Reset();
+            m_SceneLogicInfoMgr.Reset();
+
+            m_SceneLogicSystem.Reset();
+            m_SpatialSystem.Reset();
+            m_AiSystem.Reset();
+            m_BlackBoard.Reset();
+
+            ControlSystemOperation.Reset();
+
+            ClientStorySystem.Instance.Reset();
+            ClientStorySystem.Instance.ClearStoryInstancePool();
+            StorySystem.StoryConfigManager.Instance.Clear();
         }
 
         public void LoadData()
@@ -110,5 +211,31 @@ namespace DashFire
         }
 
         #endregion
+
+
+
+        public bool IsMultiPveScene()
+        {
+            if (null == m_CurScene)
+                return false;
+            else
+                return m_CurScene.IsMultiPve;
+        }
+
+        public bool IsPvpScene()
+        {
+            if (null == m_CurScene)
+                return false;
+            else
+                return m_CurScene.IsPvp;
+        }
+
+        public bool IsServerSelectScene()
+        {
+            if (null == m_CurScene)
+                return false;
+            else
+                return m_CurScene.IsServerSelectScene;
+        }
     }
 }
