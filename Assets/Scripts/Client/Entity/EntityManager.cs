@@ -20,6 +20,9 @@ namespace DashFire
      */
     public sealed class EntityManager
     {
+        private MyDictionary<int, UserView> m_UserViews = new MyDictionary<int, UserView>();
+        private MyDictionary<int, NpcView> m_NpcViews = new MyDictionary<int, NpcView>();
+
         /**
          * @brief 构筑函数
          *
@@ -36,6 +39,56 @@ namespace DashFire
          */
         public void Init()
         {
+        }
+
+        public void DestroyUserView(int objId)
+        {
+            if (m_UserViews.ContainsKey(objId))
+            {
+                UserView view = m_UserViews[objId];
+                if (view != null)
+                {
+                    view.Destroy();
+                }
+                m_UserViews.Remove(objId);
+            }
+        }
+
+        public void DestroyNpcView(int objId)
+        {
+            if (m_NpcViews.ContainsKey(objId))
+            {
+                NpcView view = m_NpcViews[objId];
+                if (view != null)
+                {
+                    view.Destroy();
+                }
+                m_NpcViews.Remove(objId);
+            }
+        }
+
+        public UserView GetUserViewById(int objId)
+        {
+            UserView view = null;
+            if (m_UserViews.ContainsKey(objId))
+                view = m_UserViews[objId];
+            return view;
+        }
+
+        public NpcView GetNpcViewById(int objId)
+        {
+            NpcView view = null;
+            if (m_NpcViews.ContainsKey(objId))
+                view = m_NpcViews[objId];
+            return view;
+        }
+
+        public CharacterView GetCharacterViewById(int objId)
+        {
+            CharacterView view = GetUserViewById(objId);
+            if (null == view)
+                view = GetNpcViewById(objId);
+            return view;
         }
 
         #region Singleton

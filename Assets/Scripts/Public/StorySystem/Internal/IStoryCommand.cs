@@ -11,6 +11,6 @@ namespace StorySystem
     /// </summary>
     public interface IStoryCommand
     {
-
+        void Reset();//复位实例，保证实例状态为初始状态。
     }
 }

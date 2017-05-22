@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using uTools;
 
@@ -47,6 +48,9 @@ public class Login : MonoBehaviour {
 
     void Start()
     {
+        goServerBtn.GetComponent<Button>().onClick.AddListener(OnChangeServer);
+        this.transform.FindChild("StartBtn").GetComponent<Button>().onClick.AddListener(OnLoginButtonClick);
+
         object obj = LogicSystem.EventChannelForGfx.Subscribe<int>("ge_set_current_server", "ui", SetCurrentServer);
         if (obj != null) m_EventList.Add(obj);
         obj = LogicSystem.EventChannelForGfx.Subscribe<int, string>("ge_login_result", "lobby", OnLoginResult);
@@ -222,12 +226,15 @@ public class Login : MonoBehaviour {
         {
             Button uiBtn = goServerBtn.GetComponent<Button>();
             if (uiBtn != null) uiBtn.enabled = false;
-            Vector3 serverBtnPos = goServerBtn.transform.localPosition;
-            TweenPosition tweenPos = TweenPosition.Begin(goServerBtn, goServerBtn.transform.position, new Vector3(serverBtnPos.x, serverBtnPos.y + TweenOffset, 0.0f), DurationForUpwards);
+            Vector3 serverBtnPos = (goServerBtn.transform as RectTransform).anchoredPosition;
+            TweenPosition tweenPos = TweenPosition.Begin(goServerBtn, serverBtnPos, new Vector3(serverBtnPos.x, serverBtnPos.y + TweenOffset, 0.0f), DurationForUpwards);
             if (tweenPos != null)
             {
+                tweenPos.method = EaseType.easeInOutBack;
                 tweenPos.animationCurve = CurveForUpwards;
-                tweenPos.onFinished.AddListener(OnTweenUpwardsFinished);
+                UnityEvent unityEvent = new UnityEvent();
+                unityEvent.AddListener(OnTweenUpwardsFinished);
+                tweenPos.SetOnFinished(unityEvent);
             }
         }
     }
@@ -241,6 +248,21 @@ public class Login : MonoBehaviour {
             TweenPosition tween = goServerBtn.GetComponent<TweenPosition>();
             if (tween != null) Destroy(tween);
             NGUITools.SetActive(goServerBtn, false);
+        }
+    }
+
+    public void TweenDownServerBtn()
+    {
+        if(null != goServerBtn)
+        {
+            NGUITools.SetActive(goServerBtn, true);
+            Vector2 serverBtnPos = (goServerBtn.transform as RectTransform).anchoredPosition;
+            TweenPosition posTween = TweenPosition.Begin(goServerBtn, serverBtnPos, new Vector3(serverBtnPos.x, serverBtnPos.y - TweenOffset, 0.0f), DurationForUpwards);
+            if(posTween)
+            {
+                posTween.method = EaseType.easeInOutBack;
+                posTween.animationCurve = CurveForDown;
+            }
         }
     }
 }

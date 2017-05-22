@@ -180,5 +180,32 @@ namespace DashFire
 
             return result;
         }
+
+        /**
+         * @brief 提取数据
+         *
+         * @param node
+         *
+         * @return 
+         */
+        public IData ExtractData(DataMap_Type type, int id)
+        {
+            IData result = null;
+            switch(type)
+            {
+                case DataMap_Type.DT_Unit:
+                    result = m_UnitMgr.GetDataById(id);
+                    break;
+                case DataMap_Type.DT_SceneLogic:
+                    result = m_SceneLogicMgr.GetDataById(id);
+                    break;
+                case DataMap_Type.DT_All:
+                case DataMap_Type.DT_None:
+                default:
+                    result = null;
+                    break;
+            }
+            return result;
+        }
     }
 }

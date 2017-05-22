@@ -187,6 +187,25 @@ namespace DashFire
             return provider;
         }
 
+        public Data_SceneConfig GetSceneConfigById(int id)
+        {
+            return m_SceneConfigMgr.GetDataById(id);
+        }
+
+        public Data_SceneDropOut GetSceneDropOutById(int id)
+        {
+            return m_SceneDropOutMgr.GetDataById(id);
+        }
+
+        public MapDataProvider GetMapDataBySceneResId(int resId)
+        {
+            if (m_MapDataProviders.ContainsKey(resId))
+            {
+                return m_MapDataProviders[resId];
+            }
+            return null;
+        }
+
         public static SceneConfigProvider Instance
         {
             get { return s_Instance; }

@@ -187,4 +187,12 @@ public class GameLogic : MonoBehaviour
 
         DashFire.LogicSystem.EventChannelForGfx.Publish("ge_show_login", "ui");
     }
+
+    internal void RestartLocgic()
+    {
+        LogicSystem.SetLoadingBarScene("LoadingBar");
+        //Application.LoadLevel("Loading");
+        LogicSystem.PublishLogicEvent("ge_change_scene", "game", 0);
+        m_IsInit = true;
+    }
 }

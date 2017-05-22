@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using DashFireSpatial;
+using DashFire.Network;
 
 /**
  * @file GameSystem.cs
@@ -26,6 +28,23 @@ namespace DashFire
         private SceneResource m_CurScene;
         private List<int> m_DebugObstacleActors = new List<int>();
         private bool m_IsDebugObstacleCreated = false;
+
+
+        private UserManager m_UserMgr = new UserManager(16);
+        private NpcManager m_NpcMgr = new NpcManager(256);
+        private SceneLogicInfoManager m_SceneLogicInfoMgr = new SceneLogicInfoManager(256);
+
+        private SceneLogicSystem m_SceneLogicSystem = new SceneLogicSystem();
+        //形状碰撞
+        private SpatialSystem m_SpatialSystem = new SpatialSystem();
+
+        private AiSystem m_AiSystem = new AiSystem();
+
+        private BlackBoard m_BlackBoard = new BlackBoard();
+
+        private SceneContextInfo m_SceneContext = new SceneContextInfo();
+
+        private long m_LastTryChangeSceneTime = 0;
 
         //初始化
         public void Init()
@@ -90,7 +109,17 @@ namespace DashFire
                 {
                     Reset();
                 }
+
+                m_LastTryChangeSceneTime = TimeUtility.GetLocalMilliseconds();//运行到现在时间
+                m_CurScene = new SceneResource();//场景管理
+                m_CurScene.Init(sceneId);//初始化
             }
+            catch (Exception ex)
+            {
+                LogSystem.Error("Exception:{0}\n{1}", ex.Message, ex.StackTrace);
+            }
+
+            return false;
         }
 
         //Obstacle 障碍物
@@ -140,6 +169,21 @@ namespace DashFire
             ClientStorySystem.Instance.Reset();
             ClientStorySystem.Instance.ClearStoryInstancePool();
             StorySystem.StoryConfigManager.Instance.Clear();
+        }
+
+        public CharacterInfo GetCharacterById(int id)
+        {
+            CharacterInfo obj = null;
+            if (null != m_NpcMgr)
+                obj = m_NpcMgr.GetNpcInfo(id);
+            if (null != m_UserMgr && null == obj)
+                obj = m_UserMgr.GetUserInfo(id);
+            return obj;
+        }
+
+        public SceneContextInfo SceneContext
+        {
+            get { return m_SceneContext; }
         }
 
         public void LoadData()

@@ -43,5 +43,13 @@ namespace DashFire
             get { return m_IsDebug; }
             set { m_IsDebug = value; }
         }
+
+        public static int GetUnitIdByCampId(int campid)
+        {
+            if (campid == (int)CampIdEnum.Blue)
+                return 20001;
+            else
+                return 20002;
+        }
     }
 }

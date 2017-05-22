@@ -41,6 +41,11 @@ namespace DashFire
             s_Instance.ListenKeyPressStateImpl(keys);
         }
 
+        public static void DestroyGameObject(int id)
+        {
+            QueueGfxAction(s_Instance.DestroyGameObjectImpl, id);
+        }
+
         public static void PublishGfxEvent(string evt, string group, params object[] args)
         {
             QueueGfxAction(s_Instance.PublishGfxEventImpl, evt, group, args);
@@ -73,6 +78,31 @@ namespace DashFire
         public static void QueueGfxAction<T1, T2, T3>(MyAction<T1, T2, T3> action, T1 t1, T2 t2, T3 t3)
         {
             QueueGfxActionWithDelegation(action, t1, t2, t3);
+        }
+
+        public static void QueueGfxAction<T1, T2, T3, T4, T5>(MyAction<T1, T2, T3, T4, T5> action, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5)
+        {
+            QueueGfxActionWithDelegation(action, t1, t2, t3, t4, t5);
+        }
+
+        public static void QueueGfxAction<T1, T2, T3, T4>(MyAction<T1, T2, T3, T4> action, T1 t1, T2 t2, T3 t3, T4 t4)
+        {
+            QueueGfxActionWithDelegation(action, t1, t2, t3, t4);
+        }
+
+        public static void LoadScene(string sceneName, int chapter, int sceneId, HashSet<int> limitList, MyAction onFinish)
+        {
+            QueueGfxAction(s_Instance.LoadSceneImpl, sceneName, chapter, sceneId, limitList, onFinish);
+        }
+
+        public static void SendMessage(string objname, string msg, object arg, bool needReceiver)
+        {
+            QueueGfxAction(s_Instance.SendMessageImpl, objname, msg, arg, needReceiver);
+        }
+
+        public static void SendMessage(string objname, string msg, object arg)
+        {
+            SendMessage(objname, msg, arg, false);
         }
 
         public static void GfxLog(string format, params object[] args)

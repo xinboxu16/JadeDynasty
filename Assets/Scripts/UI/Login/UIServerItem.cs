@@ -20,7 +20,11 @@ public class UIServerItem : MonoBehaviour {
 
     void Start()
     {
- 
+        Button button = this.transform.GetComponent<Button>();
+        if(button)
+        {
+            button.onClick.AddListener(OnClick);
+        }
     }
 
     void Update()

@@ -6,6 +6,7 @@ using System.Text;
 
 namespace DashFire
 {
+    //SubType=0-剧情/普通场景；1-精英；2-千层塔	
     public enum SceneSubTypeEnum
     {
         TYPE_UNKNOWN = -1,

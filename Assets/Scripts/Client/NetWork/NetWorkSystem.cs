@@ -12,7 +12,20 @@ namespace DashFire.Network
 {
     public class NetworkSystem
     {
-        /**
+        private string m_Ip;
+        private int m_Port;
+        private bool m_IsConnected = false;
+        private bool m_IsWaitStart = true;
+
+        private bool m_IsQuited = false;
+
+        private NetClient m_NetClient;
+        private bool m_CanSendMessage = false;
+
+        private bool m_NetClientStarted = false;
+
+        private int m_CampId = 0;
+
         #region
         private static NetworkSystem s_Instance = new NetworkSystem();
         public static NetworkSystem Instance
@@ -21,6 +34,66 @@ namespace DashFire.Network
         }
         #endregion
 
+        public void QuitBattle()
+        {
+            m_IsWaitStart = true;
+            if (m_IsConnected)
+            {
+                Msg_CR_Quit msg = new Msg_CR_Quit();
+                SendMessage(msg);
+            }
+            WorldSystem.Instance.QueueAction(this.ShutdownNetClient);
+        }
+
+        public void SendMessage(object msg)
+        {
+            try
+            {
+                if (!m_IsConnected)
+                {
+                    return;
+                }
+                NetOutgoingMessage om = m_NetClient.CreateMessage();
+                byte[] bt = Serialize.Encode(msg);
+                om.Write(bt);
+                NetSendResult result = m_NetClient.SendMessage(om, NetDeliveryMethod.ReliableOrdered);
+                if (result == NetSendResult.FailedNotConnected)
+                {
+                    m_IsConnected = false;
+                    m_CanSendMessage = false;
+                    LogSystem.Debug("SendMessage FailedNotConnected");
+                }
+                else if (result == NetSendResult.Dropped)
+                {
+                    LogSystem.Error("SendMessage {0} Dropped", msg.ToString());
+                }
+                m_NetClient.FlushSendQueue();
+            }
+            catch (Exception ex)
+            {
+                LogSystem.Error("NetworkSystem.SendMessage throw Exception:{0}\n{1}", ex.Message, ex.StackTrace);
+            }
+        }
+
+        private void ShutdownNetClient()
+        {
+            if (m_NetClient != null)
+            {
+                if (m_NetClientStarted)
+                {
+                    m_NetClient.Shutdown("bye");
+                    m_NetClientStarted = false;
+                }
+            }
+        }
+
+        public int CampId
+        {
+            get { return m_CampId; }
+            set { m_CampId = value; }
+        }
+
+        /**
         public bool Init()
         {
             Serialize.Init();

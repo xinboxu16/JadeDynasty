@@ -49,7 +49,7 @@ public class UIServerSelect : MonoBehaviour {
     {
         if (goItemContainer == null) return;
         GridLayoutGroup grid = this.GetComponentInChildren<GridLayoutGroup>();
-        if (grid != null) return;
+        if (grid == null) return;
         MyDictionary<int, object> serverConfigDic = ServerConfigProvider.Instance.GetData();
         int serverIndex = 0;
         GameObject go = null;
@@ -64,16 +64,16 @@ public class UIServerSelect : MonoBehaviour {
                 UIServerItemContainer itemContainer = go.GetComponent<UIServerItemContainer>();
                 if (itemContainer != null)
                 {
-                    itemContainer.SetServerItem(serverIndex % 2, cfg.ServerId, cfg.ServerName, "");
+                    itemContainer.SetServerItem(serverIndex % 2, cfg.ServerId, cfg.ServerName, "baoman");
                     serverIndex++;
                 }
             }
             
-            if (serverIndex % 2 == 1 && go != null)
-            {
-                UIServerItemContainer con = go.GetComponent<UIServerItemContainer>();
-                if (con != null) con.HideServerItem();
-            }
+            //if (serverIndex % 2 == 1 && go != null)
+            //{
+            //    UIServerItemContainer con = go.GetComponent<UIServerItemContainer>();
+            //    if (con != null) con.HideServerItem();
+            //}
         }
     }
 
@@ -86,7 +86,7 @@ public class UIServerSelect : MonoBehaviour {
                 ServerConfig cfg = ServerConfigProvider.Instance.GetDataById(serverId);
                 if (cfg != null)
                 {
-                    recentLogin.SetServerInfo(cfg.ServerId, cfg.ServerName, "火爆");
+                    recentLogin.SetServerInfo(cfg.ServerId, cfg.ServerName, "baoman");
                 }
             }
         }
@@ -113,6 +113,7 @@ public class UIServerSelect : MonoBehaviour {
             TweenPosition tweenPos = TweenPosition.Begin(this.goTweenContainer, new Vector3(0, tweenOffset, 0.0f), new Vector3(0, 0, 0.0f), durationForDown);
             if(tweenPos != null)
             {
+                tweenPos.method = EaseType.easeInOutBack;
                 tweenPos.animationCurve = curveForDown;
                 tweenPos.from = new Vector3(0, tweenOffset*1.5f, 0);
             }
@@ -128,8 +129,11 @@ public class UIServerSelect : MonoBehaviour {
             TweenPosition tweenPos = TweenPosition.Begin(this.goTweenContainer, new Vector3(0, 0, 0.0f), new Vector3(0, tweenOffset*1.5f, 0f), durationForUpwards);
             if (tweenPos != null)
             {
+                tweenPos.method = EaseType.easeInOutBack;
                 tweenPos.animationCurve = curveForUpwards;
-                tweenPos.onFinished.AddListener(OnTweenUpwardsFinished);
+                UnityEvent unityEvent = new UnityEvent();
+                unityEvent.AddListener(OnTweenUpwardsFinished);
+                tweenPos.SetOnFinished(unityEvent);
             }
         }
     }
@@ -140,10 +144,11 @@ public class UIServerSelect : MonoBehaviour {
         GameObject goLogin = UIManager.Instance.GetWindowGoByName("LoginPrefab");
         if (goLogin != null)
         {
-            //Login uiLogin = goLogin.GetComponent<Login>();
-            //if (uiLogin != null) uiLogin.TweenDownServerBtn();
-        }
-        DashFire.GfxSystem.PublishGfxEvent("ge_set_current_server", "ui", m_SelectServerId);
+            Login uiLogin = goLogin.GetComponent<Login>();
+            if (uiLogin != null) uiLogin.TweenDownServerBtn();
+        } 
+        LogicSystem.EventChannelForGfx.Publish("ge_set_current_server", "ui", m_SelectServerId);
+        //DashFire.GfxSystem.PublishGfxEvent("ge_set_current_server", "ui", m_SelectServerId);
         TweenPosition tween = goTweenContainer.GetComponent<TweenPosition>();
         if (null != tween) Destroy(tween);
     }
