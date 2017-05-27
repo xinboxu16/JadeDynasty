@@ -12,6 +12,10 @@ namespace DashFire
         private Data_SceneDropOut m_SceneDropOut;
         private MapDataProvider m_SceneStaticData;
 
+        private Dictionary<int, int> m_DropMoneyData = new Dictionary<int, int>();
+        private Dictionary<int, int> m_DropHpData = new Dictionary<int, int>();
+        private Dictionary<int, int> m_DropMpData = new Dictionary<int, int>();
+
         private bool m_IsSuccessEnter = false;
         private bool m_IsWaitSceneLoad = true;
         private bool m_IsWaitRoomServerConnect = true;
@@ -48,6 +52,17 @@ namespace DashFire
             }
         }
 
+        public bool IsPve
+        {
+            get
+            {
+                if (null == m_SceneConfig)
+                    return false;
+                else
+                    return m_SceneConfig.m_Type == (int)SceneTypeEnum.TYPE_PVE;
+            }
+        }
+
         private int m_SceneResId;
 
         public int ResId
@@ -66,6 +81,14 @@ namespace DashFire
                     return false;
                 else
                     return m_SceneConfig.m_Type == (int)SceneTypeEnum.TYPE_SERVER_SELECT;
+            }
+        }
+
+        public Data_SceneConfig SceneConfig
+        {
+            get
+            {
+                return m_SceneConfig;
             }
         }
 
@@ -144,7 +167,80 @@ namespace DashFire
                 m_CameraLookAtHeight = unit.m_Pos.y;
             }
 
+            CalculateDropOut();//计算掉落
+
             GfxSystem.GfxLog("SceneResource.Init {0}", resId);
+        }
+
+        private void CalculateDropOut()
+        {
+            if(null != m_SceneDropOut && IsPve)
+            {
+                m_DropMoneyData.Clear();
+                m_DropHpData.Clear();
+                m_DropMpData.Clear();
+
+                List<int> npcList = new List<int>();
+                MyDictionary<int, object>.ValueCollection mapUnitDatas = m_SceneStaticData.m_UnitMgr.GetData().Values;
+                foreach(Data_Unit npcUnit in mapUnitDatas)
+                {
+                    if (npcUnit.GetId() < 10000)
+                    {
+                        npcList.Add(npcUnit.GetId());
+                    }
+                }
+
+                List<int> addIndex = new List<int>();
+                // calculate money
+                if(m_SceneDropOut.m_GoldMin > 0)
+                {
+                    int dropCount = m_SceneDropOut.m_GoldSum / m_SceneDropOut.m_GoldMin;
+                    int curMoney = m_SceneDropOut.m_GoldSum;
+                    int npcCount = npcList.Count;
+                    dropCount = npcCount > dropCount ? dropCount : npcCount;
+                    while(dropCount > addIndex.Count)
+                    {
+                        int index = new Random().Next(0, npcList.Count);
+                        if(addIndex.IndexOf(index) == -1)
+                        {
+                            int dropMoney = new Random().Next(m_SceneDropOut.m_GoldMin, m_SceneDropOut.m_GoldMax);
+                            if(dropMoney > curMoney)
+                            {
+                                dropMoney = curMoney;
+                            }
+                            curMoney -= dropMoney;
+                            m_DropMoneyData.Add(npcList[index], dropMoney);
+                            addIndex.Add(index);
+                            if (curMoney <= 0) break;
+                        }
+                    }
+                }
+
+                // calculate hp
+                addIndex.Clear();
+                while (m_SceneDropOut.m_HpCount > addIndex.Count)
+                {
+                    int index = new Random().Next(0, npcList.Count);
+                    if (addIndex.IndexOf(index) == -1)
+                    {
+                        //LogSystem.Debug("npcList count = {0} index = {1}", npcList.Count, index);
+                        m_DropHpData.Add(npcList[index], m_SceneDropOut.m_HpPercent);
+                        addIndex.Add(index);
+                    }
+                }
+
+                // calculate mp
+                addIndex.Clear();
+                while (m_SceneDropOut.m_HpCount > addIndex.Count)
+                {
+                    int index = new Random().Next(0, npcList.Count);
+                    if (addIndex.IndexOf(index) == -1)
+                    {
+                        m_DropMpData.Add(npcList[index], m_SceneDropOut.m_HpPercent);
+                        addIndex.Add(index);
+                    }
+                }
+            }
         }
     }
 }

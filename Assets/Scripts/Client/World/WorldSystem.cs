@@ -113,6 +113,18 @@ namespace DashFire
                 m_LastTryChangeSceneTime = TimeUtility.GetLocalMilliseconds();//运行到现在时间
                 m_CurScene = new SceneResource();//场景管理
                 m_CurScene.Init(sceneId);//初始化
+
+                if (null != m_CurScene.SceneConfig)
+                {
+                    //如果是服务器选择场景
+                    if(IsServerSelectScene())
+                    {
+                        LobbyClient.Instance.CurrentRole = null;
+                    }
+                    Data_SceneConfig sceneConfig = SceneConfigProvider.Instance.GetSceneConfigById(m_CurScene.ResId);
+                    m_SpatialSystem.Init(FilePathDefine_Client.C_RootPath + sceneConfig.m_BlockInfoFile, sceneConfig.m_ReachableSet);
+
+                }
             }
             catch (Exception ex)
             {

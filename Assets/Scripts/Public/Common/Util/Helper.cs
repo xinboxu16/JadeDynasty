@@ -47,6 +47,8 @@ namespace DashFire
             LogSystem.Debug("LogCallStack:\n{0}\n", trace.ToString());
         }
 
+
+
         //XOR 异或运算
         // 防君子不防小人的简单加密
         public static void Xor(byte[] buffer, byte[] xor)
