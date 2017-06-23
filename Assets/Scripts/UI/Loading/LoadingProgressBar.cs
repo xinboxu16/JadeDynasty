@@ -94,7 +94,7 @@ public class LoadingProgressBar : MonoBehaviour {
         }
     }
 
-    void EndLoading()
+    public void EndLoading()
     {
         Debug.Log("EndLoading");
         sign2 = false;

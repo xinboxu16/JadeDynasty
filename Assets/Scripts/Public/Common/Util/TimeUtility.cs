@@ -16,6 +16,11 @@ namespace DashFire
         private static long s_AverageRoundtripTime = 0;
         private static long s_RemoteTimeOffset = 0;
 
+        private TimeUtility()
+        {
+            m_StartTimeUs = GetElapsedTimeUs();
+        }
+
         public static long GetElapsedTimeUs()
         {
             return DateTime.Now.Ticks / 10;

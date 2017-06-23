@@ -18,6 +18,8 @@ public class AutoPostSpritePacker : AssetPostprocessor
             textureImporter.allowAlphaSplitting = true;
             textureImporter.alphaIsTransparency = true;
             textureImporter.textureCompression = TextureImporterCompression.Compressed;
+
+            AssetDatabase.Refresh();
         }
     }
 }

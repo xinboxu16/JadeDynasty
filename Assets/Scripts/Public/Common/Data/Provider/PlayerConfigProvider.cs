@@ -197,6 +197,11 @@ namespace DashFire
             m_PlayerLevelupExpConfigMgr.CollectDataFromDBC(file, root);
         }
 
+        public Data_PlayerConfig GetPlayerConfigById(int id)
+        {
+            return m_PlayerConfigMgr.GetDataById(id);
+        }
+
         public static PlayerConfigProvider Instance
         {
             get { return s_Instance; }

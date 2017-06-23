@@ -467,6 +467,42 @@ namespace DashFire
             return result;
         }
 
+        /**
+         * @brief 提取数据
+         *
+         * @param node
+         *
+         * @return 
+         */
+        public IData ExtractData(SkillConfigType type, int id)
+        {
+            IData result = null;
+            switch(type)
+            {
+                case SkillConfigType.SCT_SKILL:
+                    {
+                        result = skillLogicDataMgr.GetDataById(id);
+                    } break;
+                case SkillConfigType.SCT_IMPACT:
+                    {
+                        result = impactLogicDataMgr.GetDataById(id);
+                    } break;
+                case SkillConfigType.SCT_EFFECT:
+                    {
+                        result = effectLogicDataMgr.GetDataById(id);
+                    } break;
+                case SkillConfigType.SCT_SOUND:
+                    {
+                        result = soundLogicDataMgr.GetDataById(id);
+                    } break;
+                default:
+                    {
+                        result = null;
+                    } break;
+            }
+            return result;
+        }
+
         private static SkillConfigProvider s_instance_ = new SkillConfigProvider();
         public static SkillConfigProvider Instance
         {

@@ -1,4 +1,5 @@
 ﻿using DashFire;
+using DashFire.Network;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,13 +23,6 @@ public class Login : MonoBehaviour {
     public float DurationForDown = 0.3f;
     public float TweenOffset = 150;
     private List<object> m_EventList = new List<object>();
-
-    public enum AccountLoginResult
-    {
-        Success = 0,
-        FirstLogin,
-        Error
-    }
 
     public void UnSubscribe()
     {
@@ -59,6 +53,8 @@ public class Login : MonoBehaviour {
         if (obj != null) m_EventList.Add(obj);
         obj = LogicSystem.EventChannelForGfx.Subscribe("ge_ui_unsubscribe", "ui", UnSubscribe);
         if (obj != null) m_EventList.Add(obj);
+        object eo = DashFire.LogicSystem.EventChannelForGfx.Subscribe<bool>("ge_create_hero_scene", "ui", SetSceneAndLoadHero);
+        if (eo != null) { m_EventList.Add(eo); }
 
         //获取上一次登录的服务器ID，若没有则默认值为0
         m_ServerId = PlayerPrefs.GetInt("LastLoginServerId");
@@ -121,8 +117,6 @@ public class Login : MonoBehaviour {
             if (ret == AccountLoginResult.Success)
             {
                 LogicSystem.EventChannelForGfx.Publish("ge_ui_connect_hint", "ui", true, false);
-                //登录成功  
-                UIManager.Instance.HideWindowByName("LoadingHint");
                 if (CYMGAvailable)
                 {
 #if UNITY_IPHONE
@@ -135,7 +129,6 @@ public class Login : MonoBehaviour {
                 //账号首次登录，提示输入激活码 
                 UIManager.Instance.HideWindowByName("LoginPrefab");
                 UIManager.Instance.ShowWindowByName("Verification");
-                UIManager.Instance.HideWindowByName("LoadingHint");
                 //UISkillGuide.Instance.SetSteps(1);//第一次登陆初始技能教学预设 未实现
                 if (CYMGAvailable)
                 {
@@ -176,6 +169,7 @@ public class Login : MonoBehaviour {
             else
             {
                 //获取角色列表失败，给出错误提示
+                Debug.LogError("role list failed...");
             }
         }
         catch (Exception ex)
@@ -237,6 +231,13 @@ public class Login : MonoBehaviour {
                 tweenPos.SetOnFinished(unityEvent);
             }
         }
+    }
+
+    //打开角色界面
+    private void SetSceneAndLoadHero(bool vis)
+    {
+        UIManager.Instance.ShowWindowByName("SelectCreateHero");
+        LogicSystem.EventChannelForGfx.Publish("ge_show_hero_scene", "lobby", vis);
     }
 
     private void OnTweenUpwardsFinished()

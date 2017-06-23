@@ -45,6 +45,9 @@ namespace DashFire
         private SceneContextInfo m_SceneContext = new SceneContextInfo();
 
         private long m_LastTryChangeSceneTime = 0;
+        private bool m_IsWaitMatch = false;
+
+        private UserInfo m_PlayerSelf = null;
 
         //初始化
         public void Init()
@@ -86,7 +89,7 @@ namespace DashFire
             }
         }
 
-        private bool ChangeScene(int sceneId)
+        public bool ChangeScene(int sceneId)
         {
             try
             {
@@ -114,17 +117,22 @@ namespace DashFire
                 m_CurScene = new SceneResource();//场景管理
                 m_CurScene.Init(sceneId);//初始化
 
-                if (null != m_CurScene.SceneConfig)
-                {
-                    //如果是服务器选择场景
-                    if(IsServerSelectScene())
-                    {
-                        LobbyClient.Instance.CurrentRole = null;
-                    }
-                    Data_SceneConfig sceneConfig = SceneConfigProvider.Instance.GetSceneConfigById(m_CurScene.ResId);
-                    m_SpatialSystem.Init(FilePathDefine_Client.C_RootPath + sceneConfig.m_BlockInfoFile, sceneConfig.m_ReachableSet);
+                //if (null != m_CurScene.SceneConfig)
+                //{
+                //    //如果是服务器选择场景
+                //    if(IsServerSelectScene())
+                //    {
+                //        LobbyClient.Instance.CurrentRole = null;
+                //    }
+                //    Data_SceneConfig sceneConfig = SceneConfigProvider.Instance.GetSceneConfigById(m_CurScene.ResId);
+                //    m_SpatialSystem.Init(FilePathDefine_Client.C_RootPath + sceneConfig.m_BlockInfoFile, sceneConfig.m_ReachableSet);
+                //    m_SpatialSystem.LoadPatch(FilePathDefine_Client.C_RootPath + sceneConfig.m_BlockInfoFile + ".patch");
+                //    m_SpatialSystem.LoadObstacle(FilePathDefine_Client.C_RootPath + sceneConfig.m_ObstacleFile, 1 / sceneConfig.m_TiledDataScale);
 
-                }
+                //    LogSystem.Debug("init SpatialSystem:{0}", FilePathDefine_Client.C_RootPath + sceneConfig.m_BlockInfoFile);
+                //    LogSystem.Debug("GameSystem.ChangeNextScene:{0}", m_CurScene.ResId);
+                //    return true;
+                //}
             }
             catch (Exception ex)
             {
@@ -268,7 +276,10 @@ namespace DashFire
 
         #endregion
 
-
+        public UserInfo GetPlayerSelf()
+        {
+            return m_PlayerSelf;
+        }
 
         public bool IsMultiPveScene()
         {
@@ -292,6 +303,12 @@ namespace DashFire
                 return false;
             else
                 return m_CurScene.IsServerSelectScene;
+        }
+
+        public bool IsWaitMatch
+        {
+            get { return m_IsWaitMatch; }
+            set { m_IsWaitMatch = value; }
         }
     }
 }

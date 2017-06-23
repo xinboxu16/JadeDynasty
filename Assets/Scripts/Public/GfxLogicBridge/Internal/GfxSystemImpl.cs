@@ -353,11 +353,11 @@ namespace DashFire
             m_TargetSceneId = sceneId;
             m_TargetSceneLimitList = limitList;
             BeginLoading();
-            if (null == m_LoadingBarAsyncOperation)
-            {
-                m_LoadingBarAsyncOperation = SceneManager.LoadSceneAsync(m_LoadingBarScene);
-                m_LevelLoadedCallback = onFinish;
-            }
+            //if (null == m_LoadingBarAsyncOperation)
+            //{
+            //    m_LoadingBarAsyncOperation = SceneManager.LoadSceneAsync(m_LoadingBarScene);
+            //    m_LevelLoadedCallback = onFinish;
+            //}
         }
     }
 }

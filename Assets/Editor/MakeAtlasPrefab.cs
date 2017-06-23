@@ -25,11 +25,11 @@ public class MakeAtlasPrefab : Editor
                 {
                     string allPath = pngFile.FullName;
                     string assetPath = allPath.Substring(allPath.IndexOf("Textures"));
-                    Sprite sprite = Resources.Load<Sprite>(assetPath);
+                    Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>(assetPath);
                     GameObject go = new GameObject(sprite.name);
                     go.AddComponent<SpriteRenderer>().sprite = sprite;
                     allPath = spriteDir + "/" + sprite.name + ".prefab";
-                    string prefabPath = allPath.Substring(allPath.IndexOf("Textures"));
+                    string prefabPath = allPath.Substring(allPath.IndexOf("Assets"));
                     PrefabUtility.CreatePrefab(prefabPath, go);
                     GameObject.DestroyImmediate(go);
 

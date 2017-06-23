@@ -21,6 +21,7 @@ namespace DashFireSpatial
 
         private string map_file_ = "";
 
+        //构造地图
         public void Init(string map_file, Vector3[] reachableSet)
         {
             map_file_ = map_file;
@@ -34,6 +35,26 @@ namespace DashFireSpatial
                 m_ReachableSet.Clear();
                 m_ReachableSet.Build(reachableSet);
             }
+        }
+
+        public void LoadPatch(string patch_file)
+        {
+            MapPatchParser patchParser = new MapPatchParser();
+            patchParser.Load(DashFire.HomePath.GetAbsolutePath(patch_file));
+            patchParser.VisitPatches((int row, int col, byte obstacle) =>
+            {
+                SetCellStatus(row, col, obstacle);
+            });
+        }
+
+        public void LoadObstacle(string file,float scale)
+        {
+            m_KdObstacleTree.Build();
+        }
+
+        public void SetCellStatus(int row, int col, byte status)
+        {
+            cell_manager_.SetCellStatus(row, col, status);
         }
 
         public void Reset()

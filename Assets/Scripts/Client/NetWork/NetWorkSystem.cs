@@ -25,6 +25,8 @@ namespace DashFire.Network
         private bool m_NetClientStarted = false;
 
         private int m_CampId = 0;
+        private int m_HeroId = 0;
+        private int m_SceneId = 0;
 
         #region
         private static NetworkSystem s_Instance = new NetworkSystem();
@@ -91,6 +93,23 @@ namespace DashFire.Network
         {
             get { return m_CampId; }
             set { m_CampId = value; }
+        }
+
+        public int SceneId
+        {
+            get { return m_SceneId; }
+            set { m_SceneId = value; }
+        }
+
+        public int HeroId
+        {
+            get { return m_HeroId; }
+            set { m_HeroId = value; }
+        }
+
+        public void QuitClient()
+        {
+            m_IsQuited = true;
         }
 
         /**

@@ -102,6 +102,15 @@ namespace DashFireSpatial
             return cell_row >= 0 && cell_row < max_row_ && cell_col >= 0 && cell_col < max_col_;
         }
 
+        public void SetCellStatus(int row, int col, byte status)
+        {
+            if (row >= max_row_ || col >= max_col_ || row < 0 || col < 0)
+            {
+                return;
+            }
+            cells_arr_[row, col] = status;
+        }
+
         public void Reset()
         {
             cell_map_views_.Clear();

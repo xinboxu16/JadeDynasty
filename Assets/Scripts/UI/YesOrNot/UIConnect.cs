@@ -38,7 +38,7 @@ public class UIConnect : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        btnConfirm.GetComponent<Button>().onClick.AddListener(OnConfirmClick);
 	}
 	
 	// Update is called once per frame
@@ -60,6 +60,87 @@ public class UIConnect : MonoBehaviour {
         m_ConnectShowType = UIConnectEnumType.None;
     }
 
+    private void UpdateInfo()
+    {
+        //切換場景
+        if(m_ConnectShowType == UIConnectEnumType.ChangeScene)
+        {
+            if(m_ConnectCD > 0)
+            {
+                m_ConnectCD -= Time.deltaTime;
+                //if (spConnect != null) spConnect.transform.Rotate(new Vector3(0, 0, -1f));
+            }
+            else
+            {
+                spConnect.GetComponent<Animation>().Stop();
+                string CHN_Failure = StrDictionaryProvider.Instance.GetDictString(16);
+                if(lblHintMsg != null)
+                {
+                    lblHintMsg.text = CHN_Failure;
+                }
+                if(btnConfirm != null)
+                {
+                    NGUITools.SetActive(btnConfirm.gameObject, true);
+                }
+            }
+        }
+        //重新連接
+        if(m_ConnectShowType == UIConnectEnumType.Reconnect)
+        {
+            if(m_ReconnectCD > 0)
+            {
+                m_ReconnectCD -= Time.deltaTime;
+                if (spConnect != null) spConnect.transform.Rotate(new Vector3(0, 0, -10f));
+            }
+            else
+            {
+                string CHN_Failure = StrDictionaryProvider.Instance.GetDictString(17);
+                if (lblHintMsg != null) lblHintMsg.text = CHN_Failure;
+                if (btnConfirm != null) NGUITools.SetActive(btnConfirm.gameObject, true);
+            }
+        }
+    }
+
+    //连接提示
+    public void OnShowConnectHint(bool isCd, bool active)
+    {
+        try
+        {
+            if(active)
+            {
+                if(m_ConnectShowType != UIConnectEnumType.None)
+                {
+                    return;
+                }
+                if(isCd)
+                {
+                    //有倒计时形式的UI
+                    m_ConnectShowType = UIConnectEnumType.ChangeScene;
+                    m_ConnectCD = ConnectDelta;
+                }else
+                {
+                    m_ConnectShowType = UIConnectEnumType.Reconnect;
+                    m_ReconnectCD = ReconnectCountDown;
+                }
+                spConnect.GetComponent<Animation>().wrapMode = WrapMode.Loop;
+                string CHN_Connect = StrDictionaryProvider.Instance.GetDictString(15);
+                if (lblHintMsg != null) lblHintMsg.text = CHN_Connect;
+                UIManager.Instance.ShowWindowByName("Connect");
+                //JoyStickInputProvider.SetActive(false);未实现
+            }
+            else
+            {
+                //JoyStickInputProvider.SetActive(true);未实现
+                m_ConnectShowType = UIConnectEnumType.None;
+                UIManager.Instance.HideWindowByName("Connect");
+            }
+        }
+        catch (Exception ex)
+        {
+            DashFire.LogicSystem.LogicLog("[Error]:Exception:{0}\n{1}", ex.Message, ex.StackTrace);
+        }
+    }
+
     public void OnConfirmClick()
     {
         switch(m_ConnectShowType)
@@ -77,7 +158,10 @@ public class UIConnect : MonoBehaviour {
                         gameLogic.RestartLocgic();
                     }
                 }
+                UIManager.Instance.HideWindowByName("Connect");
+                break;
         }
+        m_ConnectShowType = UIConnectEnumType.None;
     }
 
     public void UnSubscribe()

@@ -92,7 +92,10 @@ public class DFMUiRoot : MonoBehaviour {
             if(loading != null)
             {
                 //SendMessage("EndLoading") EndLoading这个是ProgressBar中的方法
-                loading.transform.Find("ProgressBar").SendMessage("EndLoading");
+                //SendMessage ("函数名",参数，SendMessageOptions) //GameObject自身的Script
+                //BroadcastMessage ("函数名",参数，SendMessageOptions)  //自身和子Object的Script
+                //SendMessageUpwards ("函数名",参数，SendMessageOptions)  //自身和父Object的Script
+                loading.transform.Find("ProgressBar").SendMessage("EndLoading", SendMessageOptions.RequireReceiver);
                 loading = null;
             }
         }

@@ -70,6 +70,9 @@ namespace DashFire
         const int c_MaxExpeditionNum = 12;
         private int m_ActiveTollgate = 0;
         private TollgateData[] m_Tollgates = new TollgateData[c_MaxExpeditionNum];
+
+        public const int c_UnlockLevel = 18;
+
         public TollgateData[] Tollgates
         {
             get { return m_Tollgates; }

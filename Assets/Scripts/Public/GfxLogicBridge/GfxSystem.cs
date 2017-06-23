@@ -64,10 +64,10 @@ namespace DashFire
 
         public static void QueueGfxActionWithDelegation(Delegate action, params object[] args)
         {
-            //if (null != s_Instance.m_GfxInvoker)
-            //{
-            //    s_Instance.m_GfxInvoker.QueueActionWithDelegation(action, args);
-            //}
+            if (null != s_Instance.m_GfxInvoker)
+            {
+                s_Instance.m_GfxInvoker.QueueActionWithDelegation(action, args);
+            }
         }
         //逻辑层与unity3d脚本交互函数
         public static void QueueGfxAction<T1>(MyAction<T1> action, T1 t1)

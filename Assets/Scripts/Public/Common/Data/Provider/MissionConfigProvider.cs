@@ -56,6 +56,11 @@ namespace DashFire
             m_MissionConfigMgr.CollectDataFromDBC(file, root);
         }
 
+        public MissionConfig GetDataById(int Id)
+        {
+            return m_MissionConfigMgr.GetDataById(Id);
+        }
+
         public static MissionConfigProvider Instance
         {
             get { return s_Instance; }

@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.5.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -102,6 +104,8 @@
     <Compile Include="Assets\Scripts\Analytics\AnalyticsManager.cs" />
     <Compile Include="Assets\Scripts\Analytics\GA.cs" />
     <Compile Include="Assets\Scripts\Analytics\UmengManager.cs" />
+    <Compile Include="Assets\Scripts\Client\LobbyClient\FriendInfo.cs" />
+    <Compile Include="Assets\Scripts\Client\LobbyClient\GowStarInfo.cs" />
     <Compile Include="Assets\Scripts\CYMGWrapperIOS.cs" />
     <Compile Include="Assets\Scripts\Client\AutoAdjust\ControlSystemOperation.cs" />
     <Compile Include="Assets\Scripts\Client\Entity\EntityManager.cs" />
@@ -119,6 +123,7 @@
     <Compile Include="Assets\Scripts\Client\LobbyClient\RoleInfo.cs" />
     <Compile Include="Assets\Scripts\Client\LobbyNetwork\JsonMessageDefine.cs" />
     <Compile Include="Assets\Scripts\Client\LobbyNetwork\JsonMessageDispatcher.cs" />
+    <Compile Include="Assets\Scripts\Client\LobbyNetwork\LobbyMessageHandler.cs" />
     <Compile Include="Assets\Scripts\Client\NetWork\LobbyNetworkSystem.cs" />
     <Compile Include="Assets\Scripts\Client\NetWork\NetWorkSystem.cs" />
     <Compile Include="Assets\Scripts\Client\NetWork\ProtoNetSerialize.cs" />
@@ -190,6 +195,7 @@
     <Compile Include="Assets\Scripts\Public\Common\Geometry\Geometry.cs" />
     <Compile Include="Assets\Scripts\Public\Common\Geometry\KdObstacleTree.cs" />
     <Compile Include="Assets\Scripts\Public\Common\Geometry\KdTree.cs" />
+    <Compile Include="Assets\Scripts\Public\Common\Geometry\PointKdTree.cs" />
     <Compile Include="Assets\Scripts\Public\Common\Log\LogSystem.cs" />
     <Compile Include="Assets\Scripts\Public\Common\Message\JsonMessageDefine.cs" />
     <Compile Include="Assets\Scripts\Public\Common\Message\MessageDefine.cs" />
@@ -216,6 +222,11 @@
     <Compile Include="Assets\Scripts\Public\GameObjects\AutoAdjust\ControlSystem.cs" />
     <Compile Include="Assets\Scripts\Public\GameObjects\AutoAdjust\IController.cs" />
     <Compile Include="Assets\Scripts\Public\GameObjects\CharacterBase.cs" />
+    <Compile Include="Assets\Scripts\Public\GameObjects\EquipmentStateInfo\EquipmentStateInfo.cs" />
+    <Compile Include="Assets\Scripts\Public\GameObjects\EquipmentStateInfo\ItemDataInfo.cs" />
+    <Compile Include="Assets\Scripts\Public\GameObjects\EquipmentStateInfo\LegacyStateInfo.cs" />
+    <Compile Include="Assets\Scripts\Public\GameObjects\Mission\MissionInfo.cs" />
+    <Compile Include="Assets\Scripts\Public\GameObjects\Mission\MissionStateInfo.cs" />
     <Compile Include="Assets\Scripts\Public\GameObjects\MovementInfo\MovementStateInfo.cs" />
     <Compile Include="Assets\Scripts\Public\GameObjects\NpcManager.cs" />
     <Compile Include="Assets\Scripts\Public\GameObjects\ObjectInfo\UserInfo.cs" />
@@ -224,6 +235,7 @@
     <Compile Include="Assets\Scripts\Public\GameObjects\SceneLogicInfoManager.cs" />
     <Compile Include="Assets\Scripts\Public\GameObjects\SceneSharedData\BlackBoard.cs" />
     <Compile Include="Assets\Scripts\Public\GameObjects\SightManager.cs" />
+    <Compile Include="Assets\Scripts\Public\GameObjects\SkillStateInfo\SkillInfo.cs" />
     <Compile Include="Assets\Scripts\Public\GameObjects\SkillStateInfo\SkillStateInfo.cs" />
     <Compile Include="Assets\Scripts\Public\GameObjects\UserManager.cs" />
     <Compile Include="Assets\Scripts\Public\GfxLogicBridge\GfxSystem.cs" />
@@ -238,6 +250,7 @@
     <Compile Include="Assets\Scripts\Public\GfxLogicBridge\SharedData\SharedGameObjectInfo.cs" />
     <Compile Include="Assets\Scripts\Public\SceneLogic\SceneLogicSystem.cs" />
     <Compile Include="Assets\Scripts\Public\SpatialSystem\CellManager.cs" />
+    <Compile Include="Assets\Scripts\Public\SpatialSystem\MapPatchParser.cs" />
     <Compile Include="Assets\Scripts\Public\SpatialSystem\SpatialSystem.cs" />
     <Compile Include="Assets\Scripts\Public\StorySystem\Internal\IStoryCommand.cs" />
     <Compile Include="Assets\Scripts\Public\StorySystem\Internal\IStoryCommandFactory.cs" />
@@ -280,6 +293,7 @@
     <Compile Include="Assets\Scripts\Tween\TweenText.cs" />
     <Compile Include="Assets\Scripts\Tween\Tweener.cs" />
     <Compile Include="Assets\Scripts\Tween\uEnum.cs" />
+    <Compile Include="Assets\Scripts\UI\CreateHero\UIChangeHero.cs" />
     <Compile Include="Assets\Scripts\UI\DFMUiRoot.cs" />
     <Compile Include="Assets\Scripts\UI\Loading\LoadingProgressBar.cs" />
     <Compile Include="Assets\Scripts\UI\Login\Frames.cs" />
@@ -293,6 +307,7 @@
     <Compile Include="Assets\Scripts\UI\UIDepth.cs" />
     <Compile Include="Assets\Scripts\UI\UIEventListener.cs" />
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
+    <Compile Include="Assets\Scripts\UI\YesOrNot\Dialog.cs" />
     <Compile Include="Assets\Scripts\UI\YesOrNot\UIConnect.cs" />
     <Compile Include="Assets\Scripts\Update\ResLoadAsyncHandler.cs" />
     <Compile Include="Assets\Scripts\Update\ResLoadHelper.cs" />
@@ -300,6 +315,7 @@
     <Compile Include="Assets\Scripts\Update\ResUpdateControler.cs" />
     <Compile Include="Assets\Scripts\Update\ResUpdateTool.cs" />
     <Compile Include="Assets\Scripts\Update\ResUpgrader.cs" />
+    <Compile Include="Assets\Scripts\Utils\StringHelper.cs" />
     <Compile Include="Assets\ThirdPart\T4M\Scripts\T4MBillBObjSC.cs" />
     <Compile Include="Assets\ThirdPart\T4M\Scripts\T4MLodObjSC.cs" />
     <Compile Include="Assets\ThirdPart\T4M\Scripts\T4MObjSC.cs" />

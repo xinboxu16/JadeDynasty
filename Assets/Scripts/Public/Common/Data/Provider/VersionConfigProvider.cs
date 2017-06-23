@@ -37,6 +37,22 @@ namespace DashFire
             m_VersionConfigMgr.CollectDataFromDBC(file, root);
         }
 
+        public string GetVersionNum()
+        {
+            string game_version = "0";
+            MyDictionary<int, object> dic = m_VersionConfigMgr.GetData();
+            foreach(object element in dic.Values)
+            {
+                VersionConfig version = element as VersionConfig;
+                if(null != version)
+                {
+                    game_version = version.m_MainNum + "-" + version.m_SubNum + "-" + version.m_StepNum + "-" + version.m_DateNum + "-" + version.m_GreekSymbols;
+                    break;
+                }
+            }
+            return game_version;
+        }
+
         public static VersionConfigProvider Instance
         {
             get { return s_Instance; }

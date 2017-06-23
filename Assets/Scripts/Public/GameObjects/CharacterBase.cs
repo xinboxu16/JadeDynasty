@@ -18,6 +18,12 @@ namespace DashFire
      */
     public class CharacterInfo : IShootTarget
     {
+        private static MyAction<float> mFightingScoreChangeCB;
+        public static void AddPropertyInfoChangeCB(MyAction<float> cb)
+        {
+            mFightingScoreChangeCB += cb;
+        }
+
         public class SpaceObjectImpl : ISpaceObject
         {
             private CharacterInfo m_CharacterInfo = null;

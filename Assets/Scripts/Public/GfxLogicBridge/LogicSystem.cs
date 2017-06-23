@@ -88,5 +88,10 @@ namespace DashFire
         {
             return GfxSystem.Instance.RadianToDegree(dir);
         }
+
+        public static void QueueLogicAction<T1>(MyAction<T1> action, T1 t1)
+        {
+            GfxSystem.Instance.QueueLogicActionWithDelegation(action, t1);
+        }
     }
 }

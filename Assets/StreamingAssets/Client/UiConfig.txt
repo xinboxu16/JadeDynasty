@@ -1,4 +1,4 @@
-﻿ID	WindowName	WindowPath	OffsetLeft	OffsetRight	OffsetTop	OffsetBottom	IsExclusion	ShowType	SceneType
+ID	WindowName	WindowPath	OffsetLeft	OffsetRight	OffsetTop	OffsetBottom	IsExclusion	ShowType	SceneType
 #副本场景UI（SceneType = -1，Offset***单位为像素，ShowType（1=加载并显示；0=加载隐藏；-1=不加载）									
 1	HeroPanel	UI/HeroPanel	5	-1	5	-1	FALSE	1	-1
 2	SkillBar	UI/SkillBar	-1	10	-1	10	FALSE	1	-1
@@ -68,6 +68,7 @@
 1026	Verification	UI/ServerSelect/Verification	-1	-1	-1	-1	FALSE	0	0
 #1027	LoadingHint	UI/ServerSelect/LoadingHint	-1	-1	-1	-1	FALSE	0	0
 1028	Connect	UI/YesOrNot/Connect	-1	-1	-1	-1	FALSE	0	0
+1029	SelectCreateHero	UI/SelectCreateHero	-1	-1	-1	-1	FALSE	0	0
 #新手引导									
 1500	GuideStartGame	UI/BeginnerGuide/GuideStartGame	-1	-1	-1	-1	FALSE	-1	-1
 1501	GuideHand	UI/BeginnerGuide/GuideHand	-1	-1	-1	-1	FALSE	-1	-1

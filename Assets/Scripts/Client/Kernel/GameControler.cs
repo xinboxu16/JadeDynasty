@@ -118,7 +118,7 @@ namespace DashFire
             //GmCommands.ClientGmStorySystem.Instance.Init();
 
             //PlayerControl.Instance.Init();
-            //LobbyNetworkSystem.Instance.Init(s_LogicThread);
+            LobbyNetworkSystem.Instance.Init(s_LogicThread);
             //NetworkSystem.Instance.Init();
             //AiViewManager.Instance.Init();
             //SceneLogicViewManager.Instance.Init();
@@ -151,8 +151,8 @@ namespace DashFire
             GfxSystem.GfxLog("GameControler.StopLogic");
             s_LogicThread.Stop();
             //未实现
-            //LobbyNetworkSystem.Instance.QuitClient();
-            //NetworkSystem.Instance.QuitClient();
+            LobbyNetworkSystem.Instance.QuitClient();
+            NetworkSystem.Instance.QuitClient();
         }
         public static void Release()
         {

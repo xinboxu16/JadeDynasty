@@ -154,6 +154,7 @@
     <Compile Include="Assets\Editor\AutoPostSpritePacker.cs" />
     <Compile Include="Assets\Editor\ExpandUI.cs" />
     <Compile Include="Assets\Editor\MakeAtlasPrefab.cs" />
+    <Compile Include="Assets\Editor\MakeSelectionPrefab.cs" />
     <Compile Include="Assets\ThirdPart\T4M\Editor\T4MExtendsSC.cs" />
     <Compile Include="Assets\ThirdPart\T4M\Editor\T4MSC.cs" />
   </ItemGroup>

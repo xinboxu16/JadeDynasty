@@ -36,10 +36,33 @@ namespace DashFire
             return m_StrDictionaryMgr.GetDataById(id);
         }
 
+        public string GetDictString(int id)
+        {
+            string ret;
+            StrDictionary dict = GetDataById(id);
+            if(null != dict && null != dict.m_String)
+            {
+                ret = dict.m_String;
+            }
+            else
+            {
+                ret = "";
+            }
+            return ret;
+        }
+
         public static StrDictionaryProvider Instance
         {
             get { return s_Instance; }
         }
         private static StrDictionaryProvider s_Instance = new StrDictionaryProvider();
+    }
+
+    public static class Dict
+    {
+        public static string Get(int id)
+        {
+            return StrDictionaryProvider.Instance.GetDictString(id);
+        }
     }
 }

@@ -46,21 +46,38 @@ public class NGUITools
             widgets.DetachChildren();
         }
         GameObject go = prefab as GameObject;
+        GameObject obj = null;
         if (go != null && parent != null)
         {
-            Transform t = GameObject.Instantiate(go).transform;
+            obj = GameObject.Instantiate(go);
+            Transform t = obj.transform;
             t.SetParent(widgets, false);
             t.localPosition = Vector3.zero;
             t.localRotation = Quaternion.identity;
             t.localScale = Vector3.one;
+            obj.layer = parent.layer;
             go.layer = parent.layer;
         }
-        return go;
+        return obj;
     }
 
     public static void SetActive(GameObject obj, bool isActive)
     {
         obj.SetActive(isActive);
+    }
+
+    public static Sprite GetResourceSpriteByName(string name)
+    {
+        return Resources.Load<GameObject>("Sprite/" + name).GetComponent<SpriteRenderer>().sprite;
+    }
+
+    static public bool GetActive(GameObject go)
+    {
+#if UNITY_3_5
+		return go && go.active;
+#else
+        return go && go.activeInHierarchy;//activeInHierarchy表示控件自身和父控件的active都是true, activeSelf是指自身
+#endif
     }
 
     static public void Destroy(UnityEngine.Object obj)
