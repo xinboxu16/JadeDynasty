@@ -117,22 +117,22 @@ namespace DashFire
                 m_CurScene = new SceneResource();//场景管理
                 m_CurScene.Init(sceneId);//初始化
 
-                //if (null != m_CurScene.SceneConfig)
-                //{
-                //    //如果是服务器选择场景
-                //    if(IsServerSelectScene())
-                //    {
-                //        LobbyClient.Instance.CurrentRole = null;
-                //    }
-                //    Data_SceneConfig sceneConfig = SceneConfigProvider.Instance.GetSceneConfigById(m_CurScene.ResId);
-                //    m_SpatialSystem.Init(FilePathDefine_Client.C_RootPath + sceneConfig.m_BlockInfoFile, sceneConfig.m_ReachableSet);
-                //    m_SpatialSystem.LoadPatch(FilePathDefine_Client.C_RootPath + sceneConfig.m_BlockInfoFile + ".patch");
-                //    m_SpatialSystem.LoadObstacle(FilePathDefine_Client.C_RootPath + sceneConfig.m_ObstacleFile, 1 / sceneConfig.m_TiledDataScale);
+                if (null != m_CurScene.SceneConfig)
+                {
+                    //如果是服务器选择场景
+                    if (IsServerSelectScene())
+                    {
+                        LobbyClient.Instance.CurrentRole = null;
+                    }
+                    Data_SceneConfig sceneConfig = SceneConfigProvider.Instance.GetSceneConfigById(m_CurScene.ResId);
+                    m_SpatialSystem.Init(FilePathDefine_Client.C_RootPath + sceneConfig.m_BlockInfoFile, sceneConfig.m_ReachableSet);
+                    m_SpatialSystem.LoadPatch(FilePathDefine_Client.C_RootPath + sceneConfig.m_BlockInfoFile + ".patch");
+                    m_SpatialSystem.LoadObstacle(FilePathDefine_Client.C_RootPath + sceneConfig.m_ObstacleFile, 1 / sceneConfig.m_TiledDataScale);
 
-                //    LogSystem.Debug("init SpatialSystem:{0}", FilePathDefine_Client.C_RootPath + sceneConfig.m_BlockInfoFile);
-                //    LogSystem.Debug("GameSystem.ChangeNextScene:{0}", m_CurScene.ResId);
-                //    return true;
-                //}
+                    LogSystem.Debug("init SpatialSystem:{0}", FilePathDefine_Client.C_RootPath + sceneConfig.m_BlockInfoFile);
+                    LogSystem.Debug("GameSystem.ChangeNextScene:{0}", m_CurScene.ResId);
+                    return true;
+                }
             }
             catch (Exception ex)
             {

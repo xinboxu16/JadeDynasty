@@ -75,21 +75,21 @@ public class LoadingProgressBar : MonoBehaviour {
                 }
                 else
                 {
-                    //if (GameObject.FindGameObjectsWithTag("Player").Length > 0)
-                    //{
-                    //    //DestoryLoading();
-                    //    sign3 = false;
-                    //    time = 0f;
-                    //}
+                    if (GameObject.FindGameObjectsWithTag("Player").Length > 0)
+                    {
+                        //DestoryLoading();
+                        sign3 = false;
+                        time = 0f;
+                    }
                 }
             }
-            else
+        }
+        else
+        {
+            time += RealTime.deltaTime;
+            if (time >= 2.0f)
             {
-                time += RealTime.deltaTime;
-                if (time >= 2.0f)
-                {
-                    DestoryLoading();
-                }
+                DestoryLoading();
             }
         }
     }
