@@ -21,6 +21,51 @@ namespace DashFire
         private bool m_IsWaitRoomServerConnect = true;
         private float m_CameraLookAtHeight = 0;
 
+        public MapDataProvider StaticData
+        {
+            get
+            {
+                return m_SceneStaticData;
+            }
+        }
+
+        public Data_SceneConfig SceneConfig
+        {
+            get
+            {
+                return m_SceneConfig;
+            }
+        }
+        public Data_SceneDropOut SceneDropOut
+        {
+            get
+            {
+                return m_SceneDropOut;
+            }
+        }
+
+        public bool IsWaitSceneLoad
+        {
+            get { return m_IsWaitSceneLoad; }
+        }
+
+        public bool IsWaitRoomServerConnect
+        {
+            get { return m_IsWaitRoomServerConnect; }
+            set { m_IsWaitRoomServerConnect = value; }
+        }
+
+        public bool IsPureClientScene
+        {
+            get
+            {
+                if (null == m_SceneConfig)
+                    return true;
+                else
+                    return m_SceneConfig.m_Type == (int)SceneTypeEnum.TYPE_PURE_CLIENT_SCENE;
+            }
+        }
+
         public bool IsSuccessEnter
         {
             get { return m_IsSuccessEnter; }
@@ -84,11 +129,14 @@ namespace DashFire
             }
         }
 
-        public Data_SceneConfig SceneConfig
+        public bool IsELite
         {
             get
             {
-                return m_SceneConfig;
+                if (null == m_SceneConfig)
+                    return false;
+                else
+                    return m_SceneConfig.m_SubType == (int)SceneSubTypeEnum.TYPE_ELITE;
             }
         }
 
@@ -101,6 +149,12 @@ namespace DashFire
                 else
                     return m_SceneConfig.m_SubType == (int)SceneSubTypeEnum.TYPE_EXPEDITION;
             }
+        }
+
+        public void NotifyUserEnter()
+        {
+            m_IsSuccessEnter = true;
+            LogSystem.Info("SceneResource.NotifyUserEnter");
         }
 
         private bool LoadSceneData(int sceneResId)
@@ -134,7 +188,7 @@ namespace DashFire
         private void OnLoadFinish()
         {
             LogSystem.Info("SceneResource.OnLoadFinish");
-            m_IsWaitSceneLoad = false;
+            m_IsWaitSceneLoad = false;//用于WorldSystem Tick加载资源
             //if (null != m_SceneDropOut)
             //{
             //    //LogSystem.Debug("{0} {1} {2}", m_SceneDropOut.m_GoldSum, m_SceneDropOut.m_GoldMin, m_SceneDropOut.m_GoldMax);
@@ -151,7 +205,7 @@ namespace DashFire
             }
         }
 
-        public void Init(int resId)
+        public void Init(int resId)//在WorldSystem中ChangeScene时使用
         {
             m_SceneResId = resId;
             LoadSceneData(resId);
@@ -241,6 +295,33 @@ namespace DashFire
                     }
                 }
             }
+        }
+
+        public int GetDropMoney(int unitId)
+        {
+            if(m_DropMoneyData.ContainsKey(unitId))
+            {
+                return m_DropMoneyData[unitId];
+            }
+            return 0;
+        }
+
+        public int GetDropHp(int unitId)
+        {
+            if (m_DropHpData.ContainsKey(unitId))
+            {
+                return m_DropHpData[unitId];
+            }
+            return 0;
+        }
+
+        public int GetDropMp(int unitId)
+        {
+            if (m_DropMpData.ContainsKey(unitId))
+            {
+                return m_DropMpData[unitId];
+            }
+            return 0;
         }
     }
 }

@@ -138,9 +138,23 @@ namespace DashFire
             set { m_NewBieGuideScene = value; }
         }
 
+        public UserInfo GetPlayerSelfInfo()
+        {
+            return WorldSystem.Instance.GetPlayerSelf();
+        }
+
         public Dictionary<int, int> SceneInfo
         {
             get { return m_SceneInfo; }
+        }
+
+        public int GetSceneInfo(int sceneId)
+        {
+            if (m_SceneInfo.ContainsKey(sceneId))
+            {
+                return m_SceneInfo[sceneId];
+            }
+            return 0;
         }
 
         public List<int> NewbieGuides

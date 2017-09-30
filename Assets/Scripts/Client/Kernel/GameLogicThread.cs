@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DashFire.Network;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,10 +27,10 @@ namespace DashFire
                 {
                     m_LastLogTime = curTime;
 
-                    //if (WorldSystem.Instance.IsPvpScene() || WorldSystem.Instance.IsMultiPveScene())
-                    //{
-                    //    GfxSystem.GfxLog("AverageRoundtripTime:{0}", TimeUtility.AverageRoundtripTime);
-                    //}
+                    if (WorldSystem.Instance.IsPvpScene() || WorldSystem.Instance.IsMultiPveScene())
+                    {
+                        GfxSystem.GfxLog("AverageRoundtripTime:{0}", TimeUtility.AverageRoundtripTime);
+                    }
 
                     if (this.CurActionNum > 10)
                     {
@@ -44,7 +45,11 @@ namespace DashFire
 
                 if (!GameControler.IsPaused)
                 {
-
+                    //未实现
+                    //NetworkSystem.Instance.Tick();
+                    //LobbyNetworkSystem.Instance.Tick();
+                    PlayerControl.Instance.Tick();
+                    WorldSystem.Instance.Tick();
                 }
                 //GameControler.LogicLoggerInstance.Tick();//用于写日志的线程
             }

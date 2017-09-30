@@ -1,7 +1,9 @@
-﻿using System;
+﻿using DashFireSpatial;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace DashFire
 {
@@ -45,7 +47,7 @@ namespace DashFire
         public string m_AttachNodeName;
 
         public int m_AvoidanceRadius;
-        //public Shape m_Shape = null;
+        public Shape m_Shape = null;
 
         public float m_Cross2StandTime;
         public float m_Cross2Runtime;
@@ -97,43 +99,43 @@ namespace DashFire
             m_Cross2Runtime = DBCUtil.ExtractNumeric<float>(node, "Cross2RunTime", 0.3f, false);
             m_DeadAnimTime = DBCUtil.ExtractNumeric<float>(node, "DeadAnimTime", 1.4f, false);
 
-            //string shapeType = DBCUtil.ExtractString(node, "ShapeType", "", true);
-            //int shapeParamNum = DBCUtil.ExtractNumeric<int>(node, "ShapeParamNum", 0, true);
-            //if (shapeParamNum > 0)
-            //{
-            //    string[] shapeParams = new string[shapeParamNum];
-            //    for (int i = 0; i < shapeParamNum; ++i)
-            //    {
-            //        shapeParams[i] = DBCUtil.ExtractString(node, "ShapeParam" + i, "", false);
-            //    }
+            string shapeType = DBCUtil.ExtractString(node, "ShapeType", "", true);
+            int shapeParamNum = DBCUtil.ExtractNumeric<int>(node, "ShapeParamNum", 0, true);
+            if (shapeParamNum > 0)
+            {
+                string[] shapeParams = new string[shapeParamNum];
+                for (int i = 0; i < shapeParamNum; ++i)
+                {
+                    shapeParams[i] = DBCUtil.ExtractString(node, "ShapeParam" + i, "", false);
+                }
 
-            //    if (0 == string.Compare("Circle", shapeType, true))
-            //    {
-            //        m_Shape = new Circle(new Vector3(0, 0, 0), float.Parse(shapeParams[0]));
-            //    }
-            //    else if (0 == string.Compare("Line", shapeType, true))
-            //    {
-            //        Vector3 start = Converter.ConvertVector3D(shapeParams[0]);
-            //        Vector3 end = Converter.ConvertVector3D(shapeParams[1]);
-            //        m_Shape = new Line(start, end);
-            //    }
-            //    else if (0 == string.Compare("Rect", shapeType, true))
-            //    {
-            //        float width = float.Parse(shapeParams[0]);
-            //        float height = float.Parse(shapeParams[1]);
-            //        m_Shape = new Rect(width, height);
-            //    }
-            //    else if (0 == string.Compare("Polygon", shapeType, true))
-            //    {
-            //        Polygon polygon = new Polygon();
-            //        foreach (string s in shapeParams)
-            //        {
-            //            Vector3 pt = Converter.ConvertVector3D(s);
-            //            polygon.AddVertex(pt);
-            //        }
-            //        m_Shape = polygon;
-            //    }
-            //}
+                if (0 == string.Compare("Circle", shapeType, true))
+                {
+                    m_Shape = new Circle(new Vector3(0, 0, 0), float.Parse(shapeParams[0]));
+                }
+                else if (0 == string.Compare("Line", shapeType, true))
+                {
+                    Vector3 start = Converter.ConvertVector3D(shapeParams[0]);
+                    Vector3 end = Converter.ConvertVector3D(shapeParams[1]);
+                    m_Shape = new Line(start, end);
+                }
+                else if (0 == string.Compare("Rect", shapeType, true))
+                {
+                    float width = float.Parse(shapeParams[0]);
+                    float height = float.Parse(shapeParams[1]);
+                    m_Shape = new DashFireSpatial.Rect(width, height);
+                }
+                else if (0 == string.Compare("Polygon", shapeType, true))
+                {
+                    Polygon polygon = new Polygon();
+                    foreach (string s in shapeParams)
+                    {
+                        Vector3 pt = Converter.ConvertVector3D(s);
+                        polygon.AddVertex(pt);
+                    }
+                    m_Shape = polygon;
+                }
+            }
 
             return true;
         }
@@ -182,6 +184,16 @@ namespace DashFire
         public void LoadNpcLevelupConfig(string file, string root)
         {
             m_NpcLevelupConfigMgr.CollectDataFromDBC(file, root);
+        }
+
+        public LevelupConfig GetNpcLevelupConfigById(int id)
+        {
+            return m_NpcLevelupConfigMgr.GetDataById(id);
+        }
+
+        public Data_NpcConfig GetNpcConfigById(int id)
+        {
+            return m_NpcConfigMgr.GetDataById(id);
         }
 
         public static NpcConfigProvider Instance

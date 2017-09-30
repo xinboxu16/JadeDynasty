@@ -30,6 +30,16 @@ namespace DashFire
             GfxSystem.Instance.SetLoadingBarScene(name);
         }
 
+        public static SharedGameObjectInfo GetSharedGameObjectInfo(GameObject obj)
+        {
+            return GfxSystem.Instance.GetSharedGameObjectInfo(obj);
+        }
+
+        public static SharedGameObjectInfo GetSharedGameObjectInfo(int id)
+        {
+            return GfxSystem.Instance.GetSharedGameObjectInfo(id);
+        }
+
         //发布事件
         public static void PublishLogicEvent(string evt, string group, params object[] args)
         {
@@ -71,6 +81,11 @@ namespace DashFire
             return GfxSystem.Instance.GetLoadingTip();
         }
 
+        public static Transform FindChildRecursive(Transform parent, string bonePath)
+        {
+            return GfxSystem.Instance.FindChildRecursive(parent, bonePath);
+        }
+
         public static PublishSubscribeSystem EventChannelForGfx
         {
             get
@@ -84,6 +99,159 @@ namespace DashFire
             return GfxSystem.Instance.GetGameObject(id);
         }
 
+        public static GameObject PlayerSelf
+        {
+            get { return GfxSystem.Instance.PlayerSelf; }
+        }
+
+        public static SharedGameObjectInfo PlayerSelfInfo
+        {
+            get { return GfxSystem.Instance.PlayerSelfInfo; }
+        }
+
+        public static void SetJoystickInfo(GestureArgs args)
+        {
+            GfxSystem.Instance.SetJoystickInfoImpl(args);
+        }
+
+        public static void NotifyGfxStartAttack(GameObject obj, float x, float y, float z)
+        {
+            SharedGameObjectInfo info = GfxSystem.Instance.GetSharedGameObjectInfo(obj);
+            if (null != info)
+            {
+                if (null != GfxSystem.Instance.GameLogicNotification)
+                {
+                    //TODO 未实现
+                    QueueLogicAction(GfxSystem.Instance.GameLogicNotification.OnGfxStartAttack, info.m_LogicObjectId, x, y, z);
+                }
+            }
+        }
+
+        public static void NotifyGfxStopAttack(GameObject obj)
+        {
+            SharedGameObjectInfo info = GfxSystem.Instance.GetSharedGameObjectInfo(obj);
+            if (null != info)
+            {
+                if (null != GfxSystem.Instance.GameLogicNotification)
+                {
+                    //TODO 未实现
+                    QueueLogicAction(GfxSystem.Instance.GameLogicNotification.OnGfxStopAttack, info.m_LogicObjectId);
+                }
+            }
+        }
+
+        public static void NotifyGfxStartSkill(GameObject obj, SkillCategory category, Vector3 targetpos)
+        {
+            if (null != obj)
+            {
+                SharedGameObjectInfo info = GfxSystem.Instance.GetSharedGameObjectInfo(obj);
+                if (null != info)
+                {
+                    if (null != GfxSystem.Instance.GameLogicNotification)
+                    {
+                        //TODO 未实现
+                        QueueLogicAction(GfxSystem.Instance.GameLogicNotification.OnGfxStartSkill, info.m_LogicObjectId,
+                                                                                   category, targetpos.x,
+                                                                                   targetpos.y, targetpos.z);
+                        //GfxLog("NotifyGfxStartSkill:{0} {1}", obj.name, category);
+                    }
+                }
+                else
+                {
+                    GfxSystem.Instance.CallGfxLog("NotifyGfxStartSkill:{0} {1}, can't find object !", obj.name, category);
+                }
+            }
+        }
+
+        public static void StartStory(int storyId)
+        {
+            if(null != GfxSystem.Instance.GameLogicNotification)
+            {
+                QueueLogicAction(GfxSystem.Instance.GameLogicNotification.OnGfxStartStory, storyId);
+            }
+        }
+
+        public static void SendStoryMessage(string msgId, params object[] args)
+        {
+            if (null != GfxSystem.Instance.GameLogicNotification)
+            {
+                QueueLogicAction(GfxSystem.Instance.GameLogicNotification.OnGfxSendStoryMessage, msgId, args);
+            }
+        }
+
+        public static void NotifyGfxMoveControlStart(GameObject obj, int id, bool isSkill)
+        {
+            SharedGameObjectInfo info = GfxSystem.Instance.GetSharedGameObjectInfo(obj);
+            if(null != info)
+            {
+                if(isSkill)
+                {
+                    info.IsSkillGfxMoveControl = true;
+                }
+                else
+                {
+                    info.IsImpactGfxMoveControl = true;
+                    info.IsImpactGfxRotateControl = true;
+                }
+                if(null != GfxSystem.Instance.GameLogicNotification)
+                {
+                    QueueLogicAction(GfxSystem.Instance.GameLogicNotification.OnGfxControlMoveStart, info.m_LogicObjectId, id, isSkill);
+                }
+            }
+            else
+            {
+                GfxSystem.Instance.CallGfxLog(string.Format("NotifyGfxMoveControlStart:{0}, can't find object !", obj.name));
+            }
+        }
+
+        public static void NotifyGfxUpdatePosition(GameObject obj, float x, float y, float z)
+        {
+            lock (GfxSystem.SyncLock)
+            {
+                SharedGameObjectInfo info = GfxSystem.Instance.GetSharedGameObjectInfo(obj);
+                if (null != info)
+                {
+                    info.X = x;
+                    info.Y = y;
+                    info.Z = z;
+                    info.DataChangedByGfx = true;
+                }
+                else
+                {
+                    GfxSystem.Instance.CallGfxLog("NotifyGfxUpdatePosition:{0} {1} {2} {3}, can't find object !", obj.name, x, y, z);
+                }
+            }
+        }
+
+        public static void NotifyGfxMoveControlFinish(GameObject obj, int id, bool isSkill)
+        {
+            SharedGameObjectInfo info = GfxSystem.Instance.GetSharedGameObjectInfo(obj);
+            if (null != info)
+            {
+                if (isSkill)
+                {
+                    info.IsSkillGfxMoveControl = false;
+                    info.IsSkillGfxRotateControl = false;
+                }
+                else
+                {
+                    info.IsImpactGfxMoveControl = false;
+                    info.IsImpactGfxRotateControl = false;
+                }
+
+                if (null != GfxSystem.Instance.GameLogicNotification)
+                {
+                    QueueLogicAction(GfxSystem.Instance.GameLogicNotification.OnGfxControlMoveStop, info.m_LogicObjectId, id, isSkill);
+                }
+
+                //GfxLog("NotifyGfxMoveControlFinish:{0}", info.m_LogicObjectId);
+            }
+            else
+            {
+                GfxSystem.Instance.CallGfxLog("NotifyGfxMoveControlFinish:{0}, can't find object !", obj.name);
+            }
+        }
+
         public static float RadianToDegree(float dir)
         {
             return GfxSystem.Instance.RadianToDegree(dir);
@@ -92,6 +260,26 @@ namespace DashFire
         public static void QueueLogicAction<T1>(MyAction<T1> action, T1 t1)
         {
             GfxSystem.Instance.QueueLogicActionWithDelegation(action, t1);
+        }
+
+        public static void QueueLogicAction<T1, T2>(MyAction<T1, T2> action, T1 t1, T2 t2)
+        {
+            GfxSystem.Instance.QueueLogicActionWithDelegation(action, t1, t2);
+        }
+
+        public static void QueueLogicAction<T1, T2, T3>(MyAction<T1, T2, T3> action, T1 t1, T2 t2, T3 t3)
+        {
+            GfxSystem.Instance.QueueLogicActionWithDelegation(action, t1, t2, t3);
+        }
+
+        public static void QueueLogicAction<T1, T2, T3, T4>(MyAction<T1, T2, T3, T4> action, T1 t1, T2 t2, T3 t3, T4 t4)
+        {
+            GfxSystem.Instance.QueueLogicActionWithDelegation(action, t1, t2, t3, t4);
+        }
+
+        public static void QueueLogicAction<T1, T2, T3, T4, T5>(MyAction<T1, T2, T3, T4, T5> action, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5)
+        {
+            GfxSystem.Instance.QueueLogicActionWithDelegation(action, t1, t2, t3, t4, t5);
         }
     }
 }

@@ -62,11 +62,10 @@ public class UIManager
         }
         m_ExclusionWindow.Clear();
 
-        //未实现
-        //if (DFMUiRoot.InputMode == InputType.Joystick)
-        //{
-        //    JoyStickInputProvider.JoyStickEnable = true;
-        //}
+        if (DFMUiRoot.InputMode == InputType.Joystick)
+        {
+            JoyStickInputProvider.JoyStickEnable = true;
+        }
     }
 
     //关闭除windowName之外的所有窗口
@@ -85,11 +84,10 @@ public class UIManager
             HideWindow(name, false);
         }
 
-        //未实现
-        //if (DFMUiRoot.InputMode == InputType.Joystick)
-        //{
-        //    JoyStickInputProvider.JoyStickEnable = false;
-        //}
+        if (DFMUiRoot.InputMode == InputType.Joystick)
+        {
+            JoyStickInputProvider.JoyStickEnable = false;
+        }
     }
 
     private void ShowWindow(string windowName, bool isCloseExclusion = true)
@@ -109,10 +107,13 @@ public class UIManager
                     m_UnVisibleWindow.Remove(windowName);
                 }
             }
-            UiConfig uiCfg = GetUiConfigByName(windowName);
-            if (uiCfg != null && uiCfg.m_IsExclusion == true && isCloseExclusion)
+            if(isCloseExclusion)
             {
-                CloseExclusionWindow(windowName);
+                UiConfig uiCfg = GetUiConfigByName(windowName);
+                if (uiCfg != null && uiCfg.m_IsExclusion == true)
+                {
+                    CloseExclusionWindow(windowName);
+                }
             }
         }
         catch (Exception ex)
@@ -144,10 +145,13 @@ public class UIManager
                     m_VisibleWindow.Remove(windowName);
                 }
             }
-            UiConfig uiCfg = GetUiConfigByName(windowName);
-            if (uiCfg != null && uiCfg.m_IsExclusion == true && isOpenExclusion)
+            if(isOpenExclusion)
             {
-                OpenExclusionWindow(windowName);//打开之前关闭的窗口
+                UiConfig uiCfg = GetUiConfigByName(windowName);
+                if (uiCfg != null && uiCfg.m_IsExclusion == true)
+                {
+                    OpenExclusionWindow(windowName);//打开之前关闭的窗口
+                }
             }
         }
         catch (Exception ex)
@@ -159,6 +163,36 @@ public class UIManager
     public void HideWindowByName(string windowName)
     {
         HideWindow(windowName);
+    }
+
+    public GameObject LoadWindowByName(string windowName)
+    {
+        GameObject window = null;
+        UiConfig uiCfg = GetUiConfigByName(windowName);
+        if(null != uiCfg)
+        {
+            window = ResourceSystem.GetSharedResource(uiCfg.m_WindowPath) as GameObject;
+            if (null != window)
+            {
+                window = NGUITools.AddChild(m_RootWindow, window);
+                string name = uiCfg.m_WindowName;
+                while(m_IsLoadedWindow.ContainsKey(name))
+                {
+                    name += "ex";
+                }
+                m_IsLoadedWindow.Add(name, window);
+                m_VisibleWindow.Add(name, window);
+                return window;
+            }else
+            {
+                Debug.Log("!!!load " + uiCfg.m_WindowPath + " failed");
+            }
+        }
+        else
+        {
+            Debug.Log("!!!load " + windowName + " failed");
+        }
+        return null;
     }
 
     public void LoadAllWindows(int sceneType, Camera cam)
@@ -218,12 +252,61 @@ public class UIManager
         }
     }
 
+    public void SetAllUiVisible(bool isVisible)
+    {
+        if(isVisible)
+        {
+            TouchManager.TouchEnable = true;
+            OpenExclusionWindow("");
+        }
+        else
+        {
+            TouchManager.TouchEnable = false;
+            CloseExclusionWindow("");
+        }
+        IsUIVisible = isVisible;
+        NicknameAndMoney(isVisible);
+    }
+
+    void NicknameAndMoney(bool vis)
+    {
+        if (m_RootWindow != null)
+        {
+            Transform tf = m_RootWindow.transform.parent.Find("DynamicWidget");
+            if (tf != null)
+            {
+                NGUITools.SetActive(tf.gameObject, vis);
+            }
+            tf = m_RootWindow.transform.Find("PveFightInfo(Clone)");
+            if (tf != null)
+            {
+                NGUITools.SetActive(tf.gameObject, vis);
+            }
+            tf = m_RootWindow.transform.Find("ScreenScrollTip");
+            if (tf != null)
+            {
+                NGUITools.SetActive(tf.gameObject, vis);
+            }
+        }
+    }
+
     //获取已经加载的窗口GameObject
     public GameObject GetWindowGoByName(string windowName)
     {
         if (windowName == null) return null;
         if (m_IsLoadedWindow.ContainsKey(windowName.Trim()))
             return m_IsLoadedWindow[windowName];
+        return null;
+    }
+
+    //获取UI的路径
+    public string GetPathByName(string windowName)
+    {
+        UiConfig uiCfg = GetUiConfigByName(windowName);
+        if (uiCfg != null)
+        {
+            return uiCfg.m_WindowPath;
+        }
         return null;
     }
 

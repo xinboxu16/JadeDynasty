@@ -154,6 +154,38 @@ namespace DashFire
         }
 
         /**
+         * @brief 获取动作数量
+         *
+         * @return 
+         */
+        public int GetActionCountByType(Animation_Type type)
+        {
+            if (!m_ActionContainer.ContainsKey(type))
+            {
+                return 0;
+            }
+
+            return m_ActionContainer[type].Count;
+        }
+
+        /**
+         * @brief 获取随即动作
+         *
+         * @return 
+         */
+        public Data_ActionInfo GetRandomActionByType(Animation_Type type)
+        {
+            int count = GetActionCountByType(type);
+            if (count > 0)
+            {
+                int randIndex = Helper.Random.Next(count);
+                return m_ActionContainer[type][randIndex];
+            }
+
+            return null;
+        }
+
+        /**
          * @brief 获取数据ID
          *
          * @return 
@@ -170,6 +202,11 @@ namespace DashFire
         public void Load(string file, string root)
         {
             m_ActionConfigMgr.CollectDataFromDBC(file, root);
+        }
+
+        public Data_ActionConfig GetDataById(int id)
+        {
+            return m_ActionConfigMgr.GetDataById(id);
         }
 
         public static ActionConfigProvider Instance

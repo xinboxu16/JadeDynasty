@@ -46,6 +46,11 @@ namespace DashFire
             m_BuffConfigMgr.CollectDataFromDBC(file, root);
         }
 
+        public BuffConfig GetDataById(int id)
+        {
+            return m_BuffConfigMgr.GetDataById(id);
+        }
+
         public static BuffConfigProvider Instance
         {
             get { return s_Instance; }

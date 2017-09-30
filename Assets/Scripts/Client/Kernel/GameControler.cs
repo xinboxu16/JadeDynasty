@@ -98,30 +98,28 @@ namespace DashFire
                     GfxSystem.GfxLog(format, args);
                 s_LogicLogger.Log(format, args);
             });
-            //未实现
-            //GfxSystem.SetGameLogicNotification(GameLogicNotification.Instance);
-            //GfxModule.Skill.GfxSkillSystem.Instance.Init();
+            GfxSystem.SetGameLogicNotification(GameLogicNotification.Instance);
+            GfxModule.Skill.GfxSkillSystem.Instance.Init();
         }
 
         public static void InitLogic()
         {
             GfxSystem.GfxLog("GameControler.InitLogic");
-            //未实现
-            //EntityManager.Instance.Init();
+            EntityManager.Instance.Init();
 
             //用来读取配置文件
             WorldSystem.Instance.Init();
             WorldSystem.Instance.LoadData();
 
             //未实现
-            //ClientStorySystem.Instance.Init();
+            ClientStorySystem.Instance.Init();
             //GmCommands.ClientGmStorySystem.Instance.Init();
 
-            //PlayerControl.Instance.Init();
+            PlayerControl.Instance.Init();
             LobbyNetworkSystem.Instance.Init(s_LogicThread);
-            //NetworkSystem.Instance.Init();
-            //AiViewManager.Instance.Init();
-            //SceneLogicViewManager.Instance.Init();
+            NetworkSystem.Instance.Init();
+            AiViewManager.Instance.Init();
+            SceneLogicViewManager.Instance.Init();
             //ImpactViewManager.Instance.Init();//碰撞系统
 
         }
@@ -137,7 +135,7 @@ namespace DashFire
             //这里是在渲染线程执行的tick，逻辑线程的tick在GameLogicThread.cs文件里执行。
             GfxSystem.Tick();
             //未实现
-            //GfxModule.Skill.GfxSkillSystem.Instance.Tick();
+            GfxModule.Skill.GfxSkillSystem.Instance.Tick();
             //GfxModule.Impact.GfxImpactSystem.Instance.Tick();
         }
 

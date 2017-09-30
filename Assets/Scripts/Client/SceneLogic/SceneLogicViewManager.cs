@@ -30,16 +30,16 @@ namespace DashFire
     {
         public SceneLogicView_General()
         {
-            //AbstractSceneLogic.OnSceneLogicSendStoryMessage += this.OnSceneLogicSendStoryMessage;
+            AbstractSceneLogic.OnSceneLogicSendStoryMessage += this.OnSceneLogicSendStoryMessage;
         }
 
-        //public void OnSceneLogicSendStoryMessage(SceneLogicInfo info, string msgId, object[] args)
-        //{
-        //    if (WorldSystem.Instance.IsPveScene() || WorldSystem.Instance.IsPureClientScene())
-        //    {
-        //        ClientStorySystem.Instance.SendMessage(msgId, args);
-        //    }
-        //}
+        public void OnSceneLogicSendStoryMessage(SceneLogicInfo info, string msgId, object[] args)
+        {
+            if (WorldSystem.Instance.IsPveScene() || WorldSystem.Instance.IsPureClientScene())
+            {
+                ClientStorySystem.Instance.SendMessage(msgId, args);
+            }
+        }
     }
 
     internal sealed class SceneLogicViewManager

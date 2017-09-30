@@ -147,28 +147,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Plugins\EasyTouch\Plugins\Editor\ETCAreaInspector.cs" />
-    <Compile Include="Assets\Plugins\EasyTouch\Plugins\Editor\ETCAxisInspector.cs" />
-    <Compile Include="Assets\Plugins\EasyTouch\Plugins\Editor\ETCButtonInspector.cs" />
-    <Compile Include="Assets\Plugins\EasyTouch\Plugins\Editor\ETCDPadInspector.cs" />
-    <Compile Include="Assets\Plugins\EasyTouch\Plugins\Editor\ETCGuiTools.cs" />
-    <Compile Include="Assets\Plugins\EasyTouch\Plugins\Editor\ETCJoystickInspector.cs" />
-    <Compile Include="Assets\Plugins\EasyTouch\Plugins\Editor\ETCMenu.cs" />
-    <Compile Include="Assets\Plugins\EasyTouch\Plugins\Editor\ETCTouchPadInspector.cs" />
-    <Compile Include="Assets\Plugins\EasyTouch\Plugins\Editor\EasyTouchInspector.cs" />
-    <Compile Include="Assets\Plugins\EasyTouch\Plugins\Editor\EasyTouchMenu.cs" />
-    <Compile Include="Assets\Plugins\EasyTouch\Plugins\Editor\EasyTouchTriggerInspector.cs" />
-    <Compile Include="Assets\Plugins\EasyTouch\Plugins\Editor\EasyTouchWelcomeScreen.cs" />
-    <Compile Include="Assets\Plugins\EasyTouch\Plugins\Editor\EasytouchHierachyCallBack.cs" />
-    <Compile Include="Assets\Plugins\EasyTouch\Plugins\Editor\HTGuiTools.cs" />
-    <Compile Include="Assets\Plugins\EasyTouch\Plugins\Editor\QuickDragInspector.cs" />
-    <Compile Include="Assets\Plugins\EasyTouch\Plugins\Editor\QuickEnterExitInspector.cs" />
-    <Compile Include="Assets\Plugins\EasyTouch\Plugins\Editor\QuickLongTapInspector.cs" />
-    <Compile Include="Assets\Plugins\EasyTouch\Plugins\Editor\QuickPinchInspector.cs" />
-    <Compile Include="Assets\Plugins\EasyTouch\Plugins\Editor\QuickSwipeInspector.cs" />
-    <Compile Include="Assets\Plugins\EasyTouch\Plugins\Editor\QuickTapInspector.cs" />
-    <Compile Include="Assets\Plugins\EasyTouch\Plugins\Editor\QuickTouchInspector.cs" />
-    <Compile Include="Assets\Plugins\EasyTouch\Plugins\Editor\QuickTwistInspector.cs" />
     <Compile Include="Assets\Plugins\Editor\FingerGestures\DragRecognizerInspector.cs" />
     <Compile Include="Assets\Plugins\Editor\FingerGestures\FingerDownDetectorInspector.cs" />
     <Compile Include="Assets\Plugins\Editor\FingerGestures\FingerEventDetectorInspector.cs" />
@@ -188,11 +166,13 @@
     <Compile Include="Assets\Plugins\Editor\FingerGestures\TwistRecognizerInspector.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Plugins\EasyTouch\How to migrate from EasyTouch 4.X.txt" />
-    <None Include="Assets\Plugins\EasyTouch\RealseNotes.txt" />
     <None Include="Assets\Plugins\FingerGestures\Readme.txt" />
     <None Include="Assets\Resources\Shaders\MobileBloom.shader" />
+    <None Include="Assets\Shaders\BasicOutline.shader" />
+    <None Include="Assets\Shaders\Blocked.shader" />
     <None Include="Assets\Shaders\BloomSimple.shader" />
+    <None Include="Assets\Shaders\NormalMonster.shader" />
+    <None Include="Assets\Shaders\NotBlocked.shader" />
     <None Include="Assets\StreamingAssets\Client\Dialog\101201.txt" />
     <None Include="Assets\StreamingAssets\Client\Dialog\101301.txt" />
     <None Include="Assets\StreamingAssets\Client\Dialog\101401.txt" />
@@ -429,6 +409,16 @@
     <None Include="Assets\StreamingAssets\Public\VersionConfig.txt" />
     <None Include="Assets\StreamingAssets\Public\VipConfig.txt" />
     <None Include="Assets\StreamingAssets\list.txt" />
+    <None Include="Assets\ThirdPart\EasyTouchBundle\EasyTouch\How to migrate from EasyTouch 4.X.txt" />
+    <None Include="Assets\ThirdPart\EasyTouchBundle\EasyTouch\RealseNotes.txt" />
+    <None Include="Assets\ThirdPart\EasyTouchBundle\EasyTouch\_Documentation\How to migrate from EasyTouch 4.X.txt" />
+    <None Include="Assets\ThirdPart\EasyTouchBundle\EasyTouchControls\Documentation\Version 2.0.txt" />
+    <None Include="Assets\ThirdPart\EasyTouchBundle\EasyTouchControls\Issues in button behavior (MAC).txt" />
+    <None Include="Assets\ThirdPart\EasyTouchBundle\EasyTouchControls\ReleaseNotes.txt" />
+    <None Include="Assets\ThirdPart\EasyTouchBundle\Readme.txt" />
+    <None Include="Assets\ThirdPart\FastShadows\Docs\README.txt" />
+    <None Include="Assets\ThirdPart\FastShadows\Resources\Multiply.shader" />
+    <None Include="Assets\ThirdPart\FastShadows\Shaders\FS_ShadowShader.shader" />
     <None Include="Assets\ThirdPart\T4M\READMEFIRST.txt" />
     <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel1\T4M 2 Textures Auto BeastLM 2DrawCall.shader" />
     <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel1\T4M 2 Textures ManualAdd BeastLM_1DC.shader" />

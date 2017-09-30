@@ -51,6 +51,21 @@ namespace DashFire
             return ret;
         }
 
+        public string Format(int id, params object[] args)
+        {
+            string ret;
+            StrDictionary dict = GetDataById(id);
+            if (null != dict && null != dict.m_String)
+            {
+                ret = string.Format(dict.m_String, args);
+            }
+            else
+            {
+                ret = "";
+            }
+            return ret;
+        }
+
         public static StrDictionaryProvider Instance
         {
             get { return s_Instance; }

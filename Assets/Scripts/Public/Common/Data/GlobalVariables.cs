@@ -14,6 +14,9 @@ namespace DashFire
         private bool m_IsClient = false;
         private bool m_IsDebug = false;
 
+        private Dictionary<string, string> m_EncodeTable = new Dictionary<string, string>();
+        private Dictionary<string, string> m_DecodeTable = new Dictionary<string, string>();
+
         public static GlobalVariables Instance
         {
             get { return s_Instance; }
@@ -50,6 +53,16 @@ namespace DashFire
                 return 20001;
             else
                 return 20002;
+        }
+
+        public Dictionary<string, string> EncodeTable
+        {
+            get { return m_EncodeTable; }
+        }
+
+        public Dictionary<string, string> DecodeTable
+        {
+            get { return m_DecodeTable; }
         }
     }
 }

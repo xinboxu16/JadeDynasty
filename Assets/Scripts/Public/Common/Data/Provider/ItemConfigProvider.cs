@@ -13,6 +13,19 @@ namespace DashFire
         DC_Poison = 3//毒
     }
 
+    public enum EquipmentType : int
+    {
+        E_Weapon = 0,
+        E_Clothes = 1,
+        E_Hat = 2,
+        E_Shoes = 3,
+        E_Jewelry = 4,
+        E_Ring = 5,
+        E_Fashion = 6,
+        E_Wing = 7,
+        MaxNum
+    }
+
     [Serializable]
     public class ItemAttrDataConfig
     {
@@ -106,6 +119,118 @@ namespace DashFire
             m_LevelUpAddAd = DBCUtil.ExtractNumeric<int>(node, "LevelUpAddAd", 0, false);
             m_LevelUpAddADp = DBCUtil.ExtractNumeric<int>(node, "LevelUpAddADp", 0, false);
             m_LevelUpAddMDp = DBCUtil.ExtractNumeric<int>(node, "LevelUpAddMDp", 0, false);
+        }
+
+        public float GetAddHpMax(float refVal, int refLevel, int itemLevel = 1)
+        {
+            float base_value = CalcAddedAttrValue(refVal, refLevel, m_AddHpMax, m_HpMaxType);
+            return base_value + itemLevel * (float)(m_LevelUpAddHpMax / 100.0);
+        }
+        public float GetAddRageMax(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddRageMax, m_HpMaxType);
+        }
+        public float GetAddEpMax(float refVal, int refLevel, int itemLevel = 1)
+        {
+            float base_value = CalcAddedAttrValue(refVal, refLevel, m_AddEpMax, m_EpMaxType);
+            return base_value + itemLevel * (float)(m_LevelUpAddEpMax / 100.0);
+        }
+        public float GetAddAd(float refVal, int refLevel, int itemLevel = 1)
+        {
+            float base_value = CalcAddedAttrValue(refVal, refLevel, m_AddAd, m_AdType);
+            return base_value + itemLevel * (float)(m_LevelUpAddAd / 100.0);
+        }
+        public float GetAddADp(float refVal, int refLevel, int itemLevel = 1)
+        {
+            float base_value = CalcAddedAttrValue(refVal, refLevel, m_AddADp, m_ADpType);
+            return base_value + itemLevel * (float)(m_LevelUpAddADp / 100.0);
+        }
+        public float GetAddMDp(float refVal, int refLevel, int itemLevel = 1)
+        {
+            float base_value = CalcAddedAttrValue(refVal, refLevel, m_AddMDp, m_MDpType);
+            return base_value + itemLevel * (float)(m_LevelUpAddMDp / 100.0);
+        }
+        public float GetAddCri(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddCri, m_CriType);
+        }
+        public float GetAddPow(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddPow, m_PowType);
+        }
+        public float GetAddBackHitPow(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddBackHitPow, m_BackHitPowType);
+        }
+        public float GetAddCrackPow(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddCrackPow, m_CrackPowType);
+        }
+        public float GetAddHpRecover(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddHpRecover, m_HpRecoverType);
+        }
+        public float GetAddEpRecover(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddEpRecover, m_EpRecoverType);
+        }
+        public float GetAddSpd(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddSpd, m_SpdType);
+        }
+        public float GetAddFireDam(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddFireDam, m_FireDamType);
+        }
+        public float GetAddFireErd(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddFireErd, m_FireErdType);
+        }
+        public float GetAddIceDam(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddIceDam, m_IceDamType);
+        }
+        public float GetAddIceErd(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddIceErd, m_IceErdType);
+        }
+        public float GetAddPoisonDam(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddPoisonDam, m_PoisonDamType);
+        }
+        public float GetAddPoisonErd(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddPoisonErd, m_PoisonErdType);
+        }
+        public float GetAddWeight(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddWeight, m_WeightType);
+        }
+        public float GetAddRps(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddRps, m_RpsType);
+        }
+        public float GetAddAttackRange(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddAttackRange, m_AttackRangeType);
+        }
+
+        private float CalcAddedAttrValue(float refVal, int refLevel, float addVal, int type)
+        {
+            float retVal = 0;
+            switch (type)
+            {
+                case (int)ValueType.AbsoluteValue:
+                    retVal = addVal;
+                    break;
+                case (int)ValueType.PercentValue:
+                    retVal = refVal * addVal;
+                    break;
+                case (int)ValueType.LevelRateValue:
+                    retVal = refLevel * addVal;
+                    break;
+            }
+            return retVal;
         }
 
         private float CalcRealValue(int tableValue, out int type)
@@ -255,6 +380,11 @@ namespace DashFire
         public void Load(string file, string root)
         {
             m_ItemConfigMgr.CollectDataFromDBC(file, root);
+        }
+
+        public ItemConfig GetDataById(int id)
+        {
+            return m_ItemConfigMgr.GetDataById(id);
         }
 
         public static ItemConfigProvider Instance

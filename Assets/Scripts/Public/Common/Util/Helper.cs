@@ -62,5 +62,39 @@ namespace DashFire
                 xi = (xi + 1) % xlen;
             }
         }
+
+        public sealed class Random
+        {
+            static public int Next()
+            {
+                return Instance.Next(100);
+            }
+            static public int Next(int max)
+            {
+                return Instance.Next(max);
+            }
+            static public int Next(int min, int max)
+            {
+                return Instance.Next(min, max);
+            }
+            static public float NextFloat()
+            {
+                return (float)Instance.NextDouble();
+            }
+
+            static private System.Random Instance
+            {
+                get
+                {
+                    if (null == rand)
+                    {
+                        rand = new System.Random();
+                    }
+                    return rand;
+                }
+            }
+            [ThreadStatic]
+            static private System.Random rand = null;
+        }
     }
 }

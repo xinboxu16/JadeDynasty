@@ -137,33 +137,69 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="JadeDynasty.CSharp.Plugins.csproj">
-      <Project>{1B34599A-86A1-BFB0-C77E-392857909666}</Project>
-      <Name>JadeDynasty.CSharp.Plugins</Name>
-    </ProjectReference>
     <ProjectReference Include="JadeDynasty.CSharp.csproj">
       <Project>{73A9D7D6-7100-2C42-B2E3-CCE7A1079BEC}</Project>
       <Name>JadeDynasty.CSharp</Name>
     </ProjectReference>
-    <ProjectReference Include="JadeDynasty.CSharp.Editor.Plugins.csproj">
-      <Project>{35A2557A-8C2C-4798-F43F-5485C8812941}</Project>
-      <Name>JadeDynasty.CSharp.Editor.Plugins</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Editor\AutoPostSpritePacker.cs" />
+    <Compile Include="Assets\Editor\CopyGameObjectWindow.cs" />
     <Compile Include="Assets\Editor\ExpandUI.cs" />
     <Compile Include="Assets\Editor\MakeAtlasPrefab.cs" />
     <Compile Include="Assets\Editor\MakeSelectionPrefab.cs" />
+    <Compile Include="Assets\ThirdPart\EasyTouchBundle\EasyTouch\Plugins\Editor\EasyTouchInspector.cs" />
+    <Compile Include="Assets\ThirdPart\EasyTouchBundle\EasyTouch\Plugins\Editor\EasyTouchMenu.cs" />
+    <Compile Include="Assets\ThirdPart\EasyTouchBundle\EasyTouch\Plugins\Editor\EasyTouchTriggerInspector.cs" />
+    <Compile Include="Assets\ThirdPart\EasyTouchBundle\EasyTouch\Plugins\Editor\EasyTouchWelcomeScreen.cs" />
+    <Compile Include="Assets\ThirdPart\EasyTouchBundle\EasyTouch\Plugins\Editor\EasytouchHierachyCallBack.cs" />
+    <Compile Include="Assets\ThirdPart\EasyTouchBundle\EasyTouch\Plugins\Editor\HTGuiTools.cs" />
+    <Compile Include="Assets\ThirdPart\EasyTouchBundle\EasyTouch\Plugins\Editor\QuickDragInspector.cs" />
+    <Compile Include="Assets\ThirdPart\EasyTouchBundle\EasyTouch\Plugins\Editor\QuickEnterExitInspector.cs" />
+    <Compile Include="Assets\ThirdPart\EasyTouchBundle\EasyTouch\Plugins\Editor\QuickLongTapInspector.cs" />
+    <Compile Include="Assets\ThirdPart\EasyTouchBundle\EasyTouch\Plugins\Editor\QuickPinchInspector.cs" />
+    <Compile Include="Assets\ThirdPart\EasyTouchBundle\EasyTouch\Plugins\Editor\QuickSwipeInspector.cs" />
+    <Compile Include="Assets\ThirdPart\EasyTouchBundle\EasyTouch\Plugins\Editor\QuickTapInspector.cs" />
+    <Compile Include="Assets\ThirdPart\EasyTouchBundle\EasyTouch\Plugins\Editor\QuickTouchInspector.cs" />
+    <Compile Include="Assets\ThirdPart\EasyTouchBundle\EasyTouch\Plugins\Editor\QuickTwistInspector.cs" />
+    <Compile Include="Assets\ThirdPart\EasyTouchBundle\EasyTouchControls\Plugins\Editor\ETCAreaInspector.cs" />
+    <Compile Include="Assets\ThirdPart\EasyTouchBundle\EasyTouchControls\Plugins\Editor\ETCAxisInspector.cs" />
+    <Compile Include="Assets\ThirdPart\EasyTouchBundle\EasyTouchControls\Plugins\Editor\ETCButtonInspector.cs" />
+    <Compile Include="Assets\ThirdPart\EasyTouchBundle\EasyTouchControls\Plugins\Editor\ETCDPadInspector.cs" />
+    <Compile Include="Assets\ThirdPart\EasyTouchBundle\EasyTouchControls\Plugins\Editor\ETCGuiTools.cs" />
+    <Compile Include="Assets\ThirdPart\EasyTouchBundle\EasyTouchControls\Plugins\Editor\ETCJoystickInspector.cs" />
+    <Compile Include="Assets\ThirdPart\EasyTouchBundle\EasyTouchControls\Plugins\Editor\ETCMenu.cs" />
+    <Compile Include="Assets\ThirdPart\EasyTouchBundle\EasyTouchControls\Plugins\Editor\ETCTouchPadInspector.cs" />
+    <Compile Include="Assets\ThirdPart\Editor\FingerGestures\DragRecognizerInspector.cs" />
+    <Compile Include="Assets\ThirdPart\Editor\FingerGestures\FingerDownDetectorInspector.cs" />
+    <Compile Include="Assets\ThirdPart\Editor\FingerGestures\FingerEventDetectorInspector.cs" />
+    <Compile Include="Assets\ThirdPart\Editor\FingerGestures\FingerGesturesEditorUtils.cs" />
+    <Compile Include="Assets\ThirdPart\Editor\FingerGestures\FingerGesturesInspector.cs" />
+    <Compile Include="Assets\ThirdPart\Editor\FingerGestures\FingerHoverDetectorInspector.cs" />
+    <Compile Include="Assets\ThirdPart\Editor\FingerGestures\FingerMotionDetectorInspector.cs" />
+    <Compile Include="Assets\ThirdPart\Editor\FingerGestures\FingerUpDetectorInspector.cs" />
+    <Compile Include="Assets\ThirdPart\Editor\FingerGestures\GestureRecognizerInspector.cs" />
+    <Compile Include="Assets\ThirdPart\Editor\FingerGestures\LongPressRecognizerInspector.cs" />
+    <Compile Include="Assets\ThirdPart\Editor\FingerGestures\PinchRecognizerInspector.cs" />
+    <Compile Include="Assets\ThirdPart\Editor\FingerGestures\PointCloudGestureEditor.cs" />
+    <Compile Include="Assets\ThirdPart\Editor\FingerGestures\PointCloudGestureTemplateInspector.cs" />
+    <Compile Include="Assets\ThirdPart\Editor\FingerGestures\PointCloudRecognizerInspector.cs" />
+    <Compile Include="Assets\ThirdPart\Editor\FingerGestures\SwipeRecognizerInspector.cs" />
+    <Compile Include="Assets\ThirdPart\Editor\FingerGestures\TapRecognizerInspector.cs" />
+    <Compile Include="Assets\ThirdPart\Editor\FingerGestures\TwistRecognizerInspector.cs" />
+    <Compile Include="Assets\ThirdPart\FastShadows\Editor\FS_InspectorFunctions.cs" />
+    <Compile Include="Assets\ThirdPart\FastShadows\Editor\FS_ShadowManagerMeshEditor.cs" />
+    <Compile Include="Assets\ThirdPart\FastShadows\Editor\FS_ShadowSimpleEditor.cs" />
     <Compile Include="Assets\ThirdPart\T4M\Editor\T4MExtendsSC.cs" />
     <Compile Include="Assets\ThirdPart\T4M\Editor\T4MSC.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Plugins\EasyTouch\How to migrate from EasyTouch 4.X.txt" />
-    <None Include="Assets\Plugins\EasyTouch\RealseNotes.txt" />
-    <None Include="Assets\Plugins\FingerGestures\Readme.txt" />
     <None Include="Assets\Resources\Shaders\MobileBloom.shader" />
+    <None Include="Assets\Shaders\BasicOutline.shader" />
+    <None Include="Assets\Shaders\Blocked.shader" />
     <None Include="Assets\Shaders\BloomSimple.shader" />
+    <None Include="Assets\Shaders\NormalMonster.shader" />
+    <None Include="Assets\Shaders\NotBlocked.shader" />
     <None Include="Assets\StreamingAssets\Client\Dialog\101201.txt" />
     <None Include="Assets\StreamingAssets\Client\Dialog\101301.txt" />
     <None Include="Assets\StreamingAssets\Client\Dialog\101401.txt" />
@@ -253,6 +289,8 @@
     <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1113\Region.txt" />
     <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1114\Region.txt" />
     <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1115\Region.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1115\Scene.txt" />
+    <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1115Scene.txt" />
     <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1116\Region.txt" />
     <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1117\Region.txt" />
     <None Include="Assets\StreamingAssets\Public\Scenes\MapData_1118\Region.txt" />
@@ -400,6 +438,17 @@
     <None Include="Assets\StreamingAssets\Public\VersionConfig.txt" />
     <None Include="Assets\StreamingAssets\Public\VipConfig.txt" />
     <None Include="Assets\StreamingAssets\list.txt" />
+    <None Include="Assets\ThirdPart\EasyTouchBundle\EasyTouch\How to migrate from EasyTouch 4.X.txt" />
+    <None Include="Assets\ThirdPart\EasyTouchBundle\EasyTouch\RealseNotes.txt" />
+    <None Include="Assets\ThirdPart\EasyTouchBundle\EasyTouch\_Documentation\How to migrate from EasyTouch 4.X.txt" />
+    <None Include="Assets\ThirdPart\EasyTouchBundle\EasyTouchControls\Documentation\Version 2.0.txt" />
+    <None Include="Assets\ThirdPart\EasyTouchBundle\EasyTouchControls\Issues in button behavior (MAC).txt" />
+    <None Include="Assets\ThirdPart\EasyTouchBundle\EasyTouchControls\ReleaseNotes.txt" />
+    <None Include="Assets\ThirdPart\EasyTouchBundle\Readme.txt" />
+    <None Include="Assets\ThirdPart\FastShadows\Docs\README.txt" />
+    <None Include="Assets\ThirdPart\FastShadows\Resources\Multiply.shader" />
+    <None Include="Assets\ThirdPart\FastShadows\Shaders\FS_ShadowShader.shader" />
+    <None Include="Assets\ThirdPart\FingerGestures\Readme.txt" />
     <None Include="Assets\ThirdPart\T4M\READMEFIRST.txt" />
     <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel1\T4M 2 Textures Auto BeastLM 2DrawCall.shader" />
     <None Include="Assets\ThirdPart\T4M\Shaders\ShaderModel1\T4M 2 Textures ManualAdd BeastLM_1DC.shader" />

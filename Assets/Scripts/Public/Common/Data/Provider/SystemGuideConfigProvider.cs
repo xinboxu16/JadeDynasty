@@ -36,5 +36,10 @@ namespace DashFire
             get { return s_Instance; }
         }
         private static SystemGuideConfigProvider s_Instance = new SystemGuideConfigProvider();
+
+        public SystemGuideConfig GetDataById(int id)
+        {
+            return m_SystemGuideConfigMgr.GetDataById(id);
+        }
     }
 }

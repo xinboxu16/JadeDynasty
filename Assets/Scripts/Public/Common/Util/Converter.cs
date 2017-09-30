@@ -84,5 +84,55 @@ namespace DashFire
             Vector3 vector = new Vector3(Convert.ToSingle(resut[0]), Convert.ToSingle(resut[1]), Convert.ToSingle(resut[2]));
             return vector;
         }
+
+        /**
+         * @brief 将字符串解析为Vector2D
+         *
+         * @param vec
+         *
+         * @return 
+         */
+        public static List<Vector2> ConvertVector2DList(string vec)
+        {
+            List<Vector2> path = new List<Vector2>();
+            string strPos = vec;
+            string[] resut = strPos.Split(s_ListSplitString, StringSplitOptions.None);
+            if (resut != null && resut.Length > 0 && resut[0] != "")
+            {
+                for (int index = 0; index < resut.Length; )
+                {
+                    path.Add(new Vector2(Convert.ToSingle(resut[index]), Convert.ToSingle(resut[index + 1])));
+                    index += 2;
+                }
+            }
+
+            return path;
+        }
+
+        /**
+         * @brief 将字符串解析为Vector3D
+         *
+         * @param vec
+         *
+         * @return 
+         */
+        public static List<Vector3> ConvertVector3DList(string vec)
+        {
+            List<Vector3> path = new List<Vector3>();
+            string strPos = vec;
+            string[] resut = strPos.Split(s_ListSplitString, StringSplitOptions.None);
+            if (resut != null && resut.Length > 0 && resut[0] != "")
+            {
+                for (int index = 0; index < resut.Length; )
+                {
+                    path.Add(new Vector3(Convert.ToSingle(resut[index]),
+                          Convert.ToSingle(resut[index + 1]),
+                          Convert.ToSingle(resut[index + 2])));
+                    index += 3;
+                }
+            }
+
+            return path;
+        }
     }
 }

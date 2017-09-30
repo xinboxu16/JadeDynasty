@@ -22,6 +22,7 @@ namespace DashFire
     {
         private MyDictionary<int, UserView> m_UserViews = new MyDictionary<int, UserView>();
         private MyDictionary<int, NpcView> m_NpcViews = new MyDictionary<int, NpcView>();
+        private MyDictionary<int, SpaceInfoView> m_SpaceInfoViews = new MyDictionary<int, SpaceInfoView>();
 
         /**
          * @brief 构筑函数
@@ -39,6 +40,46 @@ namespace DashFire
          */
         public void Init()
         {
+        }
+
+        public void CreateUserView(int objId)
+        {
+            if(!m_UserViews.ContainsKey(objId))
+            {
+                UserInfo obj = WorldSystem.Instance.UserManager.GetUserInfo(objId);
+                if(null != obj)
+                {
+                    UserView view = new UserView();
+                    view.Create(obj);
+                    m_UserViews.Add(objId, view);
+                }
+            }
+        }
+
+        public void CreatePlayerSelfView(int objId)
+        {
+            CreateUserView(objId);
+            UserView view = GetUserViewById(objId);
+            if (null != view)
+            {
+                GfxSystem.SendMessage("GfxGameRoot", "CameraFollowImmediately", view.Actor);
+                GfxSystem.ResetInputState();
+            }
+        }
+
+        public void CreateNpcView(int objId)
+        {
+            if(!m_NpcViews.ContainsKey(objId))
+            {
+                NpcInfo obj = WorldSystem.Instance.NpcManager.GetNpcInfo(objId);
+                if(null != obj)
+                {
+                    NpcView view = new NpcView();
+                    view.Create(obj);
+                    m_NpcViews.Add(objId, view);
+                }
+                WorldSystem.Instance.SyncGfxNpcInfo(objId);
+            }
         }
 
         public void DestroyUserView(int objId)
@@ -91,12 +132,108 @@ namespace DashFire
             return view;
         }
 
+        public void Tick()
+        {
+            lock(GfxSystem.SyncLock)
+            {
+                foreach(UserView view in m_UserViews.Values)
+                {
+                    view.Update();
+                }
+
+                foreach (NpcView view in m_NpcViews.Values)
+                {
+                    view.Update();
+                }
+            }
+            if (m_SpaceInfoViews.Count > 0)
+            {
+                if (!GlobalVariables.Instance.IsDebug)
+                {
+                    EntityManager.Instance.MarkSpaceInfoViews();
+                    EntityManager.Instance.DestroyUnusedSpaceInfoViews();
+                }
+            }
+        }
+
+        public void DestroyUnusedSpaceInfoViews()
+        {
+            List<int> deletes = new List<int>();
+            foreach(SpaceInfoView view in m_SpaceInfoViews.Values)
+            {
+                if(view.NeedDestroy)
+                {
+                    deletes.Add(view.Id);
+                }
+            }
+            foreach(int id in deletes)
+            {
+                DestroySpaceInfoView(id);
+            }
+            deletes.Clear();
+        }
+
+        private void DestroySpaceInfoView(int objId)
+        {
+            if (m_SpaceInfoViews.ContainsKey(objId))
+            {
+                SpaceInfoView view = m_SpaceInfoViews[objId];
+                if(view != null)
+                {
+                    view.Destroy();
+                }
+                m_SpaceInfoViews.Remove(objId);
+            }
+        }
+
+        private SpaceInfoView GetSpaceInfoViewById(int objId)
+        {
+            SpaceInfoView view = null;
+            if (m_SpaceInfoViews.ContainsKey(objId))
+                view = m_SpaceInfoViews[objId];
+            return view;
+        }
+
+        private SpaceInfoView CreateSpaceInfoView(int objId, bool isPlayer)
+        {
+            SpaceInfoView view = null;
+            if (!m_SpaceInfoViews.ContainsKey(objId))
+            {
+                view = new SpaceInfoView();
+                view.Create(objId, isPlayer);
+                m_SpaceInfoViews.Add(objId, view);
+            }
+            return view;
+        }
+
+        public void UpdateSpaceInfoView(int objId, bool isPlayer, float x, float y, float z, float dir)
+        {
+            SpaceInfoView view = GetSpaceInfoViewById(objId);
+            if (null == view)
+            {
+                view = CreateSpaceInfoView(objId, isPlayer);
+            }
+            if (null != view)
+            {
+                view.NeedDestroy = false;
+                view.Update(x, y, z, dir);
+            }
+        }
+
+        public void MarkSpaceInfoViews()
+        {
+            foreach(SpaceInfoView view in m_SpaceInfoViews.Values)
+            {
+                view.NeedDestroy = true;
+            }
+        }
+
         #region Singleton
         private static EntityManager s_instance_ = new EntityManager();
         public static EntityManager Instance
         {
             get { return s_instance_; }
         }
-#endregion
+        #endregion
     }
 }

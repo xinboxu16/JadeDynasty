@@ -6,7 +6,7 @@ public class NGUITools
 {
     public static GameObject AddChild(GameObject parent, Object prefab)
     {
-        GameObject go = GameObject.Instantiate(prefab) as GameObject;
+        GameObject go = GameObject.Instantiate(prefab, parent.transform, false) as GameObject;
 
 //#if UNITY_EDITOR && !UNITY_3_5 && !UNITY_4_0 && !UNITY_4_1 && !UNITY_4_2
 //        //编辑器模式 撤销对他们的创建
@@ -16,8 +16,12 @@ public class NGUITools
         if (go != null && parent != null)
         {
             Transform t = go.transform;
-            t.SetParent(parent.transform, false);//一定要加false 要不界面就乱了
-            t.localPosition = Vector3.zero;
+            //t.SetParent(parent.transform, false);//一定要加false 要不界面就乱了
+            /*
+             * t.localPosition = new Vector3(0,0,0)是将A的中心重合到画布中心了。
+             * 如果设置要添加的控件位置不在画布中心 导致直接放在画布中心 位置错误
+             */
+            //t.localPosition = Vector3.zero; 
             t.localRotation = Quaternion.identity;
             t.localScale = Vector3.one;
             go.layer = parent.layer;
@@ -33,9 +37,14 @@ public class NGUITools
         //return childGameObject;
     }
 
-    public static GameObject AddWidget(GameObject parent, Object prefab, bool isClearWidget)
+    public static GameObject AddWidget(GameObject parent, Object prefab, bool isClearWidget = false)
     {
-        Transform widgets = parent.transform.Find("Widgets");
+        //GameObject parent = GameObject.FindGameObjectWithTag("UI_BASE");
+        Transform widgets = parent.transform;
+        if (null == widgets)
+        {
+            return null;
+        }
         if (isClearWidget)
         {
             for (int i = 0; i < widgets.childCount; i++)
@@ -46,19 +55,18 @@ public class NGUITools
             widgets.DetachChildren();
         }
         GameObject go = prefab as GameObject;
-        GameObject obj = null;
         if (go != null && parent != null)
         {
-            obj = GameObject.Instantiate(go);
-            Transform t = obj.transform;
-            t.SetParent(widgets, false);
-            t.localPosition = Vector3.zero;
+            go = GameObject.Instantiate(go, widgets, false);
+            Transform t = go.transform;
+            //t.SetParent(widgets, false);
+            //t.localPosition = Vector3.zero; //如果设置要添加的控件位置不在画布中心 导致直接放在画布中心 位置错误
             t.localRotation = Quaternion.identity;
             t.localScale = Vector3.one;
-            obj.layer = parent.layer;
             go.layer = parent.layer;
+            //go.layer = parent.layer;
         }
-        return obj;
+        return go;
     }
 
     public static void SetActive(GameObject obj, bool isActive)
@@ -68,7 +76,12 @@ public class NGUITools
 
     public static Sprite GetResourceSpriteByName(string name)
     {
-        return Resources.Load<GameObject>("Sprite/" + name).GetComponent<SpriteRenderer>().sprite;
+        GameObject obj = Resources.Load<GameObject>("Sprite/" + name);
+        if(null != obj)
+        {
+            return obj.GetComponent<SpriteRenderer>().sprite;
+        }
+        return null;
     }
 
     static public bool GetActive(GameObject go)

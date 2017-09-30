@@ -13,6 +13,8 @@ namespace DashFire
         private const int c_MaxIdNum = 10000;
         private int m_NextInfoId = c_StartId;
 
+        private SceneContextInfo m_SceneContext = null;
+
         private LinkedListDictionary<int, SceneLogicInfo> m_SceneLogicInfos = new LinkedListDictionary<int, SceneLogicInfo>();
         private List<SceneLogicInfo> m_DelayAdd = new List<SceneLogicInfo>();
         private Queue<SceneLogicInfo> m_UnusedSceneLogicInfos = new Queue<SceneLogicInfo>();
@@ -22,12 +24,120 @@ namespace DashFire
             m_SceneLogicInfoPoolSize = poolSize;
         }
 
+        public void SetSceneContext(SceneContextInfo context)
+        {
+            m_SceneContext = context;
+        }
+
+        public LinkedListDictionary<int, SceneLogicInfo> SceneLogicInfos
+        {
+            get { return m_SceneLogicInfos; }
+        }
+
+        public SceneLogicInfo AddSceneLogicInfo(int id, SceneLogicConfig cfg)
+        {
+            SceneLogicInfo info = NewSceneLogicInfo(id);
+            info.SceneContext = m_SceneContext;
+            info.SceneLogicConfig = cfg;
+            m_SceneLogicInfos.AddLast(info.GetId(), info);
+            return info;
+        }
+
+        public void ExecuteDelayAdd()
+        {
+            foreach (var i in m_DelayAdd)
+                m_SceneLogicInfos[i.GetId()] = i;
+            m_DelayAdd.Clear();
+        }
+
+        public void RemoveSceneLogicInfo(int id)
+        {
+            SceneLogicInfo info = GetSceneLogicInfo(id);
+            if (null != info)
+            {
+                m_SceneLogicInfos.Remove(id);
+                info.SceneContext = null;
+                RecycleSceneLogicInfo(info);
+            }
+        }
+
+        private void RecycleSceneLogicInfo(SceneLogicInfo logicInfo)
+        {
+            if (null != logicInfo && m_UnusedSceneLogicInfos.Count < m_SceneLogicInfoPoolSize)
+            {
+                logicInfo.Reset();
+                m_UnusedSceneLogicInfos.Enqueue(logicInfo);
+            }
+        }
+
+        public SceneLogicInfo GetSceneLogicInfo(int id)
+        {
+            SceneLogicInfo info;
+            SceneLogicInfos.TryGetValue(id, out info);
+            return info;
+        }
+
+        public SceneLogicInfo GetSceneLogicInfoByConfigId(int id)
+        {
+            SceneLogicInfo ret = null;
+            for (LinkedListNode<SceneLogicInfo> linkNode = m_SceneLogicInfos.FirstValue; null != linkNode; linkNode = linkNode.Next)
+            {
+                SceneLogicInfo info = linkNode.Value;
+                if (info.ConfigId == id)
+                {
+                    ret = info;
+                    break;
+                }
+            }
+            return ret;
+        }
+
         public void Reset()
         {
             m_SceneLogicInfos.Clear();
             m_DelayAdd.Clear();
             m_UnusedSceneLogicInfos.Clear();
             m_NextInfoId = c_StartId;
+        }
+
+        private SceneLogicInfo NewSceneLogicInfo(int id)
+        {
+            SceneLogicInfo info = null;
+            if (m_UnusedSceneLogicInfos.Count > 0)
+            {
+                info = m_UnusedSceneLogicInfos.Dequeue();
+                info.Reset();
+                info.InitId(id);
+            }
+            else
+            {
+                info = new SceneLogicInfo(id);
+            }
+            return info;
+        }
+
+        //获取下一个id
+        private int GenNextId()
+        {
+            int startId = c_StartId;
+            if (GlobalVariables.Instance.IsClient)
+            {
+                startId = c_StartId_Client;
+            }
+            int id = 0;
+            for(int i = 0; i < c_MaxIdNum; ++i)
+            {
+                id = (m_NextInfoId + i - startId) % c_MaxIdNum + startId;
+                if(!m_SceneLogicInfos.Contains(id))
+                {
+                    break;
+                }
+            }
+            if(id > 0)
+            {
+                m_NextInfoId = (id + 1 - startId) % c_MaxIdNum + startId;
+            }
+            return id;
         }
     }
 }

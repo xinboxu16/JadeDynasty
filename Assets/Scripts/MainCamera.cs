@@ -244,6 +244,16 @@ public class MainCamera : MonoBehaviour
         m_CurDistance = m_Distance;
     }
 
+    //Vector3 vec = new Vector3(0, 0, 0);
+    //Vector3 end = new Vector3(10, 10, 10);
+
+    //void Update()
+    //{
+    //    //vec = Vector3.Lerp(vec, end, Time.deltaTime*5);//Time.deltaTime 每帧时间
+    //    Vector3 a = Vector3.Lerp(vec, end, Time.time); //Time.time 启动到现在时间
+    //    Debug.LogError("LateUpdate" + a);
+    //}
+
     internal void LateUpdate()
     {
         if (null == Camera.main || !Camera.main.enabled)

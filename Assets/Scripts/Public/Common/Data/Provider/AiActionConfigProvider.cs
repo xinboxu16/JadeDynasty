@@ -52,6 +52,11 @@ namespace DashFire
             m_AiActionConfigMrg.CollectDataFromDBC(file, root);
         }
 
+        public AiActionConfig GetDataById(int id)
+        {
+            return m_AiActionConfigMrg.GetDataById(id);
+        }
+
         public static AiActionConfigProvider Instance
         {
             get { return s_Instance; }

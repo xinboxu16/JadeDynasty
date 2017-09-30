@@ -25,6 +25,14 @@ namespace DashFire
                 Presets[i] = SlotPosition.SP_None;
             }
         }
+
+        public void SetCurSkillSlotPos(int preset, SlotPosition pos)
+        {
+            if (preset >= 0 && preset < PresetNum)
+            {
+                Presets[preset] = pos;
+            }
+        }
     }
     public class SkillInfo
     {
@@ -39,6 +47,8 @@ namespace DashFire
         public float StartTime;
         public bool IsInterrupted;
 
+        private float m_CDEndTime;
+
         public SkillInfo (int skillId, int level = 0)
         {
             SkillId = skillId;
@@ -49,6 +59,24 @@ namespace DashFire
             IsInterrupted = false;
             Postions = new PresetInfo();
             ConfigData = SkillConfigProvider.Instance.ExtractData(SkillConfigType.SCT_SKILL, skillId) as SkillLogicData;
+        }
+
+        public void BeginCD()
+        {
+            m_CDEndTime = StartTime + ConfigData.CoolDownTime;
+        }
+
+        //当前时间
+        public bool IsInCd(float now)
+        {
+            if(now < m_CDEndTime)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

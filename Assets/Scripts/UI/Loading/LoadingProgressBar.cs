@@ -19,10 +19,10 @@ public class LoadingProgressBar : MonoBehaviour {
 
     private void LateUpdate()
     {
-        //if (JoyStickInputProvider.JoyStickEnable)
-        //{
-        //    JoyStickInputProvider.JoyStickEnable = false;
-        //}
+        if (JoyStickInputProvider.JoyStickEnable)
+        {
+            JoyStickInputProvider.JoyStickEnable = false;
+        }
         float progressValue = DashFire.LogicSystem.GetLoadingProgress();
         if (slider != null)
         {
@@ -50,10 +50,10 @@ public class LoadingProgressBar : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        //if (JoyStickInputProvider.JoyStickEnable)
-        //{
-        //    JoyStickInputProvider.JoyStickEnable = false;
-        //}
+        if (JoyStickInputProvider.JoyStickEnable)
+        {
+            JoyStickInputProvider.JoyStickEnable = false;
+        }
         if (sign1 && DashFire.LogicSystem.GetLoadingProgress() > 0)
         {
             sign1 = false;

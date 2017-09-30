@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace DashFire.Network
 {
@@ -35,7 +36,7 @@ namespace DashFire.Network
         throw ex;
       }
     }
-
+    
     private ProtobufSerializer m_Serializer = new ProtobufSerializer();
     private MemoryStream m_DataStream = new MemoryStream(4096);
   }

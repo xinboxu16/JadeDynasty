@@ -170,6 +170,17 @@ namespace DashFire.Network
             }
         }
 
+        public void QuitRoom()
+        {
+            if (m_Guid != 0)
+            {
+                JsonData msg = new JsonData();
+                msg.SetJsonType(JsonType.Object);
+                msg.Set("m_Guid", m_Guid);
+                SendMessage(JsonMessageID.QuitRoom, msg);
+            }
+        }
+
         private void SendMessage(JsonMessage msg)
         {
             try

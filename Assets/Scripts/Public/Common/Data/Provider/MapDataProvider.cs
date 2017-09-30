@@ -168,7 +168,7 @@ namespace DashFire
                     } break;
                 case DataMap_Type.DT_SceneLogic:
                     {
-                        //result = m_SceneLogicMgr.CollectDataFromDBC(file, rootLabel);
+                        result = m_SceneLogicMgr.CollectDataFromDBC(file, rootLabel);
                     } break;
                 case DataMap_Type.DT_All:
                 case DataMap_Type.DT_None:

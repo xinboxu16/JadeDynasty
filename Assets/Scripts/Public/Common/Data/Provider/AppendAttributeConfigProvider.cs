@@ -165,6 +165,289 @@ namespace DashFire
             return true;
         }
 
+        public float GetAddHpMax1(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddHpMax1, m_HpMaxType1);
+        }
+        public float GetAddRageMax1(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddRageMax1, m_RageMaxType1);
+        }
+        public float GetAddEpMax1(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddEpMax1, m_EpMaxType1);
+        }
+        public float GetAddAd1(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddAd1, m_AdType1);
+        }
+        public float GetAddADp1(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddADp1, m_ADpType1);
+        }
+        public float GetAddMDp1(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddMDp1, m_MDpType1);
+        }
+        public float GetAddCri1(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddCri1, m_CriType1);
+        }
+        public float GetAddPow1(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddPow1, m_PowType1);
+        }
+        public float GetAddBackHitPow1(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddBackHitPow1, m_BackHitPowType1);
+        }
+        public float GetAddCrackPow1(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddCrackPow1, m_CrackPowType1);
+        }
+        public float GetAddHpRecover1(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddHpRecover1, m_HpRecoverType1);
+        }
+        public float GetAddEpRecover1(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddEpRecover1, m_EpRecoverType1);
+        }
+        public float GetAddSpd1(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddSpd1, m_SpdType1);
+        }
+        public float GetAddFireDam1(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddFireDam1, m_FireDamType1);
+        }
+        public float GetAddFireErd1(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddFireErd1, m_FireErdType1);
+        }
+        public float GetAddIceDam1(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddIceDam1, m_IceDamType1);
+        }
+        public float GetAddIceErd1(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddIceErd1, m_IceErdType1);
+        }
+        public float GetAddPoisonDam1(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddPoisonDam1, m_PoisonDamType1);
+        }
+        public float GetAddPoisonErd1(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddPoisonErd1, m_PoisonErdType1);
+        }
+        public float GetAddWeight1(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddWeight1, m_WeightType1);
+        }
+        public float GetAddRps1(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddRps1, m_RpsType1);
+        }
+        public float GetAddAttackRange1(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddAttackRange1, m_AttackRangeType1);
+        }
+        public float GetAddHpMax2(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddHpMax2, m_HpMaxType2);
+        }
+        public float GetAddRageMax2(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddRageMax2, m_RageMaxType2);
+        }
+        public float GetAddEpMax2(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddEpMax2, m_EpMaxType2);
+        }
+        public float GetAddAd2(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddAd2, m_AdType2);
+        }
+        public float GetAddADp2(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddADp2, m_ADpType2);
+        }
+        public float GetAddMDp2(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddMDp2, m_MDpType2);
+        }
+        public float GetAddCri2(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddCri2, m_CriType2);
+        }
+        public float GetAddPow2(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddPow2, m_PowType2);
+        }
+        public float GetAddBackHitPow2(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddBackHitPow2, m_BackHitPowType2);
+        }
+        public float GetAddCrackPow2(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddCrackPow2, m_CrackPowType2);
+        }
+        public float GetAddHpRecover2(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddHpRecover2, m_HpRecoverType2);
+        }
+        public float GetAddEpRecover2(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddEpRecover2, m_EpRecoverType2);
+        }
+        public float GetAddSpd2(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddSpd2, m_SpdType2);
+        }
+        public float GetAddFireDam2(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddFireDam2, m_FireDamType2);
+        }
+        public float GetAddFireErd2(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddFireErd2, m_FireErdType2);
+        }
+        public float GetAddIceDam2(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddIceDam2, m_IceDamType2);
+        }
+        public float GetAddIceErd2(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddIceErd2, m_IceErdType2);
+        }
+        public float GetAddPoisonDam2(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddPoisonDam2, m_PoisonDamType2);
+        }
+        public float GetAddPoisonErd2(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddPoisonErd2, m_PoisonErdType2);
+        }
+        public float GetAddWeight2(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddWeight2, m_WeightType2);
+        }
+        public float GetAddRps2(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddRps2, m_RpsType2);
+        }
+        public float GetAddAttackRange2(float refVal, int refLevel)
+        {
+            return CalcAddedAttrValue(refVal, refLevel, m_AddAttackRange2, m_AttackRangeType2);
+        }
+        public float GetAddHpMax(float refVal, int refLevel)
+        {
+            return GetAddHpMax1(refVal, refLevel) + GetAddHpMax2(refVal, refLevel);
+        }
+        public float GetAddRageMax(float refVal, int refLevel)
+        {
+            return GetAddRageMax1(refVal, refLevel) + GetAddRageMax2(refVal, refLevel);
+        }
+        public float GetAddEpMax(float refVal, int refLevel)
+        {
+            return GetAddEpMax1(refVal, refLevel) + GetAddEpMax2(refVal, refLevel);
+        }
+        public float GetAddAd(float refVal, int refLevel)
+        {
+            return GetAddAd1(refVal, refLevel) + GetAddAd2(refVal, refLevel);
+        }
+        public float GetAddADp(float refVal, int refLevel)
+        {
+            return GetAddADp1(refVal, refLevel) + GetAddADp2(refVal, refLevel);
+        }
+        public float GetAddMDp(float refVal, int refLevel)
+        {
+            return GetAddMDp1(refVal, refLevel) + GetAddMDp2(refVal, refLevel);
+        }
+        public float GetAddCri(float refVal, int refLevel)
+        {
+            return GetAddCri1(refVal, refLevel) + GetAddCri2(refVal, refLevel);
+        }
+        public float GetAddPow(float refVal, int refLevel)
+        {
+            return GetAddPow1(refVal, refLevel) + GetAddPow2(refVal, refLevel);
+        }
+        public float GetAddBackHitPow(float refVal, int refLevel)
+        {
+            return GetAddBackHitPow1(refVal, refLevel) + GetAddBackHitPow2(refVal, refLevel);
+        }
+        public float GetAddCrackPow(float refVal, int refLevel)
+        {
+            return GetAddCrackPow1(refVal, refLevel) + GetAddCrackPow2(refVal, refLevel);
+        }
+        public float GetAddHpRecover(float refVal, int refLevel)
+        {
+            return GetAddHpRecover1(refVal, refLevel) + GetAddHpRecover2(refVal, refLevel);
+        }
+        public float GetAddEpRecover(float refVal, int refLevel)
+        {
+            return GetAddEpRecover1(refVal, refLevel) + GetAddEpRecover2(refVal, refLevel);
+        }
+        public float GetAddSpd(float refVal, int refLevel)
+        {
+            return GetAddSpd1(refVal, refLevel) + GetAddSpd2(refVal, refLevel);
+        }
+        public float GetAddFireDam(float refVal, int refLevel)
+        {
+            return GetAddFireDam1(refVal, refLevel) + GetAddFireDam2(refVal, refLevel);
+        }
+        public float GetAddFireErd(float refVal, int refLevel)
+        {
+            return GetAddFireErd1(refVal, refLevel) + GetAddFireErd2(refVal, refLevel);
+        }
+        public float GetAddIceDam(float refVal, int refLevel)
+        {
+            return GetAddIceDam1(refVal, refLevel) + GetAddIceDam2(refVal, refLevel);
+        }
+        public float GetAddIceErd(float refVal, int refLevel)
+        {
+            return GetAddIceErd1(refVal, refLevel) + GetAddIceErd2(refVal, refLevel);
+        }
+        public float GetAddPoisonDam(float refVal, int refLevel)
+        {
+            return GetAddPoisonDam1(refVal, refLevel) + GetAddPoisonDam2(refVal, refLevel);
+        }
+        public float GetAddPoisonErd(float refVal, int refLevel)
+        {
+            return GetAddPoisonErd1(refVal, refLevel) + GetAddPoisonErd2(refVal, refLevel);
+        }
+        public float GetAddWeight(float refVal, int refLevel)
+        {
+            return GetAddWeight1(refVal, refLevel) + GetAddWeight2(refVal, refLevel);
+        }
+        public float GetAddRps(float refVal, int refLevel)
+        {
+            return GetAddRps1(refVal, refLevel) + GetAddRps2(refVal, refLevel);
+        }
+        public float GetAddAttackRange(float refVal, int refLevel)
+        {
+            return GetAddAttackRange1(refVal, refLevel) + GetAddAttackRange2(refVal, refLevel);
+        }
+
+        private float CalcAddedAttrValue(float refVal, int refLevel, float addVal, int type)
+        {
+            float retVal = 0;
+            switch (type)
+            {
+                case (int)ValueType.AbsoluteValue:
+                    retVal = addVal;
+                    break;
+                case (int)ValueType.PercentValue:
+                    retVal = refVal * addVal;
+                    break;
+                case (int)ValueType.LevelRateValue:
+                    retVal = refLevel * addVal;
+                    break;
+            }
+            return retVal;
+        }
+
         private float CalcRealValue(int tableValue, out int type)
         {
             float retVal = 0;
@@ -208,6 +491,11 @@ namespace DashFire
         public void Load(string file, string root)
         {
             m_AppendAttributeConfigMgr.CollectDataFromDBC(file, root);
+        }
+
+        public AppendAttributeConfig GetDataById(int id)
+        {
+            return m_AppendAttributeConfigMgr.GetDataById(id);
         }
 
         public static AppendAttributeConfigProvider Instance

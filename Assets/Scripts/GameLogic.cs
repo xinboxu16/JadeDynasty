@@ -5,6 +5,7 @@ using System.Collections;
 using DashFire;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using StoryDlg;
 
 public class GameLogic : MonoBehaviour
 {
@@ -194,5 +195,40 @@ public class GameLogic : MonoBehaviour
         //Application.LoadLevel("Loading");
         LogicSystem.PublishLogicEvent("ge_change_scene", "game", 0);
         m_IsInit = true;
+    }
+
+    public void ShowUi(bool show)
+    {
+        UIManager.Instance.SetAllUiVisible(show);
+    }
+
+    public void TriggerStory(int storyId)
+    {
+        StoryDlgInfo storyInfo = StoryDlgManager.Instance.GetStoryInfoByID(storyId);
+        if (null != storyInfo)
+        {
+            if(storyInfo.DlgType == StoryDlgType.Small)
+            {
+                GameObject obj = UIManager.Instance.GetWindowGoByName("StoryDlgSmall");
+                if(null != obj)
+                {
+                    StoryDlgPanel dlg = obj.GetComponent<StoryDlgPanel>();
+                    dlg.OnTriggerStory(storyInfo);
+                }
+            }
+            else
+            {
+                GameObject obj = UIManager.Instance.GetWindowGoByName("StoryDlgBig");
+                if(null != obj)
+                {
+                    StoryDlgPanel dlg = obj.GetComponent<StoryDlgPanel>();
+                    dlg.OnTriggerStory(storyInfo);
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError("Wrong Story id = " + storyId);
+        }
     }
 }

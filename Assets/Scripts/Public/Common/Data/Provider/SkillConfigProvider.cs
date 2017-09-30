@@ -296,6 +296,11 @@ namespace DashFire
         {
             return ImpactId;
         }
+
+        public float CalcMaxMoveDistanceSqr()
+        {
+            return MaxDist * MaxDist;
+        }
     }
 
     /**

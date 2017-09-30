@@ -202,6 +202,11 @@ namespace DashFire
             return m_PlayerConfigMgr.GetDataById(id);
         }
 
+        public LevelupConfig GetPlayerLevelupConfigById(int id)
+        {
+          return m_PlayerLevelupConfigMgr.GetDataById(id);
+        }
+
         public static PlayerConfigProvider Instance
         {
             get { return s_Instance; }
