@@ -13,6 +13,22 @@ namespace DashFire
         SP_C,
         SP_D,
     }
+
+    public class BreakSection
+    {
+        public BreakSection(int breaktype, int starttime, int endtime, bool isinterrupt)
+        {
+            BreakType = breaktype;
+            StartTime = starttime;
+            EndTime = endtime;
+            IsInterrupt = isinterrupt;
+        }
+        public int BreakType;
+        public int StartTime;
+        public int EndTime;
+        public bool IsInterrupt;
+    }
+
     public class PresetInfo
     {
         public const int PresetNum = 4;
@@ -49,6 +65,9 @@ namespace DashFire
 
         private float m_CDEndTime;
 
+        private List<BreakSection> BreakSections = new List<BreakSection>();
+        private MyDictionary<SkillCategory, float> m_CategoryLockinputTime = new MyDictionary<SkillCategory, float>();
+
         public SkillInfo (int skillId, int level = 0)
         {
             SkillId = skillId;
@@ -76,6 +95,36 @@ namespace DashFire
             else
             {
                 return false;
+            }
+        }
+
+        //是否能打断
+        public bool CanBreak(int brealType, long time, out bool isInterrupt)
+        {
+            isInterrupt = false;
+            if (!IsSkillActivated)
+                return true;
+
+            foreach(BreakSection section in BreakSections)
+            {
+                if(section.BreakType == brealType && (StartTime * 1000 + section.StartTime) <= time && time <= (StartTime * 1000 + section.EndTime))
+                {
+                    isInterrupt = section.IsInterrupt;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public float GetLockInputTime(SkillCategory category)
+        {
+            if(m_CategoryLockinputTime.ContainsKey(category))
+            {
+                return m_CategoryLockinputTime[category];
+            }
+            else
+            {
+                return ConfigData.LockInputTime;
             }
         }
     }

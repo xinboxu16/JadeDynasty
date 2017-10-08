@@ -26,7 +26,7 @@ namespace DashFire
             List<SkillLogicData> playerSkillConfig = new List<SkillLogicData>();
             //当前人物的所有技能
             List<SkillInfo> playerSkills = m_Owner.GetSkillStateInfo().GetAllSkill();
-
+            //添加到技能列表里
             foreach(SkillInfo info in playerSkills)
             {
                 if(info.ConfigData != null && info.ConfigData.Category != SkillCategory.kNone)
@@ -42,11 +42,22 @@ namespace DashFire
         private void InitSkills(List<SkillLogicData> skills)
         {
             m_SkillCategoryDict.Clear();
-            foreach(SkillLogicData ss in skills)
+            foreach(SkillLogicData sd in skills)
             {
-                if(IsCategoryContain(ss.SkillId))
+                if(IsCategoryContain(sd.SkillId))
                 {
                     continue;
+                }
+                SkillNode firstNode = InitCategorySkillNode(skills, sd);
+                m_SkillCategoryDict[sd.Category] = firstNode;
+            }
+
+            foreach(int id in m_UnlockedSkills)
+            {
+                SkillNode node = GetSkillNodeById(id);
+                if(null != node)
+                {
+                    node.IsLocked = false;
                 }
             }
         }
@@ -63,37 +74,80 @@ namespace DashFire
             return false;
         }
 
-        private SkillNode FindSkillNodeInChildren(SkillNode head, int targetId)
+        public override bool IsSkillCanBreak(SkillNode node, SkillNode nextNode)
         {
-            if(head.SkillId == targetId)
+            bool IsInterrupt;//打断
+            return IsSkillCanBreak(node, GetSkillNodeBreakType(nextNode), out IsInterrupt);
+        }
+
+        public override bool IsSkillCanBreak(SkillNode node, int breakType, out bool isInterrupt)
+        {
+            isInterrupt = false;
+            SkillInfo curSkill = GetSkillInfoByNode(node);
+            if(curSkill == null)
             {
-                return head;
+                return true;
             }
-            if (null != head.NextSkillNode)
+
+            return curSkill.CanBreak(breakType, TimeUtility.GetServerMilliseconds(), out isInterrupt);
+        }
+
+        private int GetSkillNodeBreakType(SkillNode node)
+        {
+            int breakType = MOVE_BREAK_TYPE;
+            SkillInfo nextSkill = GetSkillInfoByNode(node);
+            if(nextSkill != null)
             {
-                SkillNode node = FindSkillNodeInChildren(head.NextSkillNode, targetId);
-                if(null != node)
+                breakType = nextSkill.ConfigData.BreakType;
+            }
+            return breakType;
+        }
+
+        public SkillInfo GetSkillInfoByNode(SkillNode node)
+        {
+            SkillInfo result = null;
+            if(node != null)
+            {
+                SkillStateInfo state = m_Owner.GetSkillStateInfo();
+                if(state != null)
                 {
-                    return node;
+                    result = state.GetSkillInfoById(node.SkillId);
                 }
             }
-            if(null != head.SkillQ)
+            return result;
+        }
+
+        public override float GetLockInputTime(SkillNode node, SkillCategory next_category)
+        {
+            if(node == null)
             {
-                SkillNode node = FindSkillNodeInChildren(head.SkillQ, targetId);
-                if(null != node)
-                {
-                    return node;
-                }
+                return 0;
             }
-            if (head.SkillE != null)
+
+            SkillInfo skill = m_Owner.GetSkillStateInfo().GetSkillInfoById(node.SkillId);
+            if(null == skill)
             {
-                SkillNode node = FindSkillNodeInChildren(head.SkillE, targetId);
-                if (node != null)
-                {
-                    return node;
-                }
+                return 0;
             }
-            return null;
+            return skill.StartTime + skill.GetLockInputTime(next_category);
+        }
+
+        public override float GetWaitInputTime(SkillNode node)
+        {
+            if (node == null)
+            {
+                return 0;
+            }
+            SkillInfo skill = m_Owner.GetSkillStateInfo().GetSkillInfoById(node.SkillId);
+            if (skill == null)
+            {
+                return 0;
+            }
+            if (skill.IsInterrupted)
+            {
+                return 0;
+            }
+            return skill.StartTime + skill.ConfigData.NextInputTime;
         }
     }
 }

@@ -6,6 +6,16 @@ using UnityEngine;
 
 namespace DashFire
 {
+    public enum SkillCannotCastType
+    {
+        kUnknow,
+        kNotFindSkill,
+        kOwnerDead,
+        kCannotCtrol,
+        kInCD,
+        kCostNotEnough,
+    }
+
     public class SkillNode
     {
         public int SkillId;
