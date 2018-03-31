@@ -169,7 +169,8 @@ namespace uTools
             val = (method == EaseType.none) ? animationCurve.Evaluate(val) : EaseManager.EasingFromType(0, 1, val, method);
 
             // Call the virtual update
-            OnUpdate((method == EaseType.none) ? animationCurve.Evaluate(val) : val, isFinished);
+            //OnUpdate((method == EaseType.none) ? animationCurve.Evaluate(val) : val, isFinished);
+            OnUpdate((animationCurve != null) ? animationCurve.Evaluate(val) : val, isFinished);
 
             if (onUpdate != null)
             {

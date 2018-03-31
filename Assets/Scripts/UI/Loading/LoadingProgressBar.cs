@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DashFire;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +13,7 @@ public class LoadingProgressBar : MonoBehaviour {
 
     private Slider slider = null;
     // Use this for initialization
-    void Start () {
+    void Awake () {
         slider = transform.GetComponent<Slider>();
         slider.onValueChanged.AddListener(delegate(float dt) { (slider.transform.Find("Label").GetComponent<Text>()).text = (dt * 100).ToString() + "%"; });
 	}
@@ -103,10 +104,10 @@ public class LoadingProgressBar : MonoBehaviour {
 
     void DestoryLoading()
     {
-        //if (InputType.Joystick == DFMUiRoot.InputMode)
-        //{
-        //    JoyStickInputProvider.JoyStickEnable = UIManager.Instance.IsUIVisible;
-        //}
+        if (InputType.Joystick == DFMUiRoot.InputMode)
+        {
+            JoyStickInputProvider.JoyStickEnable = UIManager.Instance.IsUIVisible;
+        }
 
         sign1 = true;
         sign2 = true;

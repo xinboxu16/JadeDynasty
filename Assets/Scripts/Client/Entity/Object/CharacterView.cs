@@ -425,6 +425,7 @@ namespace DashFire
             }
         }
 
+        //进入战斗状态 将武器放到对应的位置
         public void EnterCombatState()
         {
             m_IsCombatState = true;
@@ -433,10 +434,16 @@ namespace DashFire
             {
                 string child = weapon_moves[i - 1];
                 string node = weapon_moves[i];
-                //TODO:未实现
-                //GfxSystem.QueueGfxAction(GfxModule.Skill.Trigers.TriggerUtil.MoveChildToNode, Actor, child, node);
+                GfxSystem.QueueGfxAction(GfxModule.Skill.Trigers.TriggerUtil.MoveChildToNode, Actor, child, node);
             }
             m_IsWeaponMoved = true;
+        }
+
+        public void OnCombat2IdleSkillOver()
+        {
+            m_IsCombatState = false;
+            m_IsWeaponMoved = false;
+            m_IdleState = IdleState.kNotIdle;
         }
 
         //是否战斗状态

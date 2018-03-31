@@ -57,7 +57,7 @@ public class UIServerSelect : MonoBehaviour {
         {
             if(serverIndex%2 == 0)
             {
-                go = NGUITools.AddChild(grid.gameObject, goItemContainer);
+                go = NGUITools.AddChild(grid.gameObject, goItemContainer, true);
             }
             if (go != null)
             {

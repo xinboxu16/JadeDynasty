@@ -302,10 +302,9 @@ namespace DashFire
             m_IsSimulateMove = false;
             m_LifeEndTime = -1;
 
-            //TODO:未实现
-            //setCharacterInfo();
-            //GetAiStateInfo().Reset();
-            //GetAiStateInfo().AiDatas.Clear();
+            ResetCharacterInfo();
+            GetAiStateInfo().Reset();
+            GetAiStateInfo().AiDatas.Clear();
         }
     }
 }

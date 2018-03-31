@@ -10,9 +10,57 @@ namespace GfxModule.Impact
     public sealed class GfxImpactSystem
     {
         private const int m_DeadImpactId = 88888;
+        private const float c_Precision = 0.000001f;
+
         private List<ImpactLogicInfo> m_ImpactLogicInfos = new List<ImpactLogicInfo>();
 
         private bool m_ShowDebug = false;
+
+        public void Reset()
+        {
+            for (int i = m_ImpactLogicInfos.Count - 1; i >= 0; --i)
+            {
+                ImpactLogicInfo info = m_ImpactLogicInfos[i];
+                if (null != info)
+                {
+                    m_ImpactLogicInfos.RemoveAt(i);
+                }
+            }
+            m_ImpactLogicInfos.Clear();
+        }
+
+        public void Tick()
+        {
+            for(int i = m_ImpactLogicInfos.Count - 1; i >= 0; --i)
+            {
+                ImpactLogicInfo info = m_ImpactLogicInfos[i];
+                if(null != info)
+                {
+                    if(info.IsActive)
+                    {
+                        IGfxImpactLogic logic = GfxImpactLogicManager.Instance.GetGfxImpactLogic(info.LogicId);
+                        if(null != logic)
+                        {
+                            if(null != info.Target)
+                            {
+                                if(info.Target.activeSelf)
+                                {
+                                    logic.Tick(info);
+                                }
+                                else
+                                {
+                                    m_ImpactLogicInfos.RemoveAt(i);
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        m_ImpactLogicInfos.RemoveAt(i);
+                    }
+                }
+            }
+        }
 
         public void SendDeadImpact(int targetId)
         {
@@ -108,6 +156,78 @@ namespace GfxModule.Impact
             }
         }
 
+        //产生特效
+        public void SendImpactToCharacter(int sender, int target, int impactId, float x, float y, float z, float dir, int forceLogicId)
+        {
+            GameObject senderObj = LogicSystem.GetGameObject(sender);
+            GameObject targetObj = LogicSystem.GetGameObject(target);
+            if(null == senderObj || null == targetObj)
+            {
+                Debug.LogError("null obj");
+            }
+
+            SharedGameObjectInfo targetInfo = LogicSystem.GetSharedGameObjectInfo(targetObj);
+            if (null == targetInfo || targetInfo.IsDead)
+            {
+                return;
+            }
+
+            ImpactLogicData config = (ImpactLogicData)SkillConfigProvider.Instance.ExtractData(SkillConfigType.SCT_IMPACT, impactId);
+            if(null != config)
+            {
+                bool needSendImpact = true;
+                int logicId = config.ImpactGfxLogicId;
+                if (-1 != forceLogicId)
+                {
+                    logicId = forceLogicId;
+                }
+                for(int i = m_ImpactLogicInfos.Count - 1; i >= 0; --i)
+                {
+                    ImpactLogicInfo info = m_ImpactLogicInfos[i];
+                    if(null != info)
+                    {
+                        if(info.IsActive)
+                        {
+                            if(info.Target.GetInstanceID() == targetObj.GetInstanceID())
+                            {
+                                if(info.LogicId == (int)GfxImpactLogicManager.GfxImpactLogicId.GfxImpactLogic_Default || logicId == (int)GfxImpactLogicManager.GfxImpactLogicId.GfxImpactLogic_Default)
+                                {
+                                    if (info.ImpactId != impactId)
+                                    {
+                                        continue;
+                                    }
+                                }
+
+                                IGfxImpactLogic logic = GfxImpactLogicManager.Instance.GetGfxImpactLogic(info.LogicId);
+                                if (null != logic)
+                                {
+                                    needSendImpact = logic.OnOtherImpact(logicId, info, (info.ImpactId == impactId));
+                                    if (needSendImpact)
+                                    {
+                                        m_ImpactLogicInfos.RemoveAt(i);
+                                    }
+                                }
+                                else
+                                {
+                                    Debug.Log(string.Format("IGfxImpactLogicId {0} not found", info.LogicId));
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (needSendImpact)
+                {
+                    //添加特效
+                    SendImpactToCharacterImpl(senderObj, targetObj, impactId, x, y, z, dir, forceLogicId);
+                }
+                else
+                {
+                    LogicSystem.NotifyGfxStopImpact(senderObj, impactId, targetObj);
+                }
+            }
+        }
+
         private void AddImpactInfo(ImpactLogicInfo addInfo)
         {
             for(int i = m_ImpactLogicInfos.Count - 1; i >= 0; --i)
@@ -146,6 +266,83 @@ namespace GfxModule.Impact
                     obj.transform.position = pos;
                 }
             }
+        }
+
+        //TODO 未懂 应该是控制被击中的人物的位置
+        public Vector3 GetAdjustPoint(Vector3 curPos, ImpactLogicInfo info)
+        {
+            Vector3 result = new Vector3(curPos.x, curPos.y, curPos.z);
+            Vector3 finalPoint = GetImpactRealEndPos(info);
+            Vector3 fromDirection = info.NormalEndPoint - info.OrignalPos;
+            Vector3 toDirection = finalPoint - info.OrignalPos;
+            fromDirection.y = 0;
+            toDirection.y = 0;
+            if (info.AdjustDegreeXZ > c_Precision || info.AdjustDegreeXZ < c_Precision)
+            {
+                Quaternion q = Quaternion.FromToRotation(fromDirection, toDirection);
+                float eulerAngleY = q.eulerAngles.y;
+                if (eulerAngleY > 180)
+                {
+                    eulerAngleY = eulerAngleY - 360;
+                }
+                else if (eulerAngleY < -180)
+                {
+                    eulerAngleY = eulerAngleY + 360;
+                }
+                q = Quaternion.Euler(new Vector3(0, eulerAngleY, 0) * info.AdjustDegreeXZ);
+                float scale = 0.0f;
+                if (fromDirection.magnitude < c_Precision)
+                {
+                    if (toDirection.magnitude < c_Precision)
+                    {
+                        scale = 1.0f;
+                    }
+                    else
+                    {
+                        scale = toDirection.magnitude;
+                    }
+                }
+                else
+                {
+                    scale = (fromDirection.magnitude + (toDirection.magnitude - fromDirection.magnitude) * info.AdjustDegreeXZ) / fromDirection.magnitude;
+                }
+
+                result = (q * curPos) * scale;
+            }
+            if (info.LogicId == (int)GfxImpactLogicManager.GfxImpactLogicId.GfxImpactLogic_HitFly && Math.Abs(curPos.y) > c_Precision)
+            {
+                if (info.AdjustDegreeY > c_Precision || info.AdjustDegreeY < -1 * c_Precision)
+                {
+                    if (Math.Abs(finalPoint.y - info.NormalEndPoint.y) > c_Precision &&
+                       Math.Abs(info.NormalEndPoint.y - info.OrignalPos.y) > c_Precision)
+                    {
+                        float scale = ((finalPoint.y - info.NormalEndPoint.y) * info.AdjustDegreeY) / (info.NormalEndPoint.y - info.OrignalPos.y);
+                        result.y = curPos.y * Math.Abs(scale);
+                    }
+                    else
+                    {
+                        result.y = curPos.y;
+                    }
+                }
+                else
+                {
+                    result.y = curPos.y;
+                }
+            }
+            else
+            {
+                result.y = curPos.y;
+            }
+            return result;
+            //ShowDebugObject(curPos + info.OrignalPos, 1);
+            //ShowDebugObject((q * curPos) * scale + info.OrignalPos, 0);
+        }
+
+        private Vector3 GetImpactRealEndPos(ImpactLogicInfo info)
+        {
+            Vector3 dir = (info.AdjustPoint - info.NormalEndPoint).normalized;
+            dir.y = 0;
+            return dir * info.AdjustAppend + info.AdjustPoint;
         }
 
         private Vector3 GetImpactEndPos(Vector3 startPos, Quaternion q, ImpactLogicInfo info)

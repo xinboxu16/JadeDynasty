@@ -35,6 +35,18 @@ namespace GfxModule.Impact
                 }
             }
         }
+
+        public virtual float GetSpeedByTime(float time)
+        {
+            foreach(Section sec in m_Sections)
+            {
+                if(time >= sec.StartTime && time < sec.EndTime)
+                {
+                    return sec.Speed;
+                }
+            }
+            return 1.0f;
+        }
     }
 
     public class CurveMoveInfo
@@ -74,6 +86,47 @@ namespace GfxModule.Impact
                     m_Sections.Add(sec);
                 }
             }
+        }
+
+        public Vector3 GetSpeedByTime(float time, float gravity = 0.0f)
+        {
+            foreach (Section sec in m_Sections)
+            {
+                if (time >= sec.StartTime && time < sec.EndTime)
+                {
+                    return new Vector3(sec.XSpeed + sec.XAcce * (time - sec.StartTime),
+                                       sec.YSpeed + (sec.YAcce + gravity) * (time - sec.StartTime),
+                                       sec.ZSpeed + sec.ZAcce * (time - sec.StartTime));
+                }
+            }
+            if (time < GetStartTime())
+            {
+                return new Vector3(0, gravity * time, 0);
+            }
+            if (time > GetEndTime())
+            {
+                return new Vector3(0, (time - GetEndTime()) * gravity, 0);
+            }
+
+            return Vector3.zero;
+        }
+
+        private float GetStartTime()
+        {
+            if (m_Sections.Count > 0)
+            {
+                return m_Sections[0].StartTime;
+            }
+            return 0.0f;
+        }
+
+        private float GetEndTime()
+        {
+            if (m_Sections.Count > 0)
+            {
+                return m_Sections[m_Sections.Count - 1].EndTime;
+            }
+            return 0.0f;
         }
     }
 
@@ -150,11 +203,42 @@ namespace GfxModule.Impact
             set { m_IsActive = value; }
         }
 
+        public Quaternion MoveDir
+        {
+            get { return m_MoveDir; }
+            set { m_MoveDir = value; }
+        }
+
+        public float ElapsedTime
+        {
+            get { return m_ElapsedTime; }
+            set { m_ElapsedTime = value; }
+        }
+
+        public float ElapsedTimeForEffect
+        {
+            get { return m_ElapsedTimeForEffect; }
+            set { m_ElapsedTimeForEffect = value; }
+        }
+
+        public int ActionType
+        {
+            get { return m_ActionType; }
+            set { m_ActionType = value; }
+        }
+
+        public TypedDataCollection CustomDatas
+        {
+            get { return m_CustomDatas; }
+            set { m_CustomDatas = value; }
+        }
+
         public UnityEngine.Vector3 ImpactSrcPos
         {
             get { return m_ImpactSrcPos; }
             set { m_ImpactSrcPos = value; }
         }
+
         public float ImpactSrcDir
         {
             get { return m_ImpactSrcDir; }
@@ -189,6 +273,12 @@ namespace GfxModule.Impact
         {
             get { return m_ConfigData; }
             set { m_ConfigData = value; }
+        }
+
+        public Vector3 Velocity
+        {
+            get { return m_Velocity; }
+            set { m_Velocity = value; }
         }
 
         public float AdjustDegreeY
@@ -231,6 +321,17 @@ namespace GfxModule.Impact
         {
             get { return m_LockFrameInfo; }
             set { m_LockFrameInfo = value; }
+        }
+
+        public List<EffectInfo> EffectList
+        {
+            get { return m_EffectList; }
+            set { m_EffectList = value; }
+        }
+
+        public List<GameObject> EffectsDelWithImpact
+        {
+            get { return m_EffectsDelWithImpact; }
         }
 
         public void AddEffectData(int id)

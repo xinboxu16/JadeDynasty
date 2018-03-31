@@ -321,7 +321,7 @@ namespace DashFire
 #if UNITY_IPHONE
         string downloadUrl = string.Format(s_ForceDownloadUrl, Channel) + "&amp;time=" + DateTime.Now.ToString("yyyyMMddhhmmss");
 #elif UNITY_ANDROID
-        string downloadUrl = string.Format(s_ForceDownloadUrl, Channel)
+                string downloadUrl = string.Format(s_ForceDownloadUrl, Channel);
 #else
                 string downloadUrl = s_ForceDownloadUrl;
 #endif

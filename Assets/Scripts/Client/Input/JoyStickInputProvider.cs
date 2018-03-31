@@ -14,7 +14,7 @@ public class JoyStickInputProvider : MonoBehaviour {
         //GameObject parentObj = DFMUiRoot.RootTransform.FindChild("JoyStickWidget").gameObject;
         GameObject canvas = GameObject.Find("Canvas");
         GameObject parentObj = canvas.transform.FindChild("JoyStickWidget").gameObject;
-        m_JoyStickObj = NGUITools.AddChild(parentObj, m_JoyStick);
+        m_JoyStickObj = NGUITools.AddChild(parentObj, m_JoyStick, true);
         //Transform parent = GameObject.Find("Canvas/Widgets").transform;
         //m_JoyStickObj = GameObject.Instantiate(m_JoyStick, parent) as GameObject;
         //m_JoyStickObj.transform.position = Vector3.zero;
@@ -65,6 +65,14 @@ public class JoyStickInputProvider : MonoBehaviour {
         if (m_JoyStickObj != null)
         {
             ETCInput.SetControlVisible(m_JoyStickObj.name, false);
+        }
+    }
+
+    public static void SetActive(bool active)
+    {
+        if (null != m_JoyStickObj)
+        {
+            JoyStick.activated = active;
         }
     }
 

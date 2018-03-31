@@ -22,5 +22,18 @@ namespace GfxModule.Impact
             Vector3 vector = new Vector3(Convert.ToSingle(resut[0]), Convert.ToSingle(resut[1]), Convert.ToSingle(resut[2]));
             return vector;
         }
+
+        public static void MoveObject(GameObject obj, Vector3 motion)
+        {
+            CharacterController ctrl = obj.GetComponent<CharacterController>();
+            if(null != ctrl)
+            {
+                ctrl.Move(motion);
+            }
+            else
+            {
+                ctrl.transform.position += motion;
+            }
+        }
     }
 }

@@ -209,6 +209,11 @@ namespace DashFire
             return m_ActionConfigMgr.GetDataById(id);
         }
 
+        public DataDictionaryMgr<Data_ActionConfig> ActionConfigMgr
+        {
+            get { return m_ActionConfigMgr; }
+        }
+
         public static ActionConfigProvider Instance
         {
             get { return s_Instance; }

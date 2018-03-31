@@ -67,23 +67,6 @@ namespace DashFire
 
     public class ExpeditionPlayerInfo
     {
-        const int c_MaxExpeditionNum = 12;
-        private int m_ActiveTollgate = 0;
-        private TollgateData[] m_Tollgates = new TollgateData[c_MaxExpeditionNum];
-
-        public const int c_UnlockLevel = 18;
-
-        public TollgateData[] Tollgates
-        {
-            get { return m_Tollgates; }
-        }
-
-        public int ActiveTollgate
-        {
-            get { return m_ActiveTollgate; }
-            set { m_ActiveTollgate = value; }
-        }
-
         //关卡
         public class TollgateData
         {
@@ -165,6 +148,7 @@ namespace DashFire
                 get { return m_IsPlayAnim; }
                 set { m_IsPlayAnim = value; }
             }
+
             private EnemyType m_Type = EnemyType.ET_Monster;
             private List<int> m_EnemyList = new List<int>();
             private List<int> m_EnemyAttrList = new List<int>();
@@ -174,6 +158,92 @@ namespace DashFire
             private int m_FlushNum = -1;
             private bool m_IsPostResult = false;
             private bool m_IsPlayAnim = false;
+        }
+
+        const int c_MaxExpeditionNum = 12;
+        public const double c_ExpeditionResetIntervalTime = 10800;
+        public const int c_FlushInterval = 7;
+        public const int c_MixCoolTimePoint = 5;
+        public const int c_UnlockLevel = 18;
+        public const int c_ResetMax = 5;
+        private bool m_IsUnlock = false;
+        private int m_Hp;
+        private int m_Mp;
+        private int m_Rage;
+        private int m_Schedule;
+        private int m_CurResetCount = 0;
+        private double m_LastResetTimestamp = 0;
+        private bool m_CanReset = true;
+        private int m_ActiveTollgate = 0;
+        private double m_StartTime = 0;
+        private double m_MonsterDeadTime = -1;
+        private double m_UserDeadTime = -1;
+        private TollgateData[] m_Tollgates = new TollgateData[c_MaxExpeditionNum];
+
+        public ExpeditionPlayerInfo()
+        {
+            this.m_Hp = 0;
+            this.m_Mp = 0;
+            this.m_Rage = 0;
+            this.m_Schedule = 0;
+            this.m_StartTime = 0;
+            this.m_MonsterDeadTime = -1;
+            this.UserDeadTime = -1;
+
+            for (int i = 0; i < m_Tollgates.Length; i++)
+            {
+                m_Tollgates[i] = new TollgateData();
+            }
+        }
+        public void Reset()
+        {
+            this.m_Hp = 0;
+            this.m_Mp = 0;
+            this.m_Rage = 0;
+            this.m_Schedule = 0;
+            this.m_ActiveTollgate = 0;
+            this.m_StartTime = 0;
+            this.m_MonsterDeadTime = -1;
+            this.UserDeadTime = -1;
+
+            if (null != m_Tollgates)
+            {
+                for (int i = 0; i < m_Tollgates.Length; i++)
+                {
+                    if (null != m_Tollgates[i])
+                    {
+                        m_Tollgates[i].Reset();
+                    }
+                }
+            }
+        }
+
+        public TollgateData[] Tollgates
+        {
+            get { return m_Tollgates; }
+        }
+
+        public int ActiveTollgate
+        {
+            get { return m_ActiveTollgate; }
+            set { m_ActiveTollgate = value; }
+        }
+
+        public int Hp
+        {
+            get { return m_Hp; }
+            set { m_Hp = value; }
+        }
+        public int Mp
+        {
+            get { return m_Mp; }
+            set { m_Mp = value; }
+        }
+
+        public double UserDeadTime
+        {
+            get { return m_UserDeadTime; }
+            set { m_UserDeadTime = value; }
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 /**
  * @file DataDictionaryMgr.cs
@@ -58,7 +59,6 @@ namespace DashFire
 
             DBC document = new DBC();
             document.Load(HomePath.GetAbsolutePath(file));
-
             for (int index = 0; index < document.RowNum; index++)
             {
                 DBC_Row node = document.GetRowByIndex(index);

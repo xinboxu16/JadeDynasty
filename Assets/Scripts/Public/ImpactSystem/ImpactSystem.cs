@@ -13,6 +13,7 @@ namespace DashFire
     {
         public static SendImpactEventHandler EventSendImpact;
         public static ImpactEventHandler EventStopImpact;
+        public static ImpactEventHandler EventGfxStopImpact;
 
         public void Tick(CharacterInfo obj)
         {
@@ -103,7 +104,7 @@ namespace DashFire
                                 impactInfo.m_LeftEnableMoveCount = 1;//允许位移
                             }
 
-                            target.GetSkillStateInfo().AddImpact(impactInfo);
+                            target.GetSkillStateInfo().AddImpact(impactInfo);//添加被击中状态 SkillStateInfo m_IsGfxControl
                             logic.StartImpact(target, impactId);
 
                             if ((int)ImpactType.INSTANT == impactInfo.m_ImpactType)
@@ -118,9 +119,12 @@ namespace DashFire
             return true;
         }
 
+        //TODO 未懂
         public bool SendImpactToCharacter(CharacterInfo sender, int impactId, int targetId, int skillId, int duration, Vector3 srcPos, float srcDir)
         {
-            bool ret = SendImpactImpl(sender, impactId, targetId, skillId, duration);
+            //发送碰撞
+            bool ret = SendImpactImpl(sender, impactId, targetId, skillId, duration);//产生伤害
+
             if (ret)
             {
                 CharacterInfo target = sender.SceneContext.GetCharacterInfoById(targetId);
@@ -131,10 +135,28 @@ namespace DashFire
                 }
                 if (null != EventSendImpact)
                 {
-                    EventSendImpact(sender, targetId, impactId, srcPos, srcDir);
+                    EventSendImpact(sender, targetId, impactId, srcPos, srcDir);//产生击打特效
                 }
             }
             return ret;
+        }
+
+        public void OnGfxStopImpact(CharacterInfo target, int impactId)
+        {
+            if (null != target)
+            {
+                ImpactInfo impactInfo = target.GetSkillStateInfo().GetImpactInfoById(impactId);
+                if (null != impactInfo)
+                {
+                    impactInfo.m_IsGfxControl = false;//在tick中会移除impact
+                    CharacterInfo sender = target.SceneContext.GetCharacterInfoById(impactInfo.m_ImpactSenderId);
+                    //pvp用
+                    if (null != EventGfxStopImpact)
+                    {
+                        EventGfxStopImpact(sender, target.GetId(), impactId);
+                    }
+                }
+            }
         }
 
         public bool StopImpactById(CharacterInfo target, int impactId)

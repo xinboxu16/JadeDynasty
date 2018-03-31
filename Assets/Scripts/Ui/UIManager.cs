@@ -165,7 +165,7 @@ public class UIManager
         HideWindow(windowName);
     }
 
-    public GameObject LoadWindowByName(string windowName)
+    public GameObject LoadWindowByName(string windowName, Camera cam = null)
     {
         GameObject window = null;
         UiConfig uiCfg = GetUiConfigByName(windowName);
@@ -175,6 +175,11 @@ public class UIManager
             if (null != window)
             {
                 window = NGUITools.AddChild(m_RootWindow, window);
+                //if (null != window && cam != null)
+                //{
+                //    Vector3 screenPos = CalculateUiPos(cam, uiCfg.m_OffsetLeft, uiCfg.m_OffsetRight, uiCfg.m_OffsetTop, uiCfg.m_OffsetBottom);
+                //    window.transform.position = cam.ScreenToWorldPoint(screenPos);
+                //}
                 string name = uiCfg.m_WindowName;
                 while(m_IsLoadedWindow.ContainsKey(name))
                 {
@@ -308,6 +313,54 @@ public class UIManager
             return uiCfg.m_WindowPath;
         }
         return null;
+    }
+
+    public Vector3 CalculateUiPos(Camera camera, float offsetL, float offsetR, float offsetT, float offsetB)
+    {
+        float screen_width = 0;
+        float screen_height = 0;
+        if (camera != null)
+        {
+            screen_width = camera.pixelRect.width;
+            screen_height = camera.pixelRect.height;
+        }
+        else
+        {
+            screen_width = Screen.width;
+            screen_height = Screen.height;
+        }
+
+        Vector3 screenPos = new Vector3();
+        if (offsetL == -1 && offsetR == -1)
+        {
+            screenPos.x = screen_width / 2;
+        }
+        else
+        {
+            if (offsetL != -1)
+                screenPos.x = offsetL;
+            else
+            {
+                screenPos.x = screen_width - offsetR;
+            }
+        }
+        if (offsetT == -1 && offsetB == -1)
+        {
+            screenPos.y = screen_height / 2;
+        }
+        else
+        {
+            if (offsetT != -1)
+            {
+                screenPos.y = screen_height - offsetT;
+            }
+            else
+            {
+                screenPos.y = offsetB;
+            }
+        }
+        screenPos.z = 0;
+        return screenPos;
     }
 
     static private UIManager m_Instance = new UIManager();

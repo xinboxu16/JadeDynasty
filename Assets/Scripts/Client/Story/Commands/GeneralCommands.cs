@@ -177,7 +177,7 @@ namespace DashFire.Story.Commands
     protected override bool ExecCommand(StoryInstance instance, long delta)
     {
       LogSystem.Info("missioncompleted");
-      WorldSystem.Instance.QueueAction(GfxSystem.EventChannelForLogic.Publish, "ge_stage_clear", "lobby", new object[] { m_MainSceneId.Value });
+      WorldSystem.Instance.QueueAction(GfxSystem.EventChannelForLogic.Publish, "ge_stage_clear", "lobby", new object[] { m_MainSceneId.Value });//结算
       return false;
     }
 

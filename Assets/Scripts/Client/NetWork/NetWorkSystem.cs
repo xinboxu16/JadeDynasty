@@ -156,6 +156,12 @@ namespace DashFire.Network
             return true;
         }
 
+        public void SyncGiveUpCombat()
+        {
+            Msg_CR_GiveUpBattle msg = new Msg_CR_GiveUpBattle();
+            SendMessage(msg);
+        }
+
         public void SyncDeleteDeadNpc(int npcId)
         {
             Msg_CR_DeleteDeadNpc msg = new Msg_CR_DeleteDeadNpc();

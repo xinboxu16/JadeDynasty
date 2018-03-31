@@ -88,5 +88,62 @@ story(2)
 	{
 	   createnpc(1001+$$);	
 	};
+	sendgfxmessage("NewbeGuide", "OnCommonAttack",1);
+	restartareamonitor(3);
     };
+    onmessage("anyuserenterarea", 3)
+    {
+        loop(5)
+        {
+            createnpc(1004+$$);
+        };
+	sendgfxmessage("NewbeGuide", "OnSkillAAttack",1);
+	restartareamonitor(4);
+    };
+    onmessage("anyuserenterarea", 4)
+    {
+        loop(5)
+        {
+            createnpc(1009+$$);
+        };
+        sendgfxmessage("NewbeGuide", "OnCommonAttack",2);
+    };
+    onmessage("allnpckilled")
+    {
+        if(0==@npcbatch)
+        {
+            showwall("GuideWall1", false);
+        };
+        if(1==@npcbatch)
+        {
+            showwall("GuideWall2", false);
+        };
+	if(2==@npcbatch)
+	{
+            wait(3000);
+            sendgfxmessage("NewbeGuide","OnShowReturnCity");
+            wait(10000);//等待10秒调用missioncompleted
+            missioncompleted(1010);
+	};
+	inc(@npcbatch);
+    };
+    onmessage("returntomaincity")
+    {
+	while(!islobbyconnected() && @reconnectCount<10)
+        {
+          reconnectlobby();
+          wait(3000);
+          inc(@reconnectCount);
+        };
+	if(islobbyconnected())
+        {
+          missioncompleted(1010);
+          wait(20000);
+          missionfailed(1010);
+          terminate();
+        } else {
+          missionfailed(1010);
+          terminate();
+        };
+    }
 };

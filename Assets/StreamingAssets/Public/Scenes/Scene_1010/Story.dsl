@@ -1,4 +1,4 @@
-﻿story(1)
+story(1)
 {  
 	onmessage("start")
 	{

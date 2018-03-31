@@ -6,6 +6,7 @@ using DashFire;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using StoryDlg;
+using System.IO;
 
 public class GameLogic : MonoBehaviour
 {
@@ -29,6 +30,11 @@ public class GameLogic : MonoBehaviour
         QualitySettings.vSyncCount = 1;//是否垂直同步
         QualitySettings.SetQualityLevel(1);//设置质量
         Application.runInBackground = true;//程序是否后台运行
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        
+#if UNITY_ANDROID || UNITY_IPHONE
+        Debug.logger.logEnabled = false;
+#endif
 
         try
         {
@@ -62,7 +68,14 @@ public class GameLogic : MonoBehaviour
                     GameControler.Init(tempPath, persistentDataPath);
                 }else{
 #if UNITY_ANDROID
-	      GameControler.Init(tempPath, persistentDataPath);
+		if (Application.isEditor)
+		{
+			GameControler.Init(tempPath, streamingAssetsPath);
+		}
+		else
+		{
+			GameControler.Init(tempPath, persistentDataPath);
+		}
 #elif UNITY_IPHONE
 	      GameControler.Init(tempPath, persistentDataPath);
 #else
@@ -152,6 +165,7 @@ public class GameLogic : MonoBehaviour
 
     private IEnumerator ExtractDataFileAndStartGame()
     {
+        Debug.Log("BeginLoading");
         LogicSystem.BeginLoading();
         if (GlobalVariables.Instance.IsPublish)
         {
@@ -161,9 +175,78 @@ public class GameLogic : MonoBehaviour
         }
         else if (!Application.isEditor)
         {
-            //未实现
-            yield break;
-        }
+            Debug.Log("ExtractDataFileAndStartGame");
+			// 加载txt资源
+			LogicSystem.UpdateLoadingTip ("加载配置数据");
+			string srcPath = Application.streamingAssetsPath;
+			string destPath = Application.persistentDataPath + "/DataFile";
+			Debug.Log (srcPath);
+			Debug.Log (destPath);
+			if (!srcPath.Contains ("://"))
+				srcPath = "file://" + srcPath;
+			string listPath = srcPath + "/list.txt";
+            if (!Directory.Exists(destPath))
+            {
+                WWW listData = new WWW(listPath);
+                //Debug.Log("wait for www " + listPath + " done");
+                yield return listData;
+                //Debug.Log("www " + listPath + " is done");
+                string listTxt = listData.text;
+                if (null != listTxt)
+                {
+                    //Debug.Log(listTxt);
+                    using (StringReader sr = new StringReader(listTxt))
+                    {
+                        string numStr = sr.ReadLine();
+                        float totalNum = 50;
+                        if (null != numStr)
+                        {
+                            numStr = numStr.Trim();
+                            totalNum = (float)int.Parse(numStr);
+                            if (totalNum <= 0)
+                                totalNum = 50;
+                        }
+                        for (float num = 1; ; num += 1)
+                        {
+                            string path = sr.ReadLine();
+                            if (null != path)
+                            {
+                                path = path.Trim();
+                                string url = srcPath + "/" + path;
+                                //Debug.Log("extract " + url);
+                                string filePath = Path.Combine(destPath, path);
+                                string dir = Path.GetDirectoryName(filePath);
+                                if (!Directory.Exists(dir))
+                                    Directory.CreateDirectory(dir);
+                                WWW temp = new WWW(url);
+                                yield return temp;
+                                if (null != temp.bytes)
+                                {
+                                    File.WriteAllBytes(filePath, temp.bytes);
+                                }
+                                else
+                                {
+                                    Debug.Log(path + " can't load");
+                                }
+                                temp = null;
+                            }
+                            else
+                            {
+                                break;
+                            }
+
+                            LogicSystem.UpdateLoadingProgress(0.8f + 0.2f * num / totalNum);
+                        }
+                        sr.Close();
+                    }
+                    listData = null;
+                }
+                else
+                {
+                    Debug.Log("Can't load list.txt");
+                }
+            }
+		}
 
         LogicSystem.EndLoading();
         StartLogic();

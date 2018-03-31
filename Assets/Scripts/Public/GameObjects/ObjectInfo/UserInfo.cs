@@ -19,6 +19,7 @@ namespace DashFire
     {
         private string m_NickName = "";
         private float m_Scale = 1.0f;
+        private int m_Money = 0;
 
         private int[] m_AiEquipment = null;
         private int[] m_AiAttackSkill = null;
@@ -30,7 +31,7 @@ namespace DashFire
         private UserAiStateInfo m_AiStateInfo = new UserAiStateInfo();
         private CombatStatisticInfo m_CombatStatisticInfo = new CombatStatisticInfo();
 
-        private string m_IndicatorEffect = "Effects/Monster/Campaign_Wild/04_SilverShield/6_Mon_SSLas_Laser_01";
+        private string m_IndicatorEffect = "Monster_FX/Campaign_Wild/04_SilverShield/6_Mon_SSLas_Laser_01";
         private float m_IndicatorDis = 10.0f;
         private int m_IndicatorActor = 0;
 
@@ -88,14 +89,20 @@ namespace DashFire
             set { m_RevivePoint = value; }
         }
 
+        public int Money
+        {
+            get { return m_Money; }
+            set { m_Money = value; }
+        }
+
         public void Reset()
         {
             //未实现
-            //ResetCharacterInfo();
-            //GetAiStateInfo().Reset();
-            //GetCombatStatisticInfo().Reset();
+            ResetCharacterInfo();
+            GetAiStateInfo().Reset();
+            GetCombatStatisticInfo().Reset();
 
-            //m_Money = 0;
+            m_Money = 0;
         }
 
         public void LoadData(int resId)

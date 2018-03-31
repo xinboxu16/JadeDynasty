@@ -330,17 +330,26 @@ namespace DashFire
                     }
                     m_LoadingLevelAsyncOperation = null;
 
+                    //加载模型
+                    Resources.Load("Monster/Campaign_Desert/01_TLPMArmy/5_Mon_TLPMSpear_01");
+
                     CallLogicLog("HandleLoadingProgress m_LoadingLevelAsyncOperation.IsDone");
+
+                    UpdateLoadingTip("场景加载完成...");
+                    Resources.UnloadUnusedAssets();
+
+                    EndLoading();
+                    CallLogicLog("End LoadScene:{0}", m_TargetScene);
+
+                    //new DelayInvoke().Delay(() =>
+                    //    {
+                    //    }, 5);
 
                     if (null != m_LogicInvoker && null != m_LevelLoadedCallback)
                     {
                         QueueLogicActionWithDelegation(m_LevelLoadedCallback);
                         m_LevelLoadedCallback = null;
                     }
-                    UpdateLoadingTip("场景加载完成...");
-                    Resources.UnloadUnusedAssets();
-                    EndLoading();
-                    CallLogicLog("End LoadScene:{0}", m_TargetScene);
 
                     if(null != m_OnAfterLoadScene)
                     {
@@ -708,6 +717,10 @@ namespace DashFire
                        是非常有用的概念，它允许群组动画的存在和设置动画的优先级别。例如，有一个射击动画，一个空闲和行走循环动画，想要使行走和空闲动画基于玩家的速度连续过渡，但当玩家射击时，仅显示射击动画，因此，射击动画需要有更高的优先级。
                        要做到这点最简单的方法是在射击时简单地保持行走和空闲动画，然后我们需要确保射击动画比空闲和行走动画在更高的层。设置层使用"animation["动画名"].layer"属性，值越大层越高，优先级就越高。下面的代码片段说明了层的使用，做到了前面例子所需要的效果：
                       */
+                    if (objInfo.IsPlayer)
+                    {
+                        Debug.Log("CrossFadeAnimationImpl_" + animationName);
+                    }
                     animation.CrossFade(animationName, fadeLength, isStopAll ? PlayMode.StopAll : PlayMode.StopSameLayer);
                     //bool isPlaying = animation.IsPlaying(animationName);
                     //if (!isPlaying || animation[animationName].wrapMode != WrapMode.Loop)
@@ -1098,6 +1111,12 @@ namespace DashFire
         {
             int id = GetGameObjectId(obj);
             return GetSharedGameObjectInfo(id);
+        }
+
+        internal bool ExistGameObject(GameObject obj)
+        {
+            int id = GetGameObjectId(obj);
+            return id > 0;
         }
 
         internal IGameLogicNotification GameLogicNotification

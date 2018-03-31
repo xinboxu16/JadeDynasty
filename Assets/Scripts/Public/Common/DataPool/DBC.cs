@@ -79,11 +79,11 @@ namespace DashFire
             if (string.IsNullOrEmpty(name))
                 return null;
 
-            if (m_DBC == null || m_DBC.Header == null
-                || m_DBC.Header.Count == 0)
+            if (m_DBC == null || m_DBC.Header == null || m_DBC.Header.Count == 0)
                 return null;
 
             int index = m_DBC.GetHeaderIndexByName(name);
+
             if (index >= 0 && index < m_Data.Count)
             {
                 return m_Data[index];
@@ -275,7 +275,7 @@ namespace DashFire
             {
                 return ret;
             }
-
+            
             Stream ms = null;
             StreamReader sr = null;
             try

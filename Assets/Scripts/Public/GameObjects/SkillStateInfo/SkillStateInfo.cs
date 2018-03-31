@@ -146,6 +146,7 @@ namespace DashFire
             }
         }
 
+        //ImpactSystem处删除
         public void RemoveImpact(int impactId)
         {
             ImpactInfo oriImpact = GetImpactInfoById(impactId);
@@ -213,6 +214,20 @@ namespace DashFire
                 if (info == null) return false;
                 return info.SkillId == skillId;
             });
+        }
+
+        public void SetCurSkillInfo(int skillId)
+        {
+            SkillInfo skillInfo = m_SkillList.Find(
+                delegate(SkillInfo info)
+                {
+                    if (info == null) return false;
+                    return info.SkillId == skillId;
+                });
+            if(null != skillInfo)
+            {
+                m_CurSkillInfo = skillInfo;
+            }
         }
 
         public List<SkillInfo> GetAllSkill()

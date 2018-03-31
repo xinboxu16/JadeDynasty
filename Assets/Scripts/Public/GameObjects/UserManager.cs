@@ -7,6 +7,9 @@ namespace DashFire
 {
     public sealed class UserManager
     {
+        public DamageDelegation OnDamage;
+        public GainMoneyDelegation OnGainMoney;
+
         private int m_UserPoolSize = 1024;
         private const int c_StartId = 1;
         private int m_NextInfoId = c_StartId;
@@ -75,6 +78,22 @@ namespace DashFire
             UserInfo info;
             Users.TryGetValue(id, out info);
             return info;
+        }
+
+        public void FireDamageEvent(int receiver, int sender, bool isShootDamage, bool isCritical, int hpDamage, int npDamage)
+        {
+            if (OnDamage != null)
+            {
+                OnDamage(receiver, sender, isShootDamage, isCritical, hpDamage, npDamage);
+            }
+        }
+
+        public void FireGainMoneyEvent(int receiver, int money)
+        {
+            if (OnGainMoney != null)
+            {
+                OnGainMoney(receiver, money);
+            }
         }
 
         public LinkedListDictionary<int, UserInfo> Users

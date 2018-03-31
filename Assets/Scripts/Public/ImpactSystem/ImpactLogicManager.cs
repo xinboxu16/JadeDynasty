@@ -22,6 +22,19 @@ namespace DashFire
 
         private Dictionary<int, IImpactLogic> m_ImpactLogics = new Dictionary<int, IImpactLogic>();
 
+        private ImpactLogicManager()
+        {
+            m_ImpactLogics.Add((int)ImpactLogicId.ImpactLogic_General, new ImpactLogic_General());
+            //m_ImpactLogics.Add((int)ImpactLogicId.ImpactLogic_SuperArmor, new ImpactLogic_SuperArmor());
+            //m_ImpactLogics.Add((int)ImpactLogicId.ImpactLogic_Invincible, new ImpactLogic_Invincible());
+            //m_ImpactLogics.Add((int)ImpactLogicId.ImpactLogic_ChangeSkill, new ImpactLogic_ChangeSkill());
+            //m_ImpactLogics.Add((int)ImpactLogicId.ImpactLogic_StopImpact, new ImpactLogic_StopImpact());
+            //m_ImpactLogics.Add((int)ImpactLogicId.ImpactLogic_RefixDamage, new ImpactLogic_RefixDamage());
+            //m_ImpactLogics.Add((int)ImpactLogicId.ImpactLogic_BlockAndBeat, new ImpactLogic_BlockAndBeat());
+            //m_ImpactLogics.Add((int)ImpactLogicId.ImpactLogic_SuperArmorShield, new ImpactLogic_SuperArmorShield());
+            //m_ImpactLogics.Add((int)ImpactLogicId.ImpactLogic_DamageImmunityShield, new ImpactLogic_DamageImmunityShield());
+        }
+
         public IImpactLogic GetImpactLogic(int id)
         {
             IImpactLogic logic = null;

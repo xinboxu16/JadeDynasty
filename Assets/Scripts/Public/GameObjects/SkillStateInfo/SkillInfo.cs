@@ -80,9 +80,29 @@ namespace DashFire
             ConfigData = SkillConfigProvider.Instance.ExtractData(SkillConfigType.SCT_SKILL, skillId) as SkillLogicData;
         }
 
+        public virtual void Reset()
+        {
+            IsSkillActivated = false;
+            IsItemSkill = false;
+            IsMarkToRemove = false;
+            IsInterrupted = false;
+            BreakSections.Clear();
+            m_CategoryLockinputTime.Clear();
+        }
+
         public void BeginCD()
         {
             m_CDEndTime = StartTime + ConfigData.CoolDownTime;
+        }
+
+        public void AddCD(float time)
+        {
+            m_CDEndTime += time;
+        }
+
+        public float GetCD(float now)
+        {
+            return m_CDEndTime - now;
         }
 
         //当前时间
@@ -99,7 +119,7 @@ namespace DashFire
         }
 
         //是否能打断
-        public bool CanBreak(int brealType, long time, out bool isInterrupt)
+        public bool CanBreak(int breakType, long time, out bool isInterrupt)
         {
             isInterrupt = false;
             if (!IsSkillActivated)
@@ -107,13 +127,19 @@ namespace DashFire
 
             foreach(BreakSection section in BreakSections)
             {
-                if(section.BreakType == brealType && (StartTime * 1000 + section.StartTime) <= time && time <= (StartTime * 1000 + section.EndTime))
+                if (section.BreakType == breakType && (StartTime * 1000 + section.StartTime) <= time && time <= (StartTime * 1000 + section.EndTime))
                 {
                     isInterrupt = section.IsInterrupt;
                     return true;
                 }
             }
             return false;
+        }
+
+        public void AddBreakSection(int breaktype, int starttime, int endtime, bool isinterrupt)
+        {
+            BreakSection section = new BreakSection(breaktype, starttime, endtime, isinterrupt);
+            BreakSections.Add(section);
         }
 
         public float GetLockInputTime(SkillCategory category)

@@ -25,10 +25,13 @@ namespace DashFire.Network
             GfxSystem.EventChannelForLogic.Subscribe<int, string>("ge_create_role", "lobby", CreateRole);
             GfxSystem.EventChannelForLogic.Subscribe<int>("ge_role_enter", "lobby", RoleEnter);
 
-            InitMessageHandler();
+            GfxSystem.EventChannelForLogic.Subscribe<bool>("ge_request_relive", "lobby", RequestRelive);
+            GfxSystem.EventChannelForLogic.Subscribe<int>("ge_stage_clear", "lobby", StageClear);
+
+            LobbyMessageHandler();
         }
 
-        private void InitMessageHandler()
+        private void LobbyMessageHandler()
         {
             RegisterMsgHandler(JsonMessageID.VersionVerifyResult, HandleVersionVerifyResult);
             RegisterMsgHandler(JsonMessageID.AccountLoginResult, HandleAccountLoginResult);
@@ -36,6 +39,7 @@ namespace DashFire.Network
             RegisterMsgHandler(JsonMessageID.CreateNicknameResult, HandleCreateNicknameResult);
             RegisterMsgHandler(JsonMessageID.CreateRoleResult, HandleCreateRoleResult);
             RegisterMsgHandler(JsonMessageID.RoleEnterResult, typeof(DashFireMessage.Msg_LC_RoleEnterResult), HandleRoleEnterResult);
+            RegisterMsgHandler(JsonMessageID.StageClearResult, typeof(DashFireMessage.Msg_LC_StageClearResult), HandleStageClearResult);
         }
 
         private void SelectServer(string serverAddress, int logicServerId)
@@ -107,6 +111,183 @@ namespace DashFire.Network
                     protoData.m_Guid = pi.Guid;
                     msg.m_ProtoData = protoData;
                     SendMessage(msg);
+                }
+            }
+            catch (Exception ex)
+            {
+                LogSystem.Error("Exception:{0}\n{1}", ex.Message, ex.StackTrace);
+            }
+        }
+
+        //场景结算
+        private void StageClear(int mainCityId)
+        {
+            try
+            {
+                LobbyClient.Instance.CurrentRole.CitySceneId = mainCityId;
+                if (WorldSystem.Instance.IsPveScene() || WorldSystem.Instance.IsPvpScene())
+                {
+                    UserInfo player = WorldSystem.Instance.GetPlayerSelf();
+                    if (null != player)
+                    {
+                        CombatStatisticInfo combatInfo = player.GetCombatStatisticInfo();
+                        JsonMessage msg = new JsonMessage(JsonMessageID.StageClear);
+                        msg.m_JsonData.Set("m_Guid", m_Guid);
+                        DashFireMessage.Msg_CL_StageClear protoData = new DashFireMessage.Msg_CL_StageClear();
+                        protoData.m_SceneId = NetworkSystem.Instance.SceneId;
+                        protoData.m_HitCount = combatInfo.HitCount;
+                        protoData.m_MaxMultHitCount = combatInfo.MaxMultiHitCount;
+                        protoData.m_Hp = player.Hp;
+                        protoData.m_Mp = player.Energy;
+                        protoData.m_Gold = player.Money;
+                        msg.m_ProtoData = protoData;
+                        SendMessage(msg);
+                        LogSystem.Info("SendMessage StageClear to lobby");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LogSystem.Error("Exception:{0}\n{1}", ex.Message, ex.StackTrace);
+            }
+        }
+
+        //清理场景返回
+        private void HandleStageClearResult(JsonMessage lobbyMsg)
+        {
+            LogSystem.Debug("Receive StageClear message from lobby");
+            if (null == lobbyMsg) return;
+            JsonData jsonData = lobbyMsg.m_JsonData;
+            DashFireMessage.Msg_LC_StageClearResult protoData = lobbyMsg.m_ProtoData as DashFireMessage.Msg_LC_StageClearResult;
+            if(null != protoData)
+            {
+                int sceneId = WorldSystem.Instance.GetCurSceneId();
+                ulong userGuid = jsonData.GetUlong("m_Guid");
+                RoleInfo player = LobbyClient.Instance.AccountInfo.FindRole(userGuid);
+                int hitCount = protoData.m_HitCount;
+                int maxMultHitCount = protoData.m_MaxMultHitCount;
+                long duration = protoData.m_Duration;
+                int itemId = protoData.m_ItemId;
+                int itemCount = protoData.m_ItemCount;
+                int expPoint = protoData.m_ExpPoint;
+                int hp = protoData.m_Hp;
+                int mp = protoData.m_Mp;
+                int gold = protoData.m_Gold;
+                int deadCount = protoData.m_DeadCount;
+                int completedRewardId = protoData.m_CompletedRewardId;
+                int curSceneStar = protoData.m_SceneStarNum;
+                Data_SceneConfig cfg = SceneConfigProvider.Instance.GetSceneConfigById(sceneId);
+                if (null != cfg && cfg.m_SubType == (int)SceneSubTypeEnum.TYPE_EXPEDITION)
+                {
+                    ExpeditionPlayerInfo expedition = player.GetExpeditionInfo();
+                    if (null != expedition)
+                    {
+                        expedition.Hp = hp;
+                        expedition.Mp = mp;
+                    }
+                }
+                int sceneStars = player.GetSceneInfo(sceneId);
+                // 第一次通关副本不显示结算
+                if (player.SceneInfo.Count == 0)
+                {
+                    ReturnMainCity();
+                }
+                else
+                {
+                    //TODO 未实现
+                    if (WorldSystem.Instance.IsPveScene())
+                    {
+                        // 胜利页面
+                        GfxSystem.PublishGfxEvent("ge_victory_panel", "ui", sceneId, maxMultHitCount, hitCount, deadCount, (int)(duration / 1000), expPoint, gold, (curSceneStar > sceneStars));
+                        // 翻牌页面
+                        GfxSystem.PublishGfxEvent("ge_turnover_card", "ui", itemId, itemCount);
+                    }
+                }
+
+                // 记录通关信息
+                player.SetSceneInfo(sceneId, curSceneStar);
+                player.AddCompletedSceneCount(sceneId);
+
+                // 客户端结算
+                player.Exp += expPoint;
+                player.Money += gold;
+
+                // 首次通关结算
+                if (completedRewardId > 0)
+                {
+                    Data_SceneDropOut dropOutConfig = SceneConfigProvider.Instance.GetSceneDropOutById(completedRewardId);
+                    if (null != dropOutConfig)
+                    {
+                        player.Exp += dropOutConfig.m_Exp;
+                        player.Money += dropOutConfig.m_GoldSum;
+                        player.Gold += dropOutConfig.m_Diamond;
+                    }
+                }
+
+                //任务处理
+                if (null != player)
+                {
+                    MissionStateInfo mission_info = player.GetMissionStateInfo();
+                    if (null != protoData.m_Missions && protoData.m_Missions.Count > 0 && null != mission_info)
+                    {
+                        int ct = protoData.m_Missions.Count;
+                        for (int i = 0; i < ct; ++i)
+                        {
+                            DashFireMessage.Msg_LC_StageClearResult.MissionInfoForSync assit_info = protoData.m_Missions[i];
+                            if (assit_info.m_IsCompleted)
+                            {
+                                mission_info.CompletedMission(assit_info.m_MissionId);
+                                mission_info.CompletedMissions[assit_info.m_MissionId].Progress = assit_info.m_Progress;
+                            }
+                            else
+                            {
+                                if (protoData.m_Missions[i].m_MissionId >= 0)
+                                {
+                                    mission_info.AddMission(assit_info.m_MissionId, MissionStateType.UNCOMPLETED);
+                                    mission_info.UnCompletedMissions[assit_info.m_MissionId].Progress = assit_info.m_Progress;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void ReturnMainCity()
+        {
+            try
+            {
+                //切换场景
+                WorldSystem.Instance.ChangeScene(LobbyClient.Instance.CurrentRole.CitySceneId);
+            }
+            catch (Exception ex)
+            {
+                LogSystem.Error("Exception:{0}\n{1}", ex.Message, ex.StackTrace);
+            }
+        }
+
+        private void RequestRelive(bool isRelive)//Relive重新过
+        {
+            try
+            {
+                if(isRelive)
+                {
+                    JsonMessage msg = new JsonMessage(JsonMessageID.BuyLife);
+                    msg.m_JsonData.Set("m_Guid", LobbyNetworkSystem.Instance.Guid);
+                    SendMessage(msg);
+                }
+                else
+                {
+                    // 放弃副本
+                    if(WorldSystem.Instance.IsPveScene())
+                    {
+                        ClientStorySystem.Instance.SendMessage("missionfailed");
+                    }
+                    else
+                    {
+                        //通知roomserver 放弃副本
+                        NetworkSystem.Instance.SyncGiveUpCombat();
+                    }
                 }
             }
             catch (Exception ex)

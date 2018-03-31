@@ -1,4 +1,4 @@
-﻿//剑盾兵劈砍
+//剑盾兵劈砍
 skill(320101)
 {
   section(2300)
@@ -46,13 +46,13 @@ skill(320103)
     movecontrol(true);
     animation("Attack_01");
     findmovetarget(900, vector3(0,0,0),2,60,0.5,0.5,0,-1);
-    startcurvemove(966, true, 0.15, 0, 0, 4, 0, 0, 0);
-    playsound(1075, "huiwu", "Sound/Npc/Mon", 1000, "Sound/Npc/guaiwu_huiwuzhong_01", false);
+    startcurvemove(966, true, 0.15, 0, 0, 4, 0, 0, 0);//放技能时向后反弹一下 像反作用力 
+    //playsound(1075, "huiwu", "Sound/Npc/Mon", 1000, "Sound/Npc/guaiwu_huiwuzhong_01", false);
     charactereffect("Monster_FX/Campaign_Desert/01_TLPMArmy/6_Mon_TLPM_DaoGuang_02", 2000, "Bone_Root", 1075);
     areadamage(1115, 0, 1, 1, 2, true) {
       stateimpact("kDefault", 32010301);
     };
-    playsound(1120, "hit", "", 1000, "Sound/Npc/guaiwu_jizhong_tongyong_01", true);
+    //playsound(1120, "hit", "", 1000, "Sound/Npc/guaiwu_jizhong_tongyong_01", true);
     shakecamera2(1120, 200, true, true, vector3(0,0.15,0.2), vector3(0,150,150),vector3(0,0.5,0.5),vector3(0,50,70));
   };
 };
@@ -66,7 +66,7 @@ skill(320104)
     movecontrol(true);
     animation("Skill_01");
     startcurvemove(475, true, 0.07, 0, 0, 4, 0, 0, 0);
-    playsound(505, "huiwu", "Sound/Npc/Mon", 1000, "Sound/Npc/guaiwu_huiwuzhong_01", false);
+    //playsound(505, "huiwu", "Sound/Npc/Mon", 1000, "Sound/Npc/guaiwu_huiwuzhong_01", false);
     charactereffect("Monster_FX/Campaign_Desert/01_TLPMArmy/6_Mon_TLPM_TuCi_01", 2000, "ef_weapon01", 505);
     colliderdamage(520, 100, false, false, 0, 0)
     {
@@ -76,7 +76,7 @@ skill(320104)
     // areadamage(525, 0, 1, 1, 2, true) {
     //   stateimpact("kDefault", 32010401);
     // };
-    playsound(530, "hit", "", 1000, "Sound/Npc/guaiwu_jizhong_tongyong_01", true);
+    //playsound(530, "hit", "", 1000, "Sound/Npc/guaiwu_jizhong_tongyong_01", true);
     shakecamera2(530, 200, true, true, vector3(0,0,0.5), vector3(0,0,100),vector3(0,0,2),vector3(0,0,70));
   };
 };
@@ -91,7 +91,7 @@ skill(320105)
     animation("Skill_02");
     findmovetarget(300, vector3(0, 0, 0), 2, 45, 0.5, 0.5, 0, -1);
     startcurvemove(310, true, 0.1, 0, 0, 2, 0, 0, 0);
-    playsound(400, "huiwu", "Sound/Npc/Mon", 1000, "Sound/Npc/guaiwu_huiwuzhong_01", false);
+    //playsound(400, "huiwu", "Sound/Npc/Mon", 1000, "Sound/Npc/guaiwu_huiwuzhong_01", false);
     charactereffect("Monster_FX/Campaign_Desert/01_TLPMArmy/6_Mon_TLPM_DaoGuang_03", 2000, "Bone_Root", 400);
     areadamage(414, 0, 1, 1, 2, true) {
       stateimpact("kDefault", 32010501);
@@ -99,12 +99,12 @@ skill(320105)
     playsound(420, "hit", "", 1000, "Sound/Npc/guaiwu_jizhong_tongyong_01", true);
     shakecamera2(420, 200, true, true, vector3(0,0,0.4), vector3(0,0,150),vector3(0,0,0.5),vector3(0,0,60));
     cleardamagestate(450);
-    playsound(1080, "huiwu", "Sound/Npc/Mon", 1000, "Sound/Npc/guaiwu_huiwuzhong_01", false);
+    //playsound(1080, "huiwu", "Sound/Npc/Mon", 1000, "Sound/Npc/guaiwu_huiwuzhong_01", false);
     charactereffect("Monster_FX/Campaign_Desert/01_TLPMArmy/6_Mon_TLPM_DaoGuang_04", 2000, "Bone_Root", 1080);
     areadamage(1110, 0, 1, 1, 2, true) {
       stateimpact("kDefault", 32010501);
     };
-    playsound(1120, "hit", "", 1000, "Sound/Npc/guaiwu_jizhong_tongyong_01", true);
+    //playsound(1120, "hit", "", 1000, "Sound/Npc/guaiwu_jizhong_tongyong_01", true);
     shakecamera2(1120, 200, true, true, vector3(0,0.15,0.2), vector3(0,150,150),vector3(0,0.5,0.5),vector3(0,50,70));
   };
 };

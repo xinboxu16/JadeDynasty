@@ -107,7 +107,8 @@ namespace DashFire
                 }
                 if (null != gameObj.transform.parent)
                 {
-                    gameObj.transform.parent = null;
+                    gameObj.transform.SetParent(null);
+                    //gameObj.transform.parent = null;
                 }
                 if (gameObj.activeSelf)
                 {

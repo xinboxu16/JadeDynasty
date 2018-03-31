@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class ReceiveInput : MonoBehaviour {
 
+    protected bool isRegister = false;
+    protected SkillController skillCtrl = null;
+    protected float skillActiveRemaintime = -1;
+    protected bool canConjureQSkill = false;
+    protected bool canConjureESkill = false;
+
 	// Use this for initialization
 	void Start () {
         JoyStickInputProvider.JoyStick.onMoveStart.AddListener(OnJoystickMoveStart);
@@ -14,7 +20,23 @@ public class ReceiveInput : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        //好像调用不到
+        //if(!isRegister)
+        //{
+        //    if(null != skillCtrl)
+        //    {
+        //        skillCtrl.RegisterSkillQECanInputHandler(SkillQEInputHandler);
+        //        skillCtrl.RegisterSkillStartHandler(SkillStartHandler);
+        //        isRegister = true;
+        //    }
+        //}
+
+        skillActiveRemaintime -= Time.deltaTime;
+        if (skillActiveRemaintime <= 0)
+        {
+            canConjureQSkill = false;
+            canConjureESkill = false;
+        }
 	}
 
     private void OnJoystickMoveStart()

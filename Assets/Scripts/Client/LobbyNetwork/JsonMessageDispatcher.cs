@@ -46,7 +46,7 @@ namespace DashFire.Network
             }
         }
 
-        public static unsafe void HandleNodeMessage(string msgStr)
+        public static void HandleNodeMessage(string msgStr)
         {
             if (s_Inited)
             {
@@ -77,7 +77,7 @@ namespace DashFire.Network
             }
         }
 
-        private static unsafe JsonMessage DecodeJsonMessage(string msgStr)
+        private static JsonMessage DecodeJsonMessage(string msgStr)
         {
             JsonMessage msg = null;
             if (s_Inited)

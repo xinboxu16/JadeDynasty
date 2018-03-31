@@ -59,6 +59,18 @@ namespace DashFire
             return false;
         }
 
+        public bool CompletedMission(int id)
+        {
+            LogSystem.Debug("Completed mission {0}", id);
+            if (m_UnCompletedMissions.ContainsKey(id) && !m_CompletedMissions.ContainsKey(id))
+            {
+                m_CompletedMissions.Add(id, m_UnCompletedMissions[id]);
+                m_UnCompletedMissions.Remove(id);
+                return true;
+            }
+            return false;
+        }
+
         public void Clear()
         {
             m_UnCompletedMissions.Clear();

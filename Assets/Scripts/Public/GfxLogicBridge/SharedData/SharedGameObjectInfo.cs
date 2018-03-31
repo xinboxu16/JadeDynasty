@@ -33,7 +33,7 @@ namespace DashFire
 
         public float VerticlaSpeed = 0;
 
-        public bool DataChangedByGfx = false;
+        public bool DataChangedByGfx = false;//作用是修改user或npc位置 朝向
         public bool WantDirChangedByGfx = false;
 
         public bool DataChangedByLogic = false;

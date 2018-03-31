@@ -20,6 +20,7 @@ namespace DashFire
                 //m_UserStateLogics.Add((int)AiStateLogicId.UserMirror_General, new AiLogic_UserMirror_General());
                 //m_UserStateLogics.Add((int)AiStateLogicId.PvpUser_General, userLogic);
                 m_UserStateLogics.Add((int)AiStateLogicId.UserSelf_General, new AiLogic_UserSelf_General());
+                m_NpcStateLogics.Add((int)AiStateLogicId.DropOut_AutoPick, new AiLogic_DropOut_AutoPick());
                 //m_UserStateLogics.Add((int)AiStateLogicId.UserSelfRange_General, new AiLogic_UserSelfRange_General());
 
 

@@ -17,7 +17,7 @@ namespace StorySystem
             //注册通用命令
             RegisterCommandFactory("=", new StoryCommandFactoryHelper<CommonCommands.AssignCommand>());
             RegisterCommandFactory("assign", new StoryCommandFactoryHelper<CommonCommands.AssignCommand>());
-            RegisterCommandFactory("inc", new StoryCommandFactoryHelper<CommonCommands.IncCommand>());
+            RegisterCommandFactory("inc", new StoryCommandFactoryHelper<CommonCommands.IncCommand>());//自增
             RegisterCommandFactory("dec", new StoryCommandFactoryHelper<CommonCommands.DecCommand>());
             RegisterCommandFactory("propset", new StoryCommandFactoryHelper<CommonCommands.PropSetCommand>());
             RegisterCommandFactory("foreach", new StoryCommandFactoryHelper<CommonCommands.ForeachCommand>());

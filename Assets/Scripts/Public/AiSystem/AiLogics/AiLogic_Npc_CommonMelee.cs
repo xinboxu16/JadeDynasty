@@ -40,7 +40,6 @@ namespace DashFire
                 npc.GetMovementStateInfo().IsMoving = false;
                 return;
             }
-
             NpcAiStateInfo info = npc.GetAiStateInfo();
             AiData_Npc_CommonMelee data = GetAiData(npc);
             if(null != data)

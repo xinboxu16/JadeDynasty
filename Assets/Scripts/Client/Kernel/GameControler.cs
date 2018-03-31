@@ -59,12 +59,12 @@ namespace DashFire
                 try
                 {
                     buffer = File.ReadAllBytes(filePath);
-#if !DEBUG
-                    if(filePath.EndsWith(".txt"))
-                    {
-                        Helper.Xor(buffer, xor);
-                    }
-#endif
+//#if !DEBUG
+//                    if(filePath.EndsWith(".txt"))
+//                    {
+//                        Helper.Xor(buffer, xor);
+//                    }
+//#endif
                 }catch(Exception e)
                 {
                     GfxSystem.GfxLog("Exception:{0}\n{1}", e.Message, e.StackTrace);
@@ -120,7 +120,7 @@ namespace DashFire
             NetworkSystem.Instance.Init();
             AiViewManager.Instance.Init();
             SceneLogicViewManager.Instance.Init();
-            //ImpactViewManager.Instance.Init();//碰撞系统
+            ImpactViewManager.Instance.Init();//碰撞系统
 
         }
 
@@ -134,9 +134,8 @@ namespace DashFire
         {
             //这里是在渲染线程执行的tick，逻辑线程的tick在GameLogicThread.cs文件里执行。
             GfxSystem.Tick();
-            //未实现
             GfxModule.Skill.GfxSkillSystem.Instance.Tick();
-            //GfxModule.Impact.GfxImpactSystem.Instance.Tick();
+            GfxModule.Impact.GfxImpactSystem.Instance.Tick();
         }
 
         public static void PauseLogic(bool isPause)

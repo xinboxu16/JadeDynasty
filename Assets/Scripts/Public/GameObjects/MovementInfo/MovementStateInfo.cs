@@ -114,7 +114,9 @@ namespace DashFire
         public Vector3 TargetPosition
         {
             get { return m_TargetPosition; }
-            set { m_TargetPosition = value; }
+            set { 
+                m_TargetPosition = value; 
+            }
         }
 
         public bool IsMoveMeetObstacle
@@ -178,6 +180,19 @@ namespace DashFire
         public float CalcDistancSquareToTarget()
         {
             return Geometry.DistanceSquare(m_Position, m_TargetPosition);
+        }
+
+        public void Reset()
+        {
+            m_Position = new Vector3();
+            m_TargetPosition = new Vector3();
+            m_IsMoving = false;
+            m_IsSkillMoving = false;
+            m_IsMoveMeetObstacle = false;
+            m_FaceDir = 0;
+            m_MoveDir = 0;
+            m_WantFaceDir = 0;
+            m_MovementMode = MovementMode.Normal;
         }
     }
 }

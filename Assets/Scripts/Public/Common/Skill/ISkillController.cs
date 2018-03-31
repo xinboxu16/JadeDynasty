@@ -41,5 +41,8 @@ namespace DashFire
         bool ForceStartSkill(int skillid);
         void AddBreakSkillTask();
         void CancelBreakSkillTask();
+        void AddBreakSection(int skillid, int breaktype, int starttime, int endtime, bool isinterrupt);
+        void StartAttack(Vector3 targetpos);
+        void StopAttack();
     }
 }

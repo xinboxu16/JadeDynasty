@@ -10,11 +10,17 @@ public class DFMUiRoot : MonoBehaviour {
     
     private static GameObject _rootWidget = null;
     private static Transform _rootTransform = null;
+    //ui相机
+    private static Camera _uiCamera = null;
+    private static Canvas _uiCanvas = null;
+
     private GameObject DynamicWidgetPanel = null;
     private GameObject ScreenTipPanel = null;
     private GameObject loading = null;
 
     private int m_EnemyNum = 0;
+    private float timeRecycle = 10.0f;
+    private int offsetheight = 20;
 
     public SceneTypeEnum m_SceneType = SceneTypeEnum.TYPE_UNKNOWN;
     public SceneSubTypeEnum m_SubSceneType = SceneSubTypeEnum.TYPE_UNKNOWN;
@@ -62,12 +68,27 @@ public class DFMUiRoot : MonoBehaviour {
         LogicSystem.EventChannelForGfx.Subscribe<List<GfxUserInfo>>("ge_show_name_plates", "ui", CreateHeroNickName);
         LogicSystem.EventChannelForGfx.Subscribe<GfxUserInfo>("ge_show_npc_name_plate", "ui", CreateNpcNickName);
         LogicSystem.EventChannelForGfx.Subscribe<int, int, int, int>("ge_pve_fightinfo", "ui", SetPveFightInfo);
+
+        //掉hp
+        LogicSystem.EventChannelForGfx.Subscribe<float, float, float, int>("ge_hero_blood", "ui", ShowAddHPForHero);
+        LogicSystem.EventChannelForGfx.Subscribe<float, float, float, int>("ge_hero_energy", "ui", ShowAddMPForHero);
+
+        //hit
+        LogicSystem.EventChannelForGfx.Subscribe<int>("ge_hitcount", "ui", this.OnChainBeat);
+
+        //tips
+        LogicSystem.EventChannelForGfx.Subscribe<float, float, float, bool, string>("ge_screen_tip", "ui", ShowScreenTip);
+
+        DashFire.LogicSystem.EventChannelForGfx.Subscribe<float, float, float, int, bool>("ge_npc_odamage", "ui", ShowbloodFlyTemplate);
+        DashFire.LogicSystem.EventChannelForGfx.Subscribe<float, float, float, int, bool>("ge_npc_cdamage", "ui", ShowCriticalDamage);
     }
 
     void Awake()
     {
         _rootWidget = this.gameObject;
         _rootTransform = this.transform;
+        _uiCamera = this.transform.GetComponent<Canvas>().worldCamera;
+        _uiCanvas = this.transform.GetComponent<Canvas>();
         VirtualScreen.Instance.ComputeScene(_rootWidget.GetComponent<CanvasScaler>());
     }
 
@@ -84,6 +105,7 @@ public class DFMUiRoot : MonoBehaviour {
 
         DynamicWidgetPanel = transform.Find("DynamicWidget").gameObject;
         ScreenTipPanel = transform.Find("ScreenTipPanel").gameObject;
+
 	}
 
 
@@ -177,7 +199,7 @@ public class DFMUiRoot : MonoBehaviour {
             if (go != null)
             {
                 GameObject parent = transform.FindChild("Widgets").gameObject;
-                go = NGUITools.AddChild(parent, go);
+                go = NGUITools.AddChild(parent, go, true);
                 pveFightInfo = go;
                 PveFightInfo pfi = go.GetComponent<PveFightInfo>();
                 if (pfi != null)
@@ -455,7 +477,411 @@ public class DFMUiRoot : MonoBehaviour {
 
     private void AboutNpcNickName(GfxUserInfo gui)
     {
-        //TODO未实现
+        if (gui != null)
+        {
+            Data_NpcConfig dnc = NpcConfigProvider.Instance.GetNpcConfigById(gui.m_HeroId);
+            if (dnc != null && dnc.m_ShowName)
+            {
+                GameObject pargo = LogicSystem.GetGameObject(gui.m_ActorId);
+                if (!NpcGameObjectS.ContainsKey(pargo))
+                {
+                    SharedGameObjectInfo sgoi = DashFire.LogicSystem.GetSharedGameObjectInfo(gui.m_ActorId);
+                    if (pargo != null && sgoi != null)
+                    {
+                        string path = UIManager.Instance.GetPathByName("NickName");
+                        GameObject go = ResourceSystem.GetSharedResource(path) as GameObject;
+                        if (go != null && DynamicWidgetPanel != null)
+                        {
+                            go = NGUITools.AddChild(DynamicWidgetPanel, go, true);
+                            if (go != null)
+                            {
+                                NpcGameObjectS.Add(pargo, go);
+                                NickName nn = go.GetComponent<NickName>();
+                                if (nn != null)
+                                {
+                                    nn.SetPlayerGameObjectAndNickName(pargo, dnc.m_Name, Color.white);
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    GameObject go = NpcGameObjectS[pargo];
+                    if (go != null)
+                    {
+                        Text ul = go.GetComponent<Text>();
+                        if (ul != null)
+                        {
+                            ul.text = dnc.m_Name;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    int beatnum = 0;
+
+    public void OnChainBeat(int number)
+    {
+        try
+        {
+            if(number <= 0)
+            {
+                beatnum = 0;
+                UIManager.Instance.HideWindowByName("ChainBeat");
+            }
+            else
+            {
+                UIManager.Instance.ShowWindowByName("ChainBeat");
+                GameObject go = UIManager.Instance.GetWindowGoByName("ChainBeat");
+                if(go != null)
+                {
+                    Transform tf = go.transform.Find("Scaling");
+                    if (tf != null)
+                    {
+                        ChainBeat cb = tf.gameObject.GetComponent<ChainBeat>();
+                        cb.SetInitTime();
+                        cb.enabled = true;
+                    }
+                    int num = System.Math.Abs(number) % 100;
+                    if (num > beatnum)
+                    {
+                        beatnum = num;
+                    }
+                    else
+                    {
+                        num = beatnum;
+                    }
+                    tf = go.transform.Find("EvaluateImage");
+                    if (tf != null)
+                    {
+                        Image us = tf.gameObject.GetComponent<Image>();
+                        if (us != null)
+                        {
+                            if (beatnum <= 33)
+                            {
+                                us.sprite = NGUITools.GetResourceSpriteByName("good");
+                            }
+                            else if (beatnum <= 66)
+                            {
+                                us.sprite = NGUITools.GetResourceSpriteByName("great");
+                            }
+                            else if (beatnum <= 99)
+                            {
+                                us.sprite = NGUITools.GetResourceSpriteByName("perfect");
+                            }
+                        }
+                    }
+
+                    string chainstr = num.ToString();
+                    int i = chainstr.Length;
+                    if (i == 1)
+                    {
+                        chainstr = "0" + chainstr;
+                        i = 2;
+                    }
+
+                    for (int j = 0; j < 2; j++)
+                    {
+                        Transform CB = go.transform.Find("Scaling/" + "Number" + j);
+                        if (CB != null)
+                        {
+                            Text SP = CB.gameObject.GetComponent<Text>();
+                            if (SP != null)
+                            {
+                                SP.text = chainstr.ToCharArray()[j].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            LogicSystem.LogicLog("[Error]:Exception:{0}\n{1}", ex.Message, ex.StackTrace);
+        }
+    }
+
+    public void ShowAddHPForHero(float x, float y, float z, int blood)
+    {
+        UnityEngine.Object obj = null;
+        GameObject go = null;
+        string path = "";
+        int offset = 0;
+        if (blood > 0)
+        {
+            path = "DamageForAddHero";
+            offset = 100;
+        }
+        else
+        {
+            path = "DamageForCutHero";
+            offset = -50;
+        }
+        path = UIManager.Instance.GetPathByName(path);
+        obj = ResourceSystem.NewObject(path, timeRecycle);
+        go = obj as GameObject;
+        if (null != go)
+        {
+            Transform tf = go.transform.Find("Text");
+            if (tf != null)
+            {
+                Text bloodPanel = tf.gameObject.GetComponent<Text>();
+                if (null != bloodPanel)
+                    bloodPanel.text = blood.ToString();
+            }
+            Vector3 pos = new Vector3(x,y,z);
+            pos = Camera.main.WorldToScreenPoint(pos);
+            pos.z = 0;
+            pos.y += offset;
+            //pos = transform.root.GetComponent<Canvas>().worldCamera.ScreenToWorldPoint(pos);
+            Vector2 localPos;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(DynamicWidgetPanel.transform as RectTransform, pos, UiCanvas.worldCamera, out localPos);
+            GameObject cube = null;
+            if(DynamicWidgetPanel != null)
+            {
+                cube = NGUITools.AddChild(DynamicWidgetPanel, obj, false);
+                if (cube != null)
+                {
+                    tf.transform.localPosition = Vector2.zero;
+                    cube.transform.localPosition = localPos;
+                    BloodAnimation ba = cube.GetComponent<BloodAnimation>();
+                    if (ba != null)
+                    {
+                        ba.PlayAnimation();
+                    }
+                    NGUITools.SetActive(cube, true);
+                }
+            }
+
+        }
+    }
+
+    public void ShowAddMPForHero(float x, float y, float z, int energy)
+    {
+        try
+        {
+            UnityEngine.Object obj = null;
+            GameObject go = null;
+            string path = "";
+            int offset = 0;
+            if (energy > 0)
+            {
+                path = "EnergyAdd";
+                offset = 100;
+            }
+            else
+            {
+                path = "EnergyCut";
+                offset = -50;
+            }
+            path = UIManager.Instance.GetPathByName(path);
+            obj = DashFire.ResourceSystem.NewObject(path, timeRecycle);
+            go = obj as GameObject;
+            if (null != go)
+            {
+                Transform tf = go.transform.Find("Label");
+                if (tf != null)
+                {
+                    Text bloodPanel = tf.gameObject.GetComponent<Text>();
+                    if (null != bloodPanel)
+                        bloodPanel.text = energy.ToString();
+                }
+                Vector3 pos = new Vector3(x, y, z);
+                pos = Camera.main.WorldToScreenPoint(pos);
+                pos.z = 0; 
+                pos.y += offset;
+                //pos = UiCanvas.worldCamera.ScreenToWorldPoint(pos);
+                Vector2 localPos;
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(DynamicWidgetPanel.transform as RectTransform, pos, UiCanvas.worldCamera, out localPos);
+                GameObject cube = null;
+                if (DynamicWidgetPanel != null)
+                {
+                    cube = NGUITools.AddChild(DynamicWidgetPanel, obj, false);
+                }
+                if (cube != null)
+                {
+                    cube.transform.localPosition = localPos;
+                    BloodAnimation ba = cube.GetComponent<BloodAnimation>();
+                    if (ba != null)
+                    {
+                        ba.PlayAnimation();
+                    }
+                    NGUITools.SetActive(cube, true);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            DashFire.LogicSystem.LogicLog("[Error]:Exception:{0}\n{1}", ex.Message, ex.StackTrace);
+        }
+    }
+
+    private void ShowScreenTip(float x, float y, float z, bool is3d, string tip)
+    {
+        try
+        {
+            string path = UIManager.Instance.GetPathByName("ScreenTip");
+            UnityEngine.Object obj = ResourceSystem.NewObject(path, timeRecycle);
+            GameObject go = obj as GameObject;
+            if (null != go)
+            {
+                Transform tf = go.transform.Find("Text");
+                if (tf != null)
+                {
+                    Text bloodPanel = tf.gameObject.GetComponent<Text>();
+                    if (null != bloodPanel)
+                    {
+                        bloodPanel.transform.localPosition = Vector2.zero;
+                        bloodPanel.text = tip;
+                    }
+                }
+                GameObject cube = null;
+                if (ScreenTipPanel != null)
+                {
+                    cube = NGUITools.AddChild(ScreenTipPanel, obj, false);
+                }
+                if (is3d)
+                {
+                    Vector3 pos = new Vector3(x, y, z);
+                    pos = Camera.main.WorldToScreenPoint(pos);
+                    pos.z = 0; 
+                    pos.y += 100;
+                    pos = UiCanvas.worldCamera.ScreenToWorldPoint(pos);
+                    cube.transform.position = pos;
+                }
+                else
+                {
+                    cube.transform.localPosition = new Vector3(x, y, z);
+                }
+                BloodAnimation ba = cube.GetComponent<BloodAnimation>();
+                if (ba != null)
+                {
+                    ba.PlayAnimation();
+                }
+                NGUITools.SetActive(cube, true);
+            }
+        }
+        catch (Exception ex)
+        {
+            DashFire.LogicSystem.LogicLog("[Error]:Exception:{0}\n{1}", ex.Message, ex.StackTrace);
+        }
+    }
+
+    public void ShowbloodFlyTemplate(float x, float y, float z, int blood, bool isOrdinaryDamage)
+    {
+        try
+        {
+            string path = UIManager.Instance.GetPathByName("AttackEffect");
+            UnityEngine.Object obj = DashFire.ResourceSystem.NewObject(path, timeRecycle);
+            GameObject go = obj as GameObject;
+            if (null != go)
+            {
+                Transform tf = go.transform.Find("Text");
+                if (tf != null)
+                {
+                    Text bloodPanel = tf.gameObject.GetComponent<Text>();
+                    if (null != bloodPanel)
+                    {
+                        bloodPanel.text = blood.ToString();
+                        if (isOrdinaryDamage)
+                        {
+                            bloodPanel.color = new Color(1.0f, 1.0f, 1.0f);
+                        }
+                        else
+                        {
+                            bloodPanel.color = new Color(0.92549f, 0.7098f, 0.0f);
+                        }
+                    }
+                }
+                Vector3 pos = new Vector3(x, y, z);
+                pos = Camera.main.WorldToScreenPoint(pos);
+                pos.z = 0; 
+                pos.y += (100 + offsetheight);
+                offsetheight *= -1;
+                //pos = UiCanvas.worldCamera.ScreenToWorldPoint(pos);
+                Vector2 localPos;
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(DynamicWidgetPanel.transform as RectTransform, pos, UiCanvas.worldCamera, out localPos);
+                GameObject cube = null;
+                if (DynamicWidgetPanel != null)
+                {
+                    cube = NGUITools.AddChild(DynamicWidgetPanel, obj, false);
+                }
+                if (cube != null)
+                {
+                    cube.transform.localPosition = localPos;
+                    BloodAnimation ba = cube.GetComponent<BloodAnimation>();
+                    if (ba != null)
+                    {
+                        ba.PlayAnimation(BloodAnimation.Direction.UP);
+                    }
+                    NGUITools.SetActive(cube, true);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            DashFire.LogicSystem.LogicLog("[Error]:Exception:{0}\n{1}", ex.Message, ex.StackTrace);
+        }
+    }
+
+    public void ShowCriticalDamage(float x, float y, float z, int blood, bool isOrdinaryDamage)
+    {
+        try
+        {
+            string path = UIManager.Instance.GetPathByName("CriticalDamage");
+            UnityEngine.Object obj = DashFire.ResourceSystem.NewObject(path, timeRecycle);
+            GameObject go = obj as GameObject;
+            if (null != go)
+            {
+                string damage = System.Math.Abs(blood).ToString();
+                Transform tf = go.transform.Find("Text");
+                if (tf != null)
+                {
+                    Text bloodPanel = tf.gameObject.GetComponent<Text>();
+                    if (null != bloodPanel)
+                    {
+                        bloodPanel.text = blood.ToString();
+                        if (isOrdinaryDamage)
+                        {
+                            bloodPanel.color = new Color(1.0f, 1.0f, 1.0f);
+                        }
+                        else
+                        {
+                            bloodPanel.color = new Color(0.92549f, 0.7098f, 0.0f);
+                        }
+                    }
+                }
+                Vector3 pos = new Vector3(x, y, z);
+                pos = Camera.main.WorldToScreenPoint(pos);
+                pos.z = 0; 
+                pos.y += 100;
+                //pos = UiCanvas.worldCamera.ScreenToWorldPoint(pos);
+                Vector2 localPos;
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(DynamicWidgetPanel.transform as RectTransform, pos, UiCanvas.worldCamera, out localPos);
+                GameObject cube = null;
+                if (DynamicWidgetPanel != null)
+                {
+                    cube = NGUITools.AddChild(DynamicWidgetPanel, obj, false);
+                }
+                if (cube != null)
+                {
+                    cube.transform.localPosition = pos;
+                    BloodAnimation ba = cube.GetComponent<BloodAnimation>();
+                    if (ba != null)
+                    {
+                        ba.PlayAnimation(BloodAnimation.Direction.UP);
+                    }
+                    NGUITools.SetActive(cube, true);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            DashFire.LogicSystem.LogicLog("[Error]:Exception:{0}\n{1}", ex.Message, ex.StackTrace);
+        }
     }
 
     public static GameObject RootWidget
@@ -471,6 +897,22 @@ public class DFMUiRoot : MonoBehaviour {
         get
         {
             return _rootTransform;
+        }
+    }
+
+    public static Camera UiCamera
+    {
+        get
+        {
+            return _uiCamera;
+        }
+    }
+
+    public static Canvas UiCanvas
+    {
+        get
+        {
+            return _uiCanvas;
         }
     }
 

@@ -8,6 +8,8 @@ namespace DashFire
 {
     public sealed class NpcManager
     {
+        public DamageDelegation OnDamage;
+
         private int m_NpcPoolSize = 1024;
         private const int c_StartId = 20000;
         private const int c_MaxIdNum = 10000;
@@ -262,6 +264,14 @@ namespace DashFire
                 }
             }
             return npc;
+        }
+
+        public void FireDamageEvent(int receiver, int sender, bool isShootDamage, bool isCritical, int hpDamage, int npDamage)
+        {
+            if (OnDamage != null)
+            {
+                OnDamage(receiver, sender, isShootDamage, isCritical, hpDamage, npDamage);
+            }
         }
 
         public LinkedListDictionary<int, NpcInfo> Npcs

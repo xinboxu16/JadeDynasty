@@ -8,6 +8,9 @@ using UnityEngine;
 
 namespace DashFire
 {
+    public delegate void DamageDelegation(int receiver, int caster, bool isShootDamage, bool isCritical, int hpDamage, int npDamage);
+    public delegate void GainMoneyDelegation(int receiver, int money);
+
     public interface IShootTarget
     {
         uint GetActorID();
@@ -31,6 +34,14 @@ namespace DashFire
      */
     public class CharacterInfo : IShootTarget
     {
+        public struct AttackerInfo
+        {
+            public int m_AttackerType;
+            public long m_AttackTime;
+            public int m_HpDamage;
+            public int m_NpDamage;
+        }
+
         private static MyAction<float> mFightingScoreChangeCB;
         public static void AddPropertyInfoChangeCB(MyAction<float> cb)
         {
@@ -194,6 +205,13 @@ namespace DashFire
         protected float m_Cross2RunTime = 0.3f;
         protected float m_DeadAnimTime = 1.4f;
 
+        /************************************************************************/
+        /* 助攻列表                                                             */
+        /************************************************************************/
+        private MyDictionary<int, AttackerInfo> m_AttackerInfos = new MyDictionary<int, AttackerInfo>();
+        private long m_LastAttackedTime = 0;
+        private long m_LastAttackTime = 0;
+
         /**
          * @brief 构造函数
          *
@@ -249,6 +267,70 @@ namespace DashFire
             SkillStateInfo skillstateinfo = GetSkillStateInfo();
             skillstateinfo.CrossToRunTime = Cross2RunTime;
             skillstateinfo.CrossToStandTime = Cross2StandTime;
+        }
+
+        protected void ResetCharacterInfo()
+        {
+            //TODO未实现
+            m_OwnerId = -1;
+            SetAIEnable(true);
+            DeadTime = 0;
+            EmptyBloodTime = 0;
+
+            IsMoving = false;
+            m_CampId = 0;
+
+            //m_Blindage = null;
+            //m_BlindageId = 0;
+            //m_BlindageLeftTime = 0;
+
+            //m_BeAttack = false;
+            //m_CurEnemyId = 0;
+            m_MeetEnemyImpact = 0;
+            //IsFlying = false;
+
+            m_ControllerObject = null;
+            m_ControlledObject = null;
+
+            //m_FightingScore = 0;
+            m_ActionList.Clear();
+
+            m_Level = 0;
+            m_Hp = 0;
+            m_Energy = 0;
+
+            m_HpMaxCoefficient = 1;
+            m_EnergyMaxCoefficient = 1;
+            //m_AttackRangeCoefficient = 1;
+            m_VelocityCoefficient = 1;
+            m_StateFlag = 0;
+            //OnBeginAttack = null;
+            //m_GfxDead = false;
+            m_SuperArmor = false;
+            m_IsArmorChanged = true;
+
+            m_IsMecha = false;
+            m_IsHorse = false;
+            m_IsTask = false;
+            m_IsPvpTower = false;
+
+            //m_CanUseSkill = true;
+            m_KillerId = 0;
+
+            m_CurBlueCanSeeMe = false;
+            m_CurRedCanSeeMe = false;
+            //m_LastBlueCanSeeMe = false;
+            //m_LastRedCanSeeMe = false;
+
+            SetHp(Operate_Type.OT_Absolute, GetActualProperty().HpMax);
+            SetRage(Operate_Type.OT_Absolute, 0);
+            SetEnergy(Operate_Type.OT_Absolute, GetActualProperty().EnergyMax);
+
+            ResetAttackerInfo();
+
+            GetMovementStateInfo().Reset();
+            GetSkillStateInfo().Reset();
+            //GetEquipmentStateInfo().Reset();
         }
 
         /**
@@ -553,6 +635,15 @@ namespace DashFire
             get { return m_OwnerId; }
         }
 
+        public bool IsUnderControl()
+        {
+            if (IsHaveGfxStateFlag(GfxCharacterState_Type.GetUp) || IsHaveGfxStateFlag(GfxCharacterState_Type.HitFly) || IsHaveGfxStateFlag(GfxCharacterState_Type.KnockDown) || IsHaveGfxStateFlag(GfxCharacterState_Type.Stiffness))
+            {
+                return true;
+            }
+            return false;
+        }
+
         //获取移动状态
         public MovementStateInfo GetMovementStateInfo()
         {
@@ -845,6 +936,17 @@ namespace DashFire
             set { m_KillerId = value; }
         }
 
+        public long LastAttackedTime
+        {
+            get { return m_LastAttackedTime; }
+            set { m_LastAttackedTime = value; }
+        }
+
+        public MyDictionary<int, AttackerInfo> AttackerInfos
+        {
+            get { return m_AttackerInfos; }
+        }
+
         public long EmptyBloodTime
         {
             get
@@ -855,6 +957,12 @@ namespace DashFire
             {
                 m_EmptyBloodTime = value;
             }
+        }
+
+        //硬直
+        public bool CauseStiff
+        {
+            get { return m_CauseStiff; }
         }
 
         public bool SuperArmor
@@ -885,6 +993,52 @@ namespace DashFire
         {
             get { return m_EnergyMaxCoefficient; }
             set { m_EnergyMaxCoefficient = value; }
+        }
+
+        public void ResetAttackerInfo()
+        {
+            KillerId = 0;
+            AttackerInfos.Clear();
+            m_LastAttackedTime = 0;
+            m_LastAttackTime = 0;
+        }
+
+        //设置攻击方信息
+        public void SetAttackerInfo(int attackId, int attackerType, bool isKiller, bool isShootDamage, bool isCritical, int hpDamage, int npDamage)
+        {
+            //是否杀死
+            if (isKiller)
+            {
+                KillerId = attackId;
+            }
+            long curTime = TimeUtility.GetServerMilliseconds();
+            LastAttackedTime = curTime;
+            if (!AttackerInfos.ContainsKey(attackId))
+            {
+                AttackerInfos.Add(attackId, new AttackerInfo
+                {
+                    m_AttackerType = attackerType,
+                    m_AttackTime = curTime,
+                    m_HpDamage = hpDamage,
+                    m_NpDamage = npDamage
+                });
+            }
+            else
+            {
+                AttackerInfo info = AttackerInfos[attackId];
+                info.m_AttackTime = curTime;
+                info.m_HpDamage += hpDamage;
+                info.m_NpDamage += npDamage;
+                AttackerInfos[attackId] = info;
+            }
+            if (IsNpc)
+            {
+                NpcManager.FireDamageEvent(GetId(), attackId, isShootDamage, isCritical, hpDamage, npDamage);
+            }
+            else
+            {
+                UserManager.FireDamageEvent(GetId(), attackId, isShootDamage, isCritical, hpDamage, npDamage);
+            }
         }
 
         public static void ReleaseControlledObject(CharacterInfo controller)

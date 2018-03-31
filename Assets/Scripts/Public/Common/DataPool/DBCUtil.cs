@@ -202,7 +202,7 @@ namespace DashFire
         public static T ExtractNumeric<T>(DBC_Row node, string nodeName, T defualtVal, bool isMust)
         {
             T result = defualtVal;
-
+            //UnityEngine.Debug.Log("Data_SceneConfig_ExtractNumeric" + nodeName + (node.HasFields).ToString());
             if (node == null || !node.HasFields || node.SelectFieldByName(nodeName) == null)
             {
                 //if (isMust)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ScriptableData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace SkillSystem
     {
         private Dictionary<string, ISkillTrigerFactory> m_TrigerFactories = new Dictionary<string, ISkillTrigerFactory>();
 
-        private SkillTrigerManager() { }
+        public SkillTrigerManager() { }
 
         public void RegisterTrigerFactory(string type, ISkillTrigerFactory factory)
         {
@@ -20,6 +21,36 @@ namespace SkillSystem
             {
                 m_TrigerFactories.Add(type, factory);
             }
+        }
+
+        private ISkillTrigerFactory GetFactory(string type)
+        {
+            ISkillTrigerFactory factory = null;
+            if (m_TrigerFactories.ContainsKey(type))
+            {
+                factory = m_TrigerFactories[type];
+            }
+            return factory;
+        }
+
+        public ISkillTriger CreateTriger(ISyntaxComponent trigerConfig)
+        {
+            ISkillTriger triger = null;
+            string type = trigerConfig.GetId();
+            ISkillTrigerFactory factory = GetFactory(type);
+            if(null != factory)
+            {
+                triger = factory.Create(trigerConfig);
+            }
+            else
+            {
+                DashFire.LogSystem.Error("CreateTriger failed, unkown type:{0}", type);
+            }
+            if (null != triger)
+            {
+                //DashFire.LogSystem.Debug("CreateTriger, type:{0} triger:{1}", type, triger.GetType().Name);
+            }
+            return triger;
         }
     }
 }

@@ -111,6 +111,93 @@ namespace DashFire
             //GfxSystem.EventChannelForLogic.Subscribe("ge_resetdsl", "game", ResetDsl);
             //GfxSystem.EventChannelForLogic.Subscribe<string>("ge_execscript", "game", ExecScript);
             //GfxSystem.EventChannelForLogic.Subscribe<string>("ge_execcommand", "game", ExecCommand);
+
+            NpcManager.OnDamage = new DamageDelegation(NpcManager_OnDamage);
+            UserManager.OnDamage = new DamageDelegation(UserManager_OnDamage);
+        }
+
+        private void UserManager_OnDamage(int receiver, int caster, bool isOrdinaryDamage, bool isCritical, int hpDamage, int npDamage)//Critical 临界
+        {
+            if (IsPvpScene())
+            {
+                if(caster == PlayerSelfId || receiver == PlayerSelfId)
+                {
+                    UserInfo charObj = WorldSystem.Instance.GetCharacterById(receiver) as UserInfo;
+                    if (null != charObj)
+                    {
+                        Vector3 pos = charObj.GetMovementStateInfo().GetPosition3D();
+                        if (hpDamage != 0)
+                        {
+                            if (isCritical)
+                            {
+                                GfxSystem.PublishGfxEvent("ge_npc_cdamage", "ui", pos.x, pos.y, pos.z, hpDamage, isOrdinaryDamage);
+                            }
+                            else
+                            {
+                                GfxSystem.PublishGfxEvent("ge_npc_odamage", "ui", pos.x, pos.y, pos.z, hpDamage, isOrdinaryDamage);
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if(receiver == PlayerSelfId || caster == PlayerSelfId)
+                {
+                    UserInfo charObj = WorldSystem.Instance.GetCharacterById(receiver) as UserInfo;
+                    if (null != charObj)
+                    {
+                        Vector3 pos = charObj.GetMovementStateInfo().GetPosition3D();
+                        if (hpDamage != 0)
+                        {
+                            GfxSystem.PublishGfxEvent("ge_hero_blood", "ui", pos.x, pos.y, pos.z, hpDamage);
+                        }
+                        if (npDamage != 0)
+                        {
+                            GfxSystem.PublishGfxEvent("ge_hero_energy", "ui", pos.x, pos.y, pos.z, npDamage);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void NpcManager_OnDamage(int receiver, int caster, bool isOrdinaryDamage, bool isCritical, int hpDamage, int npDamage)
+        {
+            if(caster == PlayerSelfId)
+            {
+                NpcInfo charObj = NpcManager.GetNpcInfo(receiver);
+
+                if (IsPveScene() || IsPureClientScene())
+                {
+                    int estimateDamage = hpDamage;
+                    if(isCritical)
+                    {
+                        estimateDamage /= 2;
+
+                        if (charObj.Hp + estimateDamage <= 0)
+                        {
+                            if (GetBattleNpcCount() == 1)
+                            {
+                                ClientStorySystem.Instance.SendMessage("finalblow", receiver);
+                            }
+                        }
+                    }
+                }
+
+                if (null != charObj && (int)NpcTypeEnum.SceneObject != charObj.NpcType)
+                {
+                    Vector3 pos = charObj.GetMovementStateInfo().GetPosition3D();
+                    if (isCritical)
+                    {
+                        GfxSystem.PublishGfxEvent("ge_npc_cdamage", "ui", pos.x, pos.y, pos.z, hpDamage, isOrdinaryDamage);
+                    }
+                    else
+                    {
+                        GfxSystem.PublishGfxEvent("ge_npc_odamage", "ui", pos.x, pos.y, pos.z, hpDamage, isOrdinaryDamage);
+                    }
+                    GfxSystem.PublishGfxEvent("ge_small_monster_healthbar", "ui", charObj.Hp, charObj.GetActualProperty().HpMax, hpDamage);
+                }
+            }
         }
 
         public void OnRoomServerConnected()
@@ -687,7 +774,6 @@ namespace DashFire
             CharacterView view = EntityManager.Instance.GetCharacterViewById(ni.GetId());
             if (null != view)
             {
-                //TODO:未实现
                 GfxSystem.SendMessage(view.Actor, "OnEventDead", null);
             }
             EntityManager.Instance.DestroyNpcView(ni.GetId());
@@ -806,7 +892,6 @@ namespace DashFire
             LogSystem.Debug("npc {0} killed, left {1}", deadNpcId, ct);
             if(0 == ct)
             {
-                //TODO:未实现
                 ClientStorySystem.Instance.SendMessage("allnpckilled");
             }
         }
@@ -1389,6 +1474,7 @@ namespace DashFire
             return npc;
         }
 
+        //传递场景单元获取加载哪个npc 会有npc boss
         public void CreateNpcEntity(int unitId)
         {
             Data_Unit mapUnit = GetCurScene().StaticData.ExtractData(DataMap_Type.DT_Unit, unitId) as Data_Unit;

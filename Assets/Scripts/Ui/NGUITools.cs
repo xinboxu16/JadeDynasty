@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class NGUITools 
 {
-    public static GameObject AddChild(GameObject parent, Object prefab)
+    //isInstantiate是否需要实例化
+    public static GameObject AddChild(GameObject parent, Object prefab, bool isInstantiate = true)
     {
-        GameObject go = GameObject.Instantiate(prefab, parent.transform, false) as GameObject;
+        GameObject go = isInstantiate ? GameObject.Instantiate(prefab, parent.transform, false) as GameObject : prefab as GameObject;
 
 //#if UNITY_EDITOR && !UNITY_3_5 && !UNITY_4_0 && !UNITY_4_1 && !UNITY_4_2
 //        //编辑器模式 撤销对他们的创建
@@ -21,6 +22,10 @@ public class NGUITools
              * t.localPosition = new Vector3(0,0,0)是将A的中心重合到画布中心了。
              * 如果设置要添加的控件位置不在画布中心 导致直接放在画布中心 位置错误
              */
+            if(!isInstantiate)
+            {
+                t.SetParent(parent.transform, false);
+            }
             //t.localPosition = Vector3.zero; 
             t.localRotation = Quaternion.identity;
             t.localScale = Vector3.one;
@@ -82,6 +87,16 @@ public class NGUITools
             return obj.GetComponent<SpriteRenderer>().sprite;
         }
         return null;
+    }
+
+    //this修饰参数作用https://zhidao.baidu.com/question/263333215940019885.html
+    //public static Vector2 TransformToCanvasLocalPosition(this Transform current, Canvas canvas)
+    public static Vector2 TransformToLocalPosition(Transform node, RectTransform localRect, Canvas canvas)
+    {
+        Vector3 screenPos = canvas.worldCamera.WorldToScreenPoint(node.transform.position);
+        Vector2 localPos;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(localRect, screenPos, canvas.worldCamera, out localPos);
+        return localPos;
     }
 
     static public bool GetActive(GameObject go)

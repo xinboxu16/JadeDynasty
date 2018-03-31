@@ -22,6 +22,16 @@ namespace DashFire
         {
         }
 
+        public virtual void RegisterSkillStartHandler(SkillStartHandler handler)
+        {
+            m_SkillStartHandler = handler;
+        }
+
+        public virtual void RegisterSkillQECanInputHandler(SkillQECanInputHandler handler)
+        {
+            m_SkillQECanInputHandler = handler;
+        }
+
         //递归调用初始化所有技能和子技能
         public SkillNode InitCategorySkillNode(List<SkillLogicData> skills, SkillLogicData ss)
         {
@@ -108,11 +118,6 @@ namespace DashFire
             return null;
         }
 
-        public virtual void PushSkill(SkillCategory category, Vector3 targetpos)
-        {
-            
-        }
-
         public virtual void OnTick()
         {
             DealBreakSkillTask();
@@ -146,10 +151,11 @@ namespace DashFire
                 }
             }
 
+            //IsSkillCanBreak 能找到m_CurSkillNode这个节点并且下一个node在BreakSections列表中
             if(m_CurSkillNode == null || IsSkillCanBreak(m_CurSkillNode, node))
             {
                 SkillCannotCastType cannotType = SkillCannotCastType.kUnknow;
-                if(IsSkillCanStart(node, out cannotType))
+                if(!IsSkillCanStart(node, out cannotType))
                 {
                     LogSystem.Debug("skill can't start");
                     if(IsPlayerSelf())
@@ -159,12 +165,20 @@ namespace DashFire
                     m_WaiteSkillBuffer.Clear();
                     return;
                 }
+
                 if(m_CurSkillNode != null)
                 {
                     StopSkill(m_CurSkillNode, node);
                 }
+
+                //if(m_CurSkillNode != null)
+                //{
+                //    Debug.LogError("skillController_StartSkill_" + m_CurSkillNode.SkillId + "_" + node.SkillId);
+                //}
+
                 if(StartSkill(node))
                 {
+                    //Debug.LogError("skillController_StartSkill_" + node.SkillId);
                     OnSkillStart(node);
                     if (nextNode != null)
                     {
@@ -173,6 +187,114 @@ namespace DashFire
                     PostSkillStart(node);
                 }
             }
+        }
+
+        private void OnSkillStart(SkillNode node)
+        {
+            HideSkillTip(SkillCategory.kNone);
+            m_LastSkillNode = m_CurSkillNode;
+            m_CurSkillNode = node;
+            m_CurSkillNode.StartTime = TimeUtility.GetServerMilliseconds() / 1000.0f;
+            m_CurSkillNode.IsCDChecked = false;
+
+            m_WaiteSkillBuffer.RemoveAt(m_WaiteSkillBuffer.Count - 1);
+
+            List<SkillNode> newBufferElement = new List<SkillNode>();
+            newBufferElement.AddRange(m_WaiteSkillBuffer);
+            m_WaiteSkillBuffer.Clear();
+
+            if (m_CurSkillNode.NextSkillNode != null)
+            {
+                if (newBufferElement.Count >= 1)
+                {
+                    SkillNode last = newBufferElement[newBufferElement.Count - 1];
+                    if(m_CurSkillNode != null && last != null && last.Category == m_CurSkillNode.Category)
+                    {
+                        PushSkill(last.Category, Vector3.zero);
+                        newBufferElement.Clear();
+                    }
+                }
+            }
+
+            if(m_LastSkillNode != null && m_LastSkillNode.Category != SkillCategory.kAttack && m_LastSkillNode.Category != m_CurSkillNode.Category)
+            {
+                if(!m_LastSkillNode.IsCDChecked)
+                {
+                    BeginSkillCategoryCD(m_LastSkillNode.Category);
+                    m_LastSkillNode.IsCDChecked = true;
+                }
+            }
+
+            if (null != m_SkillStartHandler)
+            {
+                m_SkillStartHandler();
+            }
+        }
+
+        public virtual void HideSkillTip(SkillCategory category)
+        {
+        }
+
+        public virtual void PushSkill(SkillCategory category, Vector3 targetpos)
+        {
+            CancelBreakSkillTask();
+
+            if(CanInput(category))
+            {
+                if(IsCategorySkillInCD(category))
+                {
+                    HideSkillTip(category);
+                    LogSystem.Warn("skill is in cd");
+                    return;
+                }
+
+                SkillNode targetNode = AddCategorySkillNode(category);
+                if(null != targetNode)
+                {
+                    targetNode.TargetPos = targetpos;
+                    if(SkillCategory.kSkillQ != category && SkillCategory.kSkillE != category)
+                    {
+                        List<SkillNode> qeSkills = new List<SkillNode>();
+                        if(null != targetNode.SkillQ)
+                        {
+                            qeSkills.Add(targetNode.SkillQ);
+                        }
+                        if(null != targetNode.SkillE)
+                        {
+                            qeSkills.Add(targetNode.SkillE);
+                        }
+                        if(null != m_SkillQECanInputHandler)
+                        {
+                            m_SkillQECanInputHandler(GetWaitInputTime(m_CurSkillNode), qeSkills);
+                        }
+                    }
+                }
+                else
+                {
+                    HideSkillTip(category);
+                    LogSystem.Debug("----not find skill " + category);
+                }
+            }
+            else
+            {
+                LogSystem.Debug("skill can't input");
+            }
+        }
+
+        public virtual bool IsSkillCanStart(SkillNode node, out SkillCannotCastType reason)
+        {
+            reason = SkillCannotCastType.kUnknow;
+            return true;
+        }
+
+        public virtual bool IsCategorySkillInCD(SkillCategory category)
+        {
+            return IsSkillInCD(GetHead(category));
+        }
+
+        public virtual bool IsSkillInCD(SkillNode node)
+        {
+            return false;
         }
 
         //Deal 分配
@@ -214,6 +336,46 @@ namespace DashFire
                     m_CurSkillNode.IsCDChecked = true;
                 }
             }
+        }
+
+        protected virtual void BeginSkillCategoryCD(SkillCategory category)
+        {
+            SkillNode head = null;
+            if(m_SkillCategoryDict.TryGetValue(category, out head))
+            {
+                GfxSystem.PublishGfxEvent("ge_cast_skill_cd", "ui", GetCategoryName(head.Category), GetSkillCD(head));
+            }
+        }
+
+        protected string GetCategoryName(SkillCategory category)
+        {
+            switch (category)
+            {
+                case SkillCategory.kSkillA:
+                    return "SkillA";
+                case SkillCategory.kSkillB:
+                    return "SkillB";
+                case SkillCategory.kSkillC:
+                    return "SkillC";
+                case SkillCategory.kSkillD:
+                    return "SkillD";
+                default:
+                    return "";
+            }
+        }
+
+        public virtual float GetSkillCD(SkillNode node)
+        {
+            return 3;
+        }
+
+        public virtual bool IsSkillActive(SkillNode node)
+        {
+            if (node == null)
+            {
+                return false;
+            }
+            return true;
         }
 
         private void UpdateAttacking()
@@ -342,6 +504,10 @@ namespace DashFire
             return true;
         }
 
+        public virtual void AddBreakSection(int skillid, int breaktpye, int starttime, int endtime, bool isinterrupt)
+        {
+        }
+
         public virtual void ForceInterruptCurSkill()
         {
         }
@@ -351,14 +517,47 @@ namespace DashFire
             return true;
         }
 
+        public virtual void PostSkillStart(SkillNode node)
+        {
+        }
+
         public virtual void AddBreakSkillTask()
         {
-
+            m_IsHaveBreakSkillTask = true;
         }
 
         public void CancelBreakSkillTask()
         {
-            
+            m_IsHaveBreakSkillTask = false;
+        }
+
+        public virtual bool StartSkill(SkillNode node)
+        {
+            return true;
+        }
+
+        public virtual bool StopSkill(SkillNode node, SkillNode nextnode)
+        {
+            return true;
+        }
+
+        //开始攻击
+        public virtual void StartAttack(Vector3 targetpos)
+        {
+            CancelBreakSkillTask();
+            SkillNode node = AddAttackNode();
+            if(node != null)
+            {
+                node.TargetPos = targetpos;
+            }
+            m_IsAttacking = true;
+        }
+
+        //停止攻击
+        public virtual void StopAttack()
+        {
+            Debug.LogWarning("StopAttack");
+            m_IsAttacking = false;
         }
 
         public virtual bool IsSkillCanBreak(SkillNode node, SkillNode nextNode = null)
@@ -392,6 +591,11 @@ namespace DashFire
                 return 0;
             }
             return node.StartTime + 5;
+        }
+
+        public virtual bool IsPlayerSelf()
+        {
+            return false;
         }
     }
 }

@@ -17,6 +17,7 @@ namespace DashFire
             AbstractNpcStateLogic.OnNpcMeetEnemy += this.OnNpcMeetEnemy;
             AbstractNpcStateLogic.OnNpcFaceClient += this.OnNpcFace;
             AbstractNpcStateLogic.OnNpcSkill += this.NpcSkill;
+            AiLogic_DropOut_AutoPick.OnDropoutPlayEffect += this.OnDropoutPlayEffect;
         }
 
         private void OnUserSendStoryMessage(UserInfo user, string msgId, object[] args)
@@ -24,6 +25,15 @@ namespace DashFire
             if (WorldSystem.Instance.IsPveScene() || WorldSystem.Instance.IsPureClientScene())
             {
                 ClientStorySystem.Instance.SendMessage(msgId, args);
+            }
+        }
+
+        private void OnDropoutPlayEffect(int id, string effect, string path)
+        {
+            CharacterView view = EntityManager.Instance.GetCharacterViewById(id);
+            if (null != view)
+            {
+                GfxSystem.CreateAndAttachGameObject(effect, view.Actor, path, 1.0f);
             }
         }
 
