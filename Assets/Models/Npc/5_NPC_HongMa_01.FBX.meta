@@ -1,0 +1,256 @@
+fileFormatVersion: 2
+guid: 9e8dd53e74bc3c244961fd62e79236d3
+timeCreated: 1510057472
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: 5_NPC_BaiMa_01
+    100002: //RootNode
+    100004: Head
+    100006: Head_End
+    100008: Hips
+    100010: LeftArm
+    100012: LeftFoot
+    100014: LeftForeArm
+    100016: LeftHand
+    100018: LeftHandThumb
+    100020: LeftHorseLink
+    100022: LeftLeg
+    100024: LeftPonytail
+    100026: LeftShoulder
+    100028: LeftToeBase
+    100030: LeftUpLeg
+    100032: Neck
+    100034: Neck1
+    100036: Pelvis
+    100038: RightArm
+    100040: RightFoot
+    100042: RightForeArm
+    100044: RightHand
+    100046: RightHandThumb
+    100048: RightHorseLink
+    100050: RightLeg
+    100052: RightPonytail
+    100054: RightShoulder
+    100056: RightToeBase
+    100058: RightUpLeg
+    100060: Spine
+    100062: Spine1
+    100064: Spine2
+    100066: Tail
+    100068: Tail1
+    100070: Tail2
+    100072: Tail3
+    400000: 5_NPC_BaiMa_01
+    400002: //RootNode
+    400004: Head
+    400006: Head_End
+    400008: Hips
+    400010: LeftArm
+    400012: LeftFoot
+    400014: LeftForeArm
+    400016: LeftHand
+    400018: LeftHandThumb
+    400020: LeftHorseLink
+    400022: LeftLeg
+    400024: LeftPonytail
+    400026: LeftShoulder
+    400028: LeftToeBase
+    400030: LeftUpLeg
+    400032: Neck
+    400034: Neck1
+    400036: Pelvis
+    400038: RightArm
+    400040: RightFoot
+    400042: RightForeArm
+    400044: RightHand
+    400046: RightHandThumb
+    400048: RightHorseLink
+    400050: RightLeg
+    400052: RightPonytail
+    400054: RightShoulder
+    400056: RightToeBase
+    400058: RightUpLeg
+    400060: Spine
+    400062: Spine1
+    400064: Spine2
+    400066: Tail
+    400068: Tail1
+    400070: Tail2
+    400072: Tail3
+    4300000: 5_NPC_BaiMa_01
+    7400000: Take 0010
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: 5_NPC_BaiMa_01
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 0
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 0010
+      takeName: Take 001
+      firstFrame: 14
+      lastFrame: 273
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 5_NPC_BaiMa_01
+        weight: 1
+      - path: Hips
+        weight: 1
+      - path: Hips/Pelvis
+        weight: 1
+      - path: Hips/Pelvis/LeftUpLeg
+        weight: 1
+      - path: Hips/Pelvis/LeftUpLeg/LeftLeg
+        weight: 1
+      - path: Hips/Pelvis/LeftUpLeg/LeftLeg/LeftHorseLink
+        weight: 1
+      - path: Hips/Pelvis/LeftUpLeg/LeftLeg/LeftHorseLink/LeftFoot
+        weight: 1
+      - path: Hips/Pelvis/LeftUpLeg/LeftLeg/LeftHorseLink/LeftFoot/LeftToeBase
+        weight: 1
+      - path: Hips/Pelvis/RightUpLeg
+        weight: 1
+      - path: Hips/Pelvis/RightUpLeg/RightLeg
+        weight: 1
+      - path: Hips/Pelvis/RightUpLeg/RightLeg/RightHorseLink
+        weight: 1
+      - path: Hips/Pelvis/RightUpLeg/RightLeg/RightHorseLink/RightFoot
+        weight: 1
+      - path: Hips/Pelvis/RightUpLeg/RightLeg/RightHorseLink/RightFoot/RightToeBase
+        weight: 1
+      - path: Hips/Pelvis/Spine
+        weight: 1
+      - path: Hips/Pelvis/Spine/Spine1
+        weight: 1
+      - path: Hips/Pelvis/Spine/Spine1/Spine2
+        weight: 1
+      - path: Hips/Pelvis/Spine/Spine1/Spine2/Neck
+        weight: 1
+      - path: Hips/Pelvis/Spine/Spine1/Spine2/Neck/LeftShoulder
+        weight: 1
+      - path: Hips/Pelvis/Spine/Spine1/Spine2/Neck/LeftShoulder/LeftArm
+        weight: 1
+      - path: Hips/Pelvis/Spine/Spine1/Spine2/Neck/LeftShoulder/LeftArm/LeftForeArm
+        weight: 1
+      - path: Hips/Pelvis/Spine/Spine1/Spine2/Neck/LeftShoulder/LeftArm/LeftForeArm/LeftHand
+        weight: 1
+      - path: Hips/Pelvis/Spine/Spine1/Spine2/Neck/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandThumb
+        weight: 1
+      - path: Hips/Pelvis/Spine/Spine1/Spine2/Neck/Neck1
+        weight: 1
+      - path: Hips/Pelvis/Spine/Spine1/Spine2/Neck/Neck1/Head
+        weight: 1
+      - path: Hips/Pelvis/Spine/Spine1/Spine2/Neck/Neck1/Head/Head_End
+        weight: 1
+      - path: Hips/Pelvis/Spine/Spine1/Spine2/Neck/Neck1/Head/LeftPonytail
+        weight: 1
+      - path: Hips/Pelvis/Spine/Spine1/Spine2/Neck/Neck1/Head/RightPonytail
+        weight: 1
+      - path: Hips/Pelvis/Spine/Spine1/Spine2/Neck/RightShoulder
+        weight: 1
+      - path: Hips/Pelvis/Spine/Spine1/Spine2/Neck/RightShoulder/RightArm
+        weight: 1
+      - path: Hips/Pelvis/Spine/Spine1/Spine2/Neck/RightShoulder/RightArm/RightForeArm
+        weight: 1
+      - path: Hips/Pelvis/Spine/Spine1/Spine2/Neck/RightShoulder/RightArm/RightForeArm/RightHand
+        weight: 1
+      - path: Hips/Pelvis/Spine/Spine1/Spine2/Neck/RightShoulder/RightArm/RightForeArm/RightHand/RightHandThumb
+        weight: 1
+      - path: Hips/Pelvis/Tail
+        weight: 1
+      - path: Hips/Pelvis/Tail/Tail1
+        weight: 1
+      - path: Hips/Pelvis/Tail/Tail1/Tail2
+        weight: 1
+      - path: Hips/Pelvis/Tail/Tail1/Tail2/Tail3
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

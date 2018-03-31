@@ -1,0 +1,178 @@
+fileFormatVersion: 2
+guid: d80d6f18924f11948bb50e3ec59386b8
+timeCreated: 1510047371
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: 2_Misc_DaiZi_01
+    100002: 2_Misc_Deng_01
+    100004: 2_Misc_DiTan_01
+    100006: 2_Misc_GuanZi_01
+    100008: 2_Misc_GuanZi_02
+    100010: 2_Misc_GuanZi_03
+    100012: 2_Misc_GuanZi_04
+    100014: 2_Misc_GuanZi_05
+    100016: 2_Misc_GuanZi_06
+    100018: 2_Misc_GuanZi_07
+    100020: 2_Misc_GuanZi_08
+    100022: 2_Misc_GuanZi_09
+    100024: 2_Misc_PanZi_01
+    100026: //RootNode
+    100028: 2_Misc_Shu_01
+    100030: 2_Misc_Shu_02
+    100032: 2_Misc_Tong_01
+    100034: 2_Misc_Tong_02
+    100036: 2_Misc_Zhong_01
+    100038: 2_Misc_ZhuoZi_01
+    100040: 2_Misc_ZuTai_01
+    400000: 2_Misc_DaiZi_01
+    400002: 2_Misc_Deng_01
+    400004: 2_Misc_DiTan_01
+    400006: 2_Misc_GuanZi_01
+    400008: 2_Misc_GuanZi_02
+    400010: 2_Misc_GuanZi_03
+    400012: 2_Misc_GuanZi_04
+    400014: 2_Misc_GuanZi_05
+    400016: 2_Misc_GuanZi_06
+    400018: 2_Misc_GuanZi_07
+    400020: 2_Misc_GuanZi_08
+    400022: 2_Misc_GuanZi_09
+    400024: 2_Misc_PanZi_01
+    400026: //RootNode
+    400028: 2_Misc_Shu_01
+    400030: 2_Misc_Shu_02
+    400032: 2_Misc_Tong_01
+    400034: 2_Misc_Tong_02
+    400036: 2_Misc_Zhong_01
+    400038: 2_Misc_ZhuoZi_01
+    400040: 2_Misc_ZuTai_01
+    2300000: 2_Misc_DaiZi_01
+    2300002: 2_Misc_Deng_01
+    2300004: 2_Misc_DiTan_01
+    2300006: 2_Misc_GuanZi_01
+    2300008: 2_Misc_GuanZi_02
+    2300010: 2_Misc_GuanZi_03
+    2300012: 2_Misc_GuanZi_04
+    2300014: 2_Misc_GuanZi_05
+    2300016: 2_Misc_GuanZi_06
+    2300018: 2_Misc_GuanZi_07
+    2300020: 2_Misc_GuanZi_08
+    2300022: 2_Misc_GuanZi_09
+    2300024: 2_Misc_PanZi_01
+    2300026: 2_Misc_Shu_01
+    2300028: 2_Misc_Shu_02
+    2300030: 2_Misc_Tong_01
+    2300032: 2_Misc_Tong_02
+    2300034: 2_Misc_Zhong_01
+    2300036: 2_Misc_ZhuoZi_01
+    2300038: 2_Misc_ZuTai_01
+    3300000: 2_Misc_DaiZi_01
+    3300002: 2_Misc_Deng_01
+    3300004: 2_Misc_DiTan_01
+    3300006: 2_Misc_GuanZi_01
+    3300008: 2_Misc_GuanZi_02
+    3300010: 2_Misc_GuanZi_03
+    3300012: 2_Misc_GuanZi_04
+    3300014: 2_Misc_GuanZi_05
+    3300016: 2_Misc_GuanZi_06
+    3300018: 2_Misc_GuanZi_07
+    3300020: 2_Misc_GuanZi_08
+    3300022: 2_Misc_GuanZi_09
+    3300024: 2_Misc_PanZi_01
+    3300026: 2_Misc_Shu_01
+    3300028: 2_Misc_Shu_02
+    3300030: 2_Misc_Tong_01
+    3300032: 2_Misc_Tong_02
+    3300034: 2_Misc_Zhong_01
+    3300036: 2_Misc_ZhuoZi_01
+    3300038: 2_Misc_ZuTai_01
+    4300000: 2_Misc_Shu_02
+    4300002: 2_Misc_ZhuoZi_01
+    4300004: 2_Misc_DiTan_01
+    4300006: 2_Misc_Tong_01
+    4300008: 2_Misc_Tong_02
+    4300010: 2_Misc_DaiZi_01
+    4300012: 2_Misc_Zhong_01
+    4300014: 2_Misc_Deng_01
+    4300016: 2_Misc_Shu_01
+    4300018: 2_Misc_GuanZi_05
+    4300020: 2_Misc_GuanZi_04
+    4300022: 2_Misc_GuanZi_03
+    4300024: 2_Misc_GuanZi_02
+    4300026: 2_Misc_GuanZi_01
+    4300028: 2_Misc_GuanZi_06
+    4300030: 2_Misc_GuanZi_07
+    4300032: 2_Misc_GuanZi_08
+    4300034: 2_Misc_GuanZi_09
+    4300036: 2_Misc_ZuTai_01
+    4300038: 2_Misc_PanZi_01
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

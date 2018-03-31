@@ -1,0 +1,148 @@
+fileFormatVersion: 2
+guid: 1ee7220c1520a6a409a0e55da3ac5435
+timeCreated: 1510045144
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: 2_CZ_ChuangHu_01
+    100002: 2_CZ_ChuangHu_02
+    100004: 2_CZ_ChuangHu_03
+    100006: //RootNode
+    100008: 2_CZ_FangWu_01
+    100010: 2_CZ_FangWu_02
+    100012: 2_CZ_FangWu_03
+    100014: 2_CZ_FangWu_04
+    100016: 2_CZ_FangWu_05
+    100018: 2_CZ_FangWu_06
+    100020: 2_CZ_FangWu_07
+    100022: 2_CZ_FangWu_08
+    100024: 2_CZ_FangWu_09
+    100026: 2_CZ_FangWu_10
+    100028: 2_CZ_FangWu_11
+    400000: 2_CZ_ChuangHu_01
+    400002: 2_CZ_ChuangHu_02
+    400004: 2_CZ_ChuangHu_03
+    400006: //RootNode
+    400008: 2_CZ_FangWu_01
+    400010: 2_CZ_FangWu_02
+    400012: 2_CZ_FangWu_03
+    400014: 2_CZ_FangWu_04
+    400016: 2_CZ_FangWu_05
+    400018: 2_CZ_FangWu_06
+    400020: 2_CZ_FangWu_07
+    400022: 2_CZ_FangWu_08
+    400024: 2_CZ_FangWu_09
+    400026: 2_CZ_FangWu_10
+    400028: 2_CZ_FangWu_11
+    2300000: 2_CZ_ChuangHu_01
+    2300002: 2_CZ_ChuangHu_02
+    2300004: 2_CZ_ChuangHu_03
+    2300006: 2_CZ_FangWu_01
+    2300008: 2_CZ_FangWu_02
+    2300010: 2_CZ_FangWu_03
+    2300012: 2_CZ_FangWu_04
+    2300014: 2_CZ_FangWu_05
+    2300016: 2_CZ_FangWu_06
+    2300018: 2_CZ_FangWu_07
+    2300020: 2_CZ_FangWu_08
+    2300022: 2_CZ_FangWu_09
+    2300024: 2_CZ_FangWu_10
+    2300026: 2_CZ_FangWu_11
+    3300000: 2_CZ_ChuangHu_01
+    3300002: 2_CZ_ChuangHu_02
+    3300004: 2_CZ_ChuangHu_03
+    3300006: 2_CZ_FangWu_01
+    3300008: 2_CZ_FangWu_02
+    3300010: 2_CZ_FangWu_03
+    3300012: 2_CZ_FangWu_04
+    3300014: 2_CZ_FangWu_05
+    3300016: 2_CZ_FangWu_06
+    3300018: 2_CZ_FangWu_07
+    3300020: 2_CZ_FangWu_08
+    3300022: 2_CZ_FangWu_09
+    3300024: 2_CZ_FangWu_10
+    3300026: 2_CZ_FangWu_11
+    4300000: 2_CZ_FangWu_06
+    4300002: 2_CZ_FangWu_03
+    4300004: 2_CZ_FangWu_04
+    4300006: 2_CZ_ChuangHu_02
+    4300008: 2_CZ_ChuangHu_03
+    4300010: 2_CZ_ChuangHu_01
+    4300012: 2_CZ_FangWu_02
+    4300014: 2_CZ_FangWu_07
+    4300016: 2_CZ_FangWu_11
+    4300018: 2_CZ_FangWu_05
+    4300020: 2_CZ_FangWu_09
+    4300022: 2_CZ_FangWu_10
+    4300024: 2_CZ_FangWu_08
+    4300026: 2_CZ_FangWu_01
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
